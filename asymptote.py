@@ -2,7 +2,7 @@ from manim import *
 
 ## For more information, please visit:
 ## https://docs.manim.community/en/stable/tutorials/configuration.html#command-line-arguments
-## https://docs.manim.community/en/v0.3.0/tutorials/configuration.html#a-list-of-all-cli-flags
+## https://docs.manim.community/en/stable/tutorials/configuration.html#a-list-of-all-cli-flags
 
 ## Some command line flags:
 ## -a : renders multiple Scene classes
