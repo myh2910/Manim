@@ -3,9 +3,6 @@ from asymptote import *
 class Video(Scene):
     def construct(self):
         ## INICIAL SETTINGS
-        ## Colors
-        text_color, dot_color = WHITE, ORANGE
-
         ## Texts
         title_1 = Tex("IMO 2015, ", "Problema 4")
         title_1.set_color_by_tex_to_color_map({
@@ -121,7 +118,7 @@ class Video(Scene):
             tex_template=TexTemplateLibrary.simple
         )
         for item in [text_1, text_2, text_3, text_4]:
-            item.set_color(text_color).scale(0.6)
+            item.set_color(WHITE).scale(0.6)
 
         text_5 = MathTex(
             "C", #0
@@ -315,7 +312,7 @@ class Video(Scene):
                 )
             ).shift(l*LEFT)
         )
-        self.play(*COL(dots_FDEG, c=dot_color))
+        self.play(*COL(dots_FDEG, c=ORANGE))
         self.play(
             *WR(text_1[0]),
             *RT(label_A.copy(), text_1[1]),
@@ -347,7 +344,7 @@ class Video(Scene):
 
         FORW(self, dot_K, label_K)
 
-        self.play(*COL(dots_KBDF, c=dot_color))
+        self.play(*COL(dots_KBDF, c=ORANGE))
         self.play(
             *WR(text_1[12]),
             *RT(label_B.copy(), text_1[13]),
@@ -365,7 +362,7 @@ class Video(Scene):
 
         FORW(self, dot_L, label_L)
 
-        self.play(*COL(dots_LCGE, c=dot_color))
+        self.play(*COL(dots_LCGE, c=ORANGE))
         self.play(
             *WR(text_1[18]),
             *RT(label_C.copy(), text_1[19]),
@@ -384,7 +381,7 @@ class Video(Scene):
         FORW(self, dot_X, label_X)
 
         self.play(*RT(lines_FX_GX, dashed_FX_GX))
-        self.play(*COL(dots_AXO, c=dot_color))
+        self.play(*COL(dots_AXO, c=ORANGE))
         self.play(
             *WR(text_1[24]),
             *RT(label_A.copy(), text_1[25]),
