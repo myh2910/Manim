@@ -1139,4 +1139,4 @@ class Video(Scene):
 
 if __name__ == '__main__':
     from subprocess import run
-    run('manim imo_2015_p4.py Video -p')
+    run('manim imo_2015_p4/video.py Video -p')

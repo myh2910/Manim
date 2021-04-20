@@ -15,4 +15,4 @@ class Thumbnail(Scene):
 
 if __name__ == '__main__':
     from subprocess import run
-    run('manim thumbnail_imo_2015_p4.py Thumbnail -p')
+    run('manim imo_/thumbnail.py Thumbnail -p')
