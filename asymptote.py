@@ -1,4 +1,5 @@
 from manim import *
+from subprocess import run
 
 ## For more information, please visit:
 ## https://docs.manim.community/en/stable/tutorials/configuration.html#command-line-arguments
@@ -277,3 +278,8 @@ def UFF(X, f, **kwargs):
 
 def UFAF(X, f, **kwargs):
     return UpdateFromAlphaFunc(X, f, **kwargs)
+
+##-------------------------------------------------------------------------------------------------##
+
+def RUN(path, scene, arguments):
+    run(f'manim {path} {scene} -{arguments}')

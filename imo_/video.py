@@ -1,3 +1,7 @@
+import os, sys
+filepath = os.path.realpath(__file__)
+sys.path.append(os.path.dirname(os.path.dirname(filepath)))
+
 from asymptote import *
 
 class Video(Scene):
@@ -1138,5 +1142,4 @@ class Video(Scene):
         self.wait()
 
 if __name__ == '__main__':
-    from subprocess import run
-    run('manim imo_/video.py Video -p')
+    RUN(filepath, 'Video', 'p')

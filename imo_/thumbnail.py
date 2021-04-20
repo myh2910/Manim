@@ -1,4 +1,8 @@
-from manim import *
+import os, sys
+filepath = os.path.realpath(__file__)
+sys.path.append(os.path.dirname(os.path.dirname(filepath)))
+
+from asymptote import *
 
 class Thumbnail(Scene):
     def construct(self):
@@ -14,5 +18,4 @@ class Thumbnail(Scene):
         self.add(text_1, text_2)
 
 if __name__ == '__main__':
-    from subprocess import run
-    run('manim imo_/thumbnail.py Thumbnail -p')
+    RUN(filepath, 'Thumbnail', 'p')
