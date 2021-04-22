@@ -1,2 +1,2 @@
 # Manim
-Python codes for my videos
+Manim source codes for my videos.
