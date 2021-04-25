@@ -1142,4 +1142,4 @@ class Video(Scene):
         self.wait()
 
 if __name__ == '__main__':
-    RUN(filepath, 'Video', 'p')
+    RUN(filepath, 'Video', '-pqk')

@@ -1,16 +1,17 @@
 from manim import *
 from subprocess import run
 
+## Current version: Manim Community v0.5.0
 ## For more information, please visit:
 ## https://docs.manim.community/en/stable/tutorials/configuration.html#command-line-arguments
 ## https://docs.manim.community/en/stable/tutorials/configuration.html#a-list-of-all-cli-flags
 
 ## Some command line flags:
 ## -a : renders multiple Scene classes
-## -l : low quality
-## -m : medium quality
-## -h : high quality
-## -k : 4k quality
+## -ql : low quality
+## -qm : medium quality
+## -qh : high quality
+## -qk : 4k quality
 ## -p : plays the animation once it is rendered
 ## -f : opens the file browser at the location of the animation
 ## -i : .gif format
@@ -282,4 +283,4 @@ def UFAF(X, f, **kwargs):
 ##-------------------------------------------------------------------------------------------------##
 
 def RUN(path, scene, arguments):
-    run(f'manim {path} {scene} -{arguments}')
+    run(f'manim {path} {scene} {arguments}')
