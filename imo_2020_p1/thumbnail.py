@@ -17,7 +17,7 @@ class Thumbnail(Scene):
         text_2.scale(3)
         VGroup(text_1, text_2).arrange(DOWN, buff=1.7)
         text_1.shift(3.6*RIGHT)
-        imo_logo.shift(3.4*LEFT + 1.2*UP)
+        imo_logo.shift(3.4*LEFT + 1.1*UP)
 
         line_1 = Line(LEFT, RIGHT, color="#F0E68C").set_width(text_2[1].get_width())
         line_1.next_to(text_2[1], DOWN, buff=0.2)

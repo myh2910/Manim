@@ -17,4 +17,4 @@ class Video(Scene):
         self.add(problem)
 
 if __name__ == '__main__':
-    RUN(filepath, 'Video', '-spqk')
+    RUN(filepath, 'Video', '-pql')
