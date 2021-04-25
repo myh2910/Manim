@@ -1,6 +1,7 @@
 from manim import *
 from subprocess import run
 
+## Thanks to the Manim Community: https://docs.manim.community/en/stable/
 ## Current manim version: Manim Community v0.5.0
 ## For more information, please visit:
 ## https://docs.manim.community/en/stable/tutorials/configuration.html#command-line-arguments

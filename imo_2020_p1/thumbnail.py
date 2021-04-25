@@ -6,7 +6,7 @@ from asymptote import *
 
 class Thumbnail(Scene):
     def construct(self):
-        imo_logo = ImageMobject("imo_2020_p1/imo_logo.png")
+        imo_logo = ImageMobject("imo_2020_p1/imo_2020_logo.png")
         text_1 = Tex(r"\textsf{Problema 1}")
         text_2 = Tex(r"\emph{Solución} con ", r"\textsc{Manim}")
 
