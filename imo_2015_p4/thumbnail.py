@@ -18,4 +18,4 @@ class Thumbnail(Scene):
         self.add(text_1, text_2)
 
 if __name__ == '__main__':
-    RUN(filepath, 'Thumbnail', '-spqk')
+    RUN(filepath, 'Thumbnail', '-spqk -o Thumbnail')

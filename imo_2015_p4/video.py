@@ -261,6 +261,8 @@ class Video(Scene):
         labels_FDEG = [label_F, label_D, label_E, label_G]
         
         ## RENDERING VIDEO
+        self.add_sound("imo_2015_p4/audio.mp3")
+
         self.play(*WR(title_1), run_time=4)
         self.wait()
         self.play(
@@ -1142,4 +1144,4 @@ class Video(Scene):
         self.wait()
 
 if __name__ == '__main__':
-    RUN(filepath, 'Video', '-pqk')
+    RUN(filepath, 'Video', '-pqk -o imo_2015_problema_4_yohan_min')

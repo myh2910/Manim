@@ -1,4 +1,5 @@
 from manim import *
+from pydub.audio_segment import AudioSegment
 from subprocess import run
 
 ## Thanks to the Manim Community: https://docs.manim.community/en/stable/
@@ -105,6 +106,13 @@ def foot(P, A, B) -> complex:
     except:
         return foot(comp(P), comp(A), comp(B))
 
+def sim(B, C, A1, B1, C1) -> complex:
+    """returns the complex coordinates of the point A, such that triangles ABC and A1B1C1 are similar."""
+    try:
+        return B-(B1-A1)*(B-C)/(B1-C1)
+    except:
+        return sim(comp(B), comp(C), comp(A1), comp(B1), comp(C1))
+
 def circumcenter(A, B, C) -> complex:
     """Returns the circumcenter of triangle ABC."""
     try:
@@ -120,6 +128,12 @@ def DOT(P, c=WHITE, s=ORIGIN, **kwargs) -> Dot:
     """Returns a Dot element shifted by s colored with c."""
     x, y = coord(P)
     return Dot(np.array((x, y, 0)), color=c, **kwargs).shift(s)
+
+def POLY(*vertices, **kwargs):
+    try:
+        return Polygon(*vertices, **kwargs)
+    except:
+        return Polygon(*[nparray(vertex) for vertex in vertices], **kwargs)
 
 def CR(r=1, O=ORIGIN, c=WHITE, **kwargs) -> Circle:
     """Returns the circle centered at O with radius r."""
@@ -229,13 +243,19 @@ def RT(X, Y, settings=False, **kwargs):
     else:
         return [ReplacementTransform(X, Y, **kwargs)]
 
-def TC(X, Y, settings=False, **kwargs):
+def TC(X, Y, custom=True, settings=False, **kwargs):
     """TransformFromCopy X by Y."""
     lst_X, lst_Y = make_lst(X), make_lst(Y)
-    if settings:
-        return [TransformFromCopy(lst_X[i], lst_Y[i], **kwargs) for i in range(0, len(lst_X))]
+    if custom:
+        if settings:
+            return [ReplacementTransform(lst_X[i].copy(), lst_Y[i], **kwargs) for i in range(0, len(lst_X))]
+        else:
+            return [ReplacementTransform(X.copy(), Y, **kwargs)]
     else:
-        return [TransformFromCopy(X, Y, **kwargs)]
+        if settings:
+            return [TransformFromCopy(lst_X[i], lst_Y[i], **kwargs) for i in range(0, len(lst_X))]
+        else:
+            return [TransformFromCopy(X, Y, **kwargs)]
 
 def CCT(X, Y, settings=False, **kwargs):
     """CounterclockwiseTransform X by Y."""
@@ -282,6 +302,20 @@ def UFAF(X, f, **kwargs):
     return UpdateFromAlphaFunc(X, f, **kwargs)
 
 ##-------------------------------------------------------------------------------------------------##
+
+def AUDIO(s, audios, intervals, times, gain=None, epsilon=.4):
+    for idx, audio in enumerate(audios):
+        if idx == 0:
+            a = AudioSegment.from_mp3(audio)[1000*intervals[idx][0]:1000*(intervals[idx][1] + epsilon)]
+            s.renderer.file_writer.add_audio_segment(a, times[idx])
+        else:
+            a = AudioSegment.from_mp3(audio)[1000*intervals[idx][0]:1000*(intervals[idx][1] + epsilon)]
+            s.renderer.file_writer.add_audio_segment(a, times[idx], gain)
+
+def TEX_TEMPLATE(paperwidth='500pt', linespread='1', fontsize='12pt'):
+    documentclass = r"\documentclass[" + fontsize + r", preview]{standalone}"
+    preamble = r"\usepackage{amsmath, amssymb}" + "\n" + r"\usepackage[margin=0pt, paperwidth=" + paperwidth + r"]{geometry}" + "\n" + r"\linespread{" + linespread + "}"
+    return TexTemplate(documentclass=documentclass, preamble=preamble)
 
 def RUN(path, scene, arguments):
     run(f'manim {path} {scene} {arguments}')
