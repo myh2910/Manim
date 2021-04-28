@@ -317,5 +317,8 @@ def TEX_TEMPLATE(paperwidth='500pt', linespread='1', fontsize='12pt'):
     preamble = r"\usepackage{amsmath, amssymb}" + "\n" + r"\usepackage[margin=0pt, paperwidth=" + paperwidth + r"]{geometry}" + "\n" + r"\linespread{" + linespread + "}"
     return TexTemplate(documentclass=documentclass, preamble=preamble)
 
-def RUN(path, scene, arguments):
-    run(f'manim {path} {scene} {arguments}')
+def RUN(*args):
+    argument = 'manim'
+    for item in args:
+        argument += ' ' + item
+    run(argument)

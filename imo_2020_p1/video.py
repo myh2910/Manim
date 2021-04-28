@@ -865,4 +865,4 @@ class Video(Scene):
         self.wait()
 
 if __name__ == '__main__':
-    RUN(filepath, 'Video', '-pqk -o imo_2020_problema_1_yohan_min')
+    RUN(filepath, 'Video', '-pqk -o IMO_2020_problema_1_yohan_min')
