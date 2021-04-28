@@ -8,36 +8,36 @@ class Video(Scene):
     def construct(self):
         ## INICIAL SETTINGS
         ## Texts
-        title_1 = Tex("IMO 2015, ", "Problema 4")
-        title_1.set_color_by_tex_to_color_map({
+        t1 = Tex("IMO 2015, ", "Problema 4")
+        t1.set_color_by_tex_to_color_map({
             "IMO 2015, " : BLUE,
             "Problema 4" : RED
         })
-        title_1.scale(1.6)
+        t1.scale(1.6)
 
         linebreak = r" \\ \hphantom{} \\ "
 
-        title_2 = Tex(
-            "\\textbf{Problema 4.} ",
-            "El tri\\'angulo $ABC$ tiene circunferencia circunscrita $\\Omega$ y circuncentro $O$. Una circunferencia $\\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\\'on de $\\Gamma$ y $\\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\\'an sobre $\\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\\'on de la circunferencia circunscrita al tri\\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\\'on de la circunferencia circunscrita al tri\\'angulo $CGE$ y el segmento $CA$." + linebreak + "Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\\'a en la recta $AO$.",
+        t2 = Tex(
+            r"\textbf{Problema 4.} ",
+            r"El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + linebreak + r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\'a en la recta $AO$.",
             tex_environment=None,
             tex_template=TexTemplateLibrary.simple
         )
-        title_2.set_color_by_tex("Problema", RED)
-        title_2.scale(0.7).to_corner(UP)
+        t2.set_color_by_tex("Problema", RED)
+        t2.scale(0.7).to_corner(UP)
         
-        title_3 = Tex(
-            "\\hphantom{\\textbf{Problema 4.} }El tri\\'angulo $ABC$ tiene circunferencia circunscrita $\\Omega$ y circuncentro $O$. Una circunferencia $\\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\\'on de $\\Gamma$ y $\\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\\'an sobre $\\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\\'on de la circunferencia circunscrita al tri\\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\\'on de la circunferencia circunscrita al tri\\'angulo $CGE$ y el segmento $CA$." + linebreak + "Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\\'a en la recta $AO$.",
+        t3 = Tex(
+            r"\hphantom{\textbf{Problema 4.} }El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + linebreak + r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\'a en la recta $AO$.",
             tex_environment=None,
             tex_template=TexTemplateLibrary.simple
         )
-        title_3.scale(0.7).to_corner(UP)
+        t3.scale(0.7).to_corner(UP)
 
-        title_2_3 = VGroup(title_2[0], title_3)
+        t4 = VGroup(t2[0], t3)
 
-        isquare = "\\text{\\tiny $\\blacksquare\\,$ }&" ##ii = "$\\bullet\\,$ "
+        isquare = r"\text{\tiny $\blacksquare\,$ }&" ##ii = r"$\bullet\,$ "
 
-        text_1 = MathTex(
+        t5 = MathTex(
             isquare, #0
             "A", #1
             "D", #2
@@ -55,76 +55,76 @@ class Video(Scene):
             "D", #14
             "K", #15
             "F", #16
-            "\\text{ es c\\'iclico}" + linebreak, #17
+            r"\text{ es c\'iclico}" + linebreak, #17
             isquare, #18
             "C", #19
             "G", #20
             "L", #21
             "E", #22
-            "\\text{ es c\\'iclico}" + linebreak, #23
-            isquare + "\\text{Demostrar que }", #24
+            r"\text{ es c\'iclico}" + linebreak, #23
+            isquare + r"\text{Demostrar que }", #24
             "A", #25
             ",", #26
             "X", #27
             ",", #28
             "O", #29
-            "\\text{ son colineales}", #30
+            r"\text{ son colineales}", #30
             tex_environment="align*",
             tex_template=TexTemplateLibrary.simple
         )
-        iff = "\\iff &"
+        iff = r"\iff &"
 
-        text_2 = MathTex(
+        t6 = MathTex(
             "&A", #0
             ",", #1
             "X", #2
             ",", #3
             "O", #4
-            "\\text{ son colineales}" + linebreak, #5
+            r"\text{ son colineales}" + linebreak, #5
             iff, #6
             "X", #7
-            "\\text{ pertenece a la mediatriz de }", #8
+            r"\text{ pertenece a la mediatriz de }", #8
             "F", #9
             "G" + linebreak, #10
             iff, #11
-            "\\angle ", #12
+            r"\angle ", #12
             "K", #13
             "F", #14
             "G", #15
             "=", #16
-            "\\angle ", #17
+            r"\angle ", #17
             "L", #18
             "G", #19
             "F", #20
             tex_environment="align*",
             tex_template=TexTemplateLibrary.simple
         )
-        text_3 = MathTex(
-            isquare + "AD=AE=AF=AG" + linebreak + isquare + "BDKF\\text{ es c\\'iclico}" + linebreak + isquare + "CGLE\\text{ es c\\'iclico}" + linebreak + isquare + "\\text{Demostrar que }", #0
-            "\\angle ", #1
+        t7 = MathTex(
+            isquare + "AD=AE=AF=AG" + linebreak + isquare + r"BDKF\text{ es c\'iclico}" + linebreak + isquare + r"CGLE\text{ es c\'iclico}" + linebreak + isquare + r"\text{Demostrar que }", #0
+            r"\angle ", #1
             "K", #2
             "F", #3
             "G", #4
             "=", #5
-            "\\angle ", #6
+            r"\angle ", #6
             "L", #7
             "G", #8
             "F", #9
             tex_environment="align*",
             tex_template=TexTemplateLibrary.simple
         )
-        text_4 = MathTex(
-            isquare + "AD=AE=AF=AG" + linebreak + isquare + "BDKF\\text{ es c\\'iclico}" + linebreak + isquare + "CGLE\\text{ es c\\'iclico}" + linebreak + isquare + "\\text{Demostrar que }", #0
+        t8 = MathTex(
+            isquare + "AD=AE=AF=AG" + linebreak + isquare + r"BDKF\text{ es c\'iclico}" + linebreak + isquare + r"CGLE\text{ es c\'iclico}" + linebreak + isquare + r"\text{Demostrar que }", #0
             "x", #1
             "=", #2
             "y", #3
             tex_environment="align*",
             tex_template=TexTemplateLibrary.simple
         )
-        for item in [text_1, text_2, text_3, text_4]:
+        for item in [t5, t6, t7, t8]:
             item.set_color(WHITE).scale(0.6)
 
-        text_5 = MathTex(
+        t9 = MathTex(
             "C", #0
             "-", #1
             "x", #2
@@ -138,11 +138,11 @@ class Video(Scene):
             tex_environment="align*",
             tex_template=TexTemplateLibrary.simple
         )
-        text_1.shift(4*RIGHT)
-        for item in [text_2, text_3, text_4]:
-            item.move_to(text_1, aligned_edge=LEFT)
+        t5.shift(4*RIGHT)
+        for item in [t6, t7, t8]:
+            item.move_to(t5, aligned_edge=LEFT)
 
-        text_5.move_to(text_1)
+        t9.move_to(t5)
 
         ## DEFINING COMPLEX NUMBERS (LIKE ASYMPTOTE IN LATEX)
         ## A, B, C, D, E, F, G, K, L, X
@@ -230,8 +230,8 @@ class Video(Scene):
         ## LABELS, VGROUPS AND LISTS
         ## Labels
         f = .5
-        label_omega = MP('$\\Omega$', circle_omega, UP, f)
-        label_gamma = MP('$\\Gamma$', circle_gamma, RIGHT, f)
+        label_omega = MP(r'$\Omega$', circle_omega, UP, f)
+        label_gamma = MP(r'$\Gamma$', circle_gamma, RIGHT, f)
         label_O = MP('$O$', dot_O, DOWN, f)
         label_A = MP('$A$', dot_A, UP, f)
         label_B = MP('$B$', dot_B, B, f)
@@ -263,15 +263,15 @@ class Video(Scene):
         ## RENDERING VIDEO
         self.add_sound("imo_2015_p4/audio.mp3")
 
-        self.play(*WR(title_1), run_time=4)
+        self.play(*WR(t1), run_time=4)
         self.wait()
         self.play(
-            *FO(title_1),
-            *RT(title_1[1].copy(), title_2[0])
+            *FO(t1),
+            *RT(t1[1].copy(), t2[0])
         )
-        self.play(*MAKE(title_3), run_time=4)
+        self.play(*MAKE(t3), run_time=4)
         self.wait(4)
-        self.play(ANIM(title_2_3).scale(0.5).shift(UP + 3.5*LEFT))
+        self.play(ANIM(t4).scale(0.5).shift(UP + 3.5*LEFT))
         self.play(*GC(dot_O))
         self.play(*GC(label_O))
 
@@ -298,7 +298,7 @@ class Video(Scene):
             label_omega,
             *labels_ABC
         )
-        self.play(*FO(title_2_3))
+        self.play(*FO(t4))
         self.play(ANIM(change_1).shift(r*LEFT), run_time=2)
         self.play(*GC(circle_gamma))
         self.play(*GC(label_gamma))
@@ -320,30 +320,30 @@ class Video(Scene):
         )
         self.play(*COL(dots_FDEG, c=ORANGE))
         self.play(
-            *WR(text_1[0]),
-            *RT(label_A.copy(), text_1[1]),
-            *RT(label_D.copy(), text_1[2]),
+            *WR(t5[0]),
+            *RT(label_A.copy(), t5[1]),
+            *RT(label_D.copy(), t5[2]),
             run_time=2
         )
         self.play(
-            *WR(text_1[3]),
-            *RT(label_A.copy(), text_1[4]),
-            *RT(label_E.copy(), text_1[5]),
+            *WR(t5[3]),
+            *RT(label_A.copy(), t5[4]),
+            *RT(label_E.copy(), t5[5]),
             run_time=2
         )
         self.play(
-            *WR(text_1[6]),
-            *RT(label_A.copy(), text_1[7]),
-            *RT(label_F.copy(), text_1[8]),
+            *WR(t5[6]),
+            *RT(label_A.copy(), t5[7]),
+            *RT(label_F.copy(), t5[8]),
             run_time=2
         )
         self.play(
-            *WR(text_1[9]),
-            *RT(label_A.copy(), text_1[10]),
-            *RT(label_G.copy(), text_1[11]),
+            *WR(t5[9]),
+            *RT(label_A.copy(), t5[10]),
+            *RT(label_G.copy(), t5[11]),
             run_time=2
         )
-        self.play(*FO(circle_gamma, label_gamma), *COL(text_1[:12], dots_FDEG))
+        self.play(*FO(circle_gamma, label_gamma), *COL(t5[:12], dots_FDEG))
         self.play(*GC(circle_BDF))
         self.play(*GC(dot_K))
         self.play(*GC(label_K))
@@ -352,16 +352,16 @@ class Video(Scene):
 
         self.play(*COL(dots_KBDF, c=ORANGE))
         self.play(
-            *WR(text_1[12]),
-            *RT(label_B.copy(), text_1[13]),
-            *RT(label_D.copy(), text_1[14]),
-            *RT(label_K.copy(), text_1[15]),
-            *RT(label_F.copy(), text_1[16]),
+            *WR(t5[12]),
+            *RT(label_B.copy(), t5[13]),
+            *RT(label_D.copy(), t5[14]),
+            *RT(label_K.copy(), t5[15]),
+            *RT(label_F.copy(), t5[16]),
             run_time=2
         )
-        self.play(*WR(text_1[17]))
+        self.play(*WR(t5[17]))
         self.play(*FO(circle_BDF))
-        self.play(*COL(text_1[12:18], dots_KBDF))
+        self.play(*COL(t5[12:18], dots_KBDF))
         self.play(*GC(circle_CGE))
         self.play(*GC(dot_L))
         self.play(*GC(label_L))
@@ -370,16 +370,16 @@ class Video(Scene):
 
         self.play(*COL(dots_LCGE, c=ORANGE))
         self.play(
-            *WR(text_1[18]),
-            *RT(label_C.copy(), text_1[19]),
-            *RT(label_G.copy(), text_1[20]),
-            *RT(label_L.copy(), text_1[21]),
-            *RT(label_E.copy(), text_1[22]),
+            *WR(t5[18]),
+            *RT(label_C.copy(), t5[19]),
+            *RT(label_G.copy(), t5[20]),
+            *RT(label_L.copy(), t5[21]),
+            *RT(label_E.copy(), t5[22]),
             run_time=2
         )
-        self.play(*WR(text_1[23]))
+        self.play(*WR(t5[23]))
         self.play(*FO(circle_CGE))
-        self.play(*COL(text_1[18:24], dots_LCGE))
+        self.play(*COL(t5[18:24], dots_LCGE))
         self.play(*MAKE(lines_FX_GX), run_time=2)
         self.play(*GC(dot_X))
         self.play(*GC(label_X))
@@ -389,16 +389,16 @@ class Video(Scene):
         self.play(*RT(lines_FX_GX, dashed_FX_GX))
         self.play(*COL(dots_AXO, c=ORANGE))
         self.play(
-            *WR(text_1[24]),
-            *RT(label_A.copy(), text_1[25]),
-            *WR(text_1[26]),
-            *RT(label_X.copy(), text_1[27]),
-            *WR(text_1[28]),
-            *RT(label_O.copy(), text_1[29]),
-            *WR(text_1[30]),
+            *WR(t5[24]),
+            *RT(label_A.copy(), t5[25]),
+            *WR(t5[26]),
+            *RT(label_X.copy(), t5[27]),
+            *WR(t5[28]),
+            *RT(label_O.copy(), t5[29]),
+            *WR(t5[30]),
             run_time=2
         )
-        self.play(*COL(text_1[24:], dots_AXO))
+        self.play(*COL(t5[24:], dots_AXO))
         self.wait()
         self.play(*MAKE(lines_AF_AG))
 
@@ -467,15 +467,15 @@ class Video(Scene):
         self.play(*WR(text_FG))
         self.wait()
         self.play(
-            *FO(text_1),
-            *[ReplacementTransform(text_1[i+25].copy(), text_2[i]) for i in range(0, 6)]
+            *FO(t5),
+            *[ReplacementTransform(t5[i+25].copy(), t6[i]) for i in range(0, 6)]
         )
-        self.play(*WR(text_2[6]))
+        self.play(*WR(t6[6]))
         self.play(
-            *RT(label_X.copy(), text_2[7]),
-            *WR(text_2[8]),
-            *RT(label_F.copy(), text_2[9]),
-            *RT(label_G.copy(), text_2[10]),
+            *RT(label_X.copy(), t6[7]),
+            *WR(t6[8]),
+            *RT(label_F.copy(), t6[9]),
+            *RT(label_G.copy(), t6[10]),
             run_time=2
         )
         new_label_A = MP('$A$', dot_A, UP, f)
@@ -510,19 +510,19 @@ class Video(Scene):
         lines_FK_GL = VGroup(line_FK, line_GL)
 
         self.play(*MAKE(arc_GFK, arc_LGF))
-        self.play(*WR(text_2[11]))
+        self.play(*WR(t6[11]))
         self.play(
-            *WR(text_2[12]),
-            *RT(label_K.copy(), text_2[13]),
-            *RT(label_F.copy(), text_2[14]),
-            *RT(label_G.copy(), text_2[15]),
+            *WR(t6[12]),
+            *RT(label_K.copy(), t6[13]),
+            *RT(label_F.copy(), t6[14]),
+            *RT(label_G.copy(), t6[15]),
             run_time=2
         )
         self.play(
-            *WR(text_2[16:18]),
-            *RT(label_L.copy(), text_2[18]),
-            *RT(label_G.copy(), text_2[19]),
-            *RT(label_F.copy(), text_2[20]),
+            *WR(t6[16:18]),
+            *RT(label_L.copy(), t6[18]),
+            *RT(label_G.copy(), t6[19]),
+            *RT(label_F.copy(), t6[20]),
             run_time=2
         )
         self.play(
@@ -531,10 +531,10 @@ class Video(Scene):
             *FO(dot_X, label_X),
             run_time=2
         )
-        self.play(*FO(text_2[:12]))
+        self.play(*FO(t6[:12]))
         self.play(
-            *WR(text_3[0]),
-            *[ReplacementTransform(text_2[i+11], text_3[i]) for i in range(1, 10)],
+            *WR(t7[0]),
+            *[ReplacementTransform(t6[i+11], t7[i]) for i in range(1, 10)],
             run_time=2
         )
         self.play(
@@ -587,9 +587,9 @@ class Video(Scene):
         )
         self.wait()
         self.play(
-            *RT(text_3[1:5], text_4[1]),
-            *RT(text_3[5], text_4[2]),
-            *RT(text_3[6:], text_4[3])
+            *RT(t7[1:5], t8[1]),
+            *RT(t7[5], t8[2]),
+            *RT(t7[6:], t8[3])
         )
         line_GF = LINE(dot_G, dot_F)
         text_x = Tex('$x$').scale(f).move_to(Angle(line_FG, line_FK, .7))
@@ -598,8 +598,8 @@ class Video(Scene):
         self.play(
             *TR(arc_GFK, MA(dot_G, dot_F, dot_K, .5)),
             *TR(arc_LGF, MA(dot_L, dot_G, dot_F, .5)),
-            *RT(text_4[1].copy(), text_x),
-            *RT(text_4[3].copy(), text_y),
+            *RT(t8[1].copy(), text_x),
+            *RT(t8[3].copy(), text_y),
             run_time=2
         )
         text_FG.shift(.42*DOWN + .05*RIGHT)
@@ -1105,25 +1105,25 @@ class Video(Scene):
         
         self.play(*GC(circle_gamma), run_time=2)
         self.play(*GC(label_gamma))
-        self.play(*FO(text_3, text_4))
+        self.play(*FO(t7, t8))
         self.play(
-            *[ReplacementTransform(text_Cx[i].copy(), text_5[i]) for i in range(0, 3)],
-            *WR(text_5[3]),
-            *[ReplacementTransform(text_Cy[i].copy(), text_5[i+4]) for i in range(0, 3)],
+            *[ReplacementTransform(text_Cx[i].copy(), t9[i]) for i in range(0, 3)],
+            *WR(t9[3]),
+            *[ReplacementTransform(text_Cy[i].copy(), t9[i+4]) for i in range(0, 3)],
             run_time=2
         )
         self.wait()
         self.play(
-            ANIM(text_5[:2]).set_color(DARK_GRAY),
-            ANIM(text_5[4:6]).set_color(DARK_GRAY)
+            ANIM(t9[:2]).set_color(DARK_GRAY),
+            ANIM(t9[4:6]).set_color(DARK_GRAY)
         )
         self.play(
-            *RT([text_5[2].copy(), text_5[6].copy()], [text_5[7], text_5[9]], True),
-            *WR(text_5[8]),
+            *RT([t9[2].copy(), t9[6].copy()], [t9[7], t9[9]], True),
+            *WR(t9[8]),
             run_time=2
         )
-        self.play(ShowCreationThenDestructionAround(text_5[7:10]), ANIM(text_5[7:10]).set_color(YELLOW))
-        self.play(ShowCreationThenDestructionAround(text_5[7:10]), ANIM(text_5[7:10]).set_color(WHITE))
+        self.play(ShowCreationThenDestructionAround(t9[7:10]), ANIM(t9[7:10]).set_color(YELLOW))
+        self.play(ShowCreationThenDestructionAround(t9[7:10]), ANIM(t9[7:10]).set_color(WHITE))
         self.wait()
         self.play(
             AnimationGroup(
