@@ -266,7 +266,7 @@ class Video(Scene):
             *TC(t6[0], t8[3]),
             ReplacementTransform(t6[3], t8[4])
         )
-        self.wait(2) #4
+        self.wait(2)
 
         self.add_foreground_mobjects(
             circle_ABC,
@@ -375,7 +375,7 @@ class Video(Scene):
             ),
             lag_ratio=long_lag_ratio
         ))
-        self.wait(2) #4
+        self.wait(2)
 
         t12 = MathTex(
             angle, #0
