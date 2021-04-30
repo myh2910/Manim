@@ -1,4 +1,5 @@
 from manim import *
+import cmath
 from pydub.audio_segment import AudioSegment
 from subprocess import run
 
@@ -57,23 +58,7 @@ def distance(A, B) -> float:
 
 def arg(P) -> float:
     """Returns the angle between the vector P and the real axis in radians."""
-    x, y = coord(P)
-    if x == 0:
-        if y > 0:
-            return .5*PI
-        elif y == 0:
-            return 0
-        else:
-            return 1.5*PI
-    elif y == 0:
-        if x > 0:
-            return 0 
-        else:
-            return PI
-    elif x > 0:
-        return np.arctan(y/x)
-    else:
-        return np.arctan(y/x) + PI
+    return cmath.phase(comp(P))
 
 def dir(P):
     """Returns a vector with modulus 1 with its direction equal to P."""
@@ -130,10 +115,7 @@ def DOT(P, c=WHITE, s=ORIGIN, **kwargs) -> Dot:
     return Dot(np.array((x, y, 0)), color=c, **kwargs).shift(s)
 
 def POLY(*vertices, **kwargs):
-    try:
-        return Polygon(*vertices, **kwargs)
-    except:
-        return Polygon(*[nparray(vertex) for vertex in vertices], **kwargs)
+    return Polygon(*[nparray(vertex) for vertex in vertices], **kwargs)
 
 def CR(r=1, O=ORIGIN, c=WHITE, **kwargs) -> Circle:
     """Returns the circle centered at O with radius r."""
@@ -286,6 +268,15 @@ def FORW(s, *args):
     else:
         s.add_foreground_mobject(*lst)
 
+def FORW_ALL(s):
+    """Bring Forward all mobjects of types Dot and Tex."""
+    mobjects = s.mobjects
+    lst = []
+    for item in mobjects:
+        if type(item) == Dot or type(item) == Tex or type(item) == MathTex or type(item) == SingleStringMathTex:
+            lst.append(item)
+    FORW(s, *lst)
+
 def BACK(s, *args):
     """Bring to Back items in args."""
     lst = make_lst(args)
@@ -302,6 +293,53 @@ def UFAF(X, f, **kwargs):
     return UpdateFromAlphaFunc(X, f, **kwargs)
 
 ##-------------------------------------------------------------------------------------------------##
+
+def REPEATED_LST(string: str) -> list[str]: 
+    lst = []
+    if len(string) == 0:
+        lst = ['']
+    elif string[0] != ' ':
+        for i, item in enumerate(string):
+            if item != ' ' and i < len(string)-1:
+                if string[i+1] != ' ':
+                    lst.append(item)
+                elif string[i+1] == ' ':
+                    j = i+1
+                    while True:
+                        if j == len(string):
+                            break
+                        elif string[j] != ' ':
+                            break
+                        else:
+                            j += 1
+                    lst.append(string[i:j])
+            elif item != ' ' and i == len(string)-1:
+                lst.append(item)
+    else:
+        j = 0
+        while True:
+            if j == len(string):
+                lst.append(' '*len(string))
+                break
+            elif string[j] != ' ':
+                for idx, item in enumerate(REPEATED_LST(string[j:])):
+                    if idx == 0:
+                        lst.append(' '*j + item)
+                    else:
+                        lst.append(item)
+                break
+            else:
+                j += 1
+    return lst
+    
+def REPEAT(to_repeat: str, string: str) -> list[str]:
+    final_lst = []
+    string = REPEATED_LST(string)
+    if len(string) == 0:
+        final_lst = ['']
+    for item in string:
+         final_lst.append('\\' + to_repeat + '{' + item + '}')
+    return final_lst
 
 def AUDIO(s, audios, intervals, times, gain=None, epsilon=.4):
     for idx, audio in enumerate(audios):
