@@ -3,20 +3,18 @@ import cmath
 from pydub.audio_segment import AudioSegment
 from subprocess import run
 
-## https://docs.manim.community/en/stable/
-## Current manim version: Manim Community v0.8.0
-## https://docs.manim.community/en/stable/tutorials/configuration.html#command-line-arguments
-## https://docs.manim.community/en/stable/tutorials/configuration.html#a-list-of-all-cli-flags
+"""https://docs.manim.community/en/stable/
+Current version: Manim Community v0.8.0
 
-## Some command line flags:
-## -a : renders multiple Scene classes
-## -ql : low quality
-## -qm : medium quality
-## -qh : high quality
-## -qk : 4k quality
-## -p : plays the animation once it is rendered
-## -f : opens the file browser at the location of the animation
-## -i : .gif format
+Some command line flags:
+ -a : renders multiple Scene classes
+ -ql : low quality
+ -qm : medium quality
+ -qh : high quality
+ -qk : 4k quality
+ -p : plays the animation once it is rendered
+ -f : opens the file browser at the location of the animation
+ -i : .gif format"""
 
 ##-------------------------------------------------------------------------------------------------##
 
