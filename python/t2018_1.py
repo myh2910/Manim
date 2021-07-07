@@ -1,4 +1,3 @@
-import os
 from manim import *
 
 class Thumbnail(Scene):
@@ -26,6 +25,3 @@ class Thumbnail(Scene):
         l2.next_to(t2, DOWN, buff=.34)
 
         self.add(logo, t1, t2, t3, l1, l2)
-
-if __name__ == '__main__':
-	os.system('manim -qk -o Thumbnail python/t2018_1.py Thumbnail')

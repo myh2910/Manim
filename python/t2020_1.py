@@ -1,4 +1,3 @@
-import os
 from manim import *
 config.background_color = WHITE
 
@@ -23,6 +22,3 @@ class Thumbnail(Scene):
 		l2.next_to(t2[2], DOWN, buff=0.35)
 		
 		self.add(logo, t1, t2, l1, l2)
-
-if __name__ == '__main__':
-	os.system('manim -qk -o Thumbnail python/t2020_1.py Thumbnail')

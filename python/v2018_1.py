@@ -1,4 +1,3 @@
-import os
 from asymptote import *
 
 class Video(Scene):
@@ -895,6 +894,3 @@ class Video(Scene):
 		self.wait()
 		self.play(FadeOut(ending_credit, shift=DOWN))
 		self.wait()
-
-if __name__ == '__main__':
-	os.system('manim -qk -o IMO_2018_problema_1_yohan_min python/v2018_1.py Video')
