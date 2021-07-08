@@ -43,7 +43,7 @@ class Video(Scene):
 			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
-		iff = r"\iff &"
+		iff = r'\iff &'
 
 		t6 = MathTex(
 			# 0    1    2    3    4    5
@@ -70,7 +70,7 @@ class Video(Scene):
 			isquare + r"CGLE\text{ es c\'iclico}" + linebreak + \
 			#0                                   1    2    3
 			isquare + r'\text{Demostrar que }', 'x', '=', 'y',
-			tex_environment="align*",
+			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for item in [t5, t6, t7, t8]:
@@ -81,7 +81,7 @@ class Video(Scene):
 			'C', '-', 'x', '&=', 'C', '-', r'y \\ ',
 			#7     8    9
 			'x', '&=', 'y',
-			tex_environment="align*",
+			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
 		t5.shift(4*RIGHT)
@@ -183,7 +183,7 @@ class Video(Scene):
 		labels_ABC = [label_A, label_B, label_C]
 		labels_FDEG = [label_F, label_D, label_E, label_G]
 		
-		#self.add_sound('assets/2015_4.mp3")
+		#self.add_sound('assets/2015_4.mp3')
 
 		self.play(Write(t1), run_time=4)
 		self.wait()
@@ -797,8 +797,8 @@ class Video(Scene):
 		self.wait()
 		self.play(*[FadeOut(i, shift=DOWN) for i in self.mobjects])
 		ending_credit = Tex(
-			"Video hecho con ",
-			r"\textsc{Manim}"
+			'Video hecho con ',
+			r'\textsc{Manim}'
 		)
 		ending_credit.scale(1.5)
 		ending_credit[1].set_color_by_gradient(BLUE_B, BLUE_E)
