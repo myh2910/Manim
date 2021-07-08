@@ -15,4 +15,4 @@ if __name__ == '__main__':
 	#video(2018, 1)
 	#thumbnail(2020, 1)
 	#video(2020, 1)
-	pass
+	#os.system('python -m manim python/example.py CreateScene')

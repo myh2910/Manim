@@ -2,24 +2,22 @@ from asymptote import *
 
 class Video(Scene):
 	def construct(self):
-		## INICIAL SETTINGS
-		## Texts
-		t1 = Tex("IMO 2015, ", "Problema 4")
+		t1 = Tex('IMO 2015, ', 'Problema 4')
 		t1.set_color_by_tex_to_color_map({
-			"IMO 2015, " : BLUE,
-			"Problema 4" : RED
+			'IMO 2015, ' : BLUE,
+			'Problema 4' : RED
 		})
 		t1.scale(1.6)
 
-		linebreak = r" \\ \hphantom{} \\ "
+		linebreak = r' \\ \hphantom{} \\ '
 
 		t2 = Tex(
-			r"\textbf{Problema 4.} ",
+			r'\textbf{Problema 4.} ',
 			r"El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + linebreak + r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\'a en la recta $AO$.",
 			tex_environment=None,
 			tex_template=TexTemplateLibrary.simple
 		)
-		t2.set_color_by_tex("Problema", RED)
+		t2.set_color_by_tex('Problema', RED)
 		t2.scale(0.7).to_corner(UP)
 		
 		t3 = Tex(
@@ -31,89 +29,47 @@ class Video(Scene):
 
 		t4 = VGroup(t2[0], t3)
 
-		isquare = r"\text{\tiny $\blacksquare\,$ }&" ##ii = r"$\bullet\,$ "
+		isquare = r'\text{\tiny $\blacksquare\,$ }&' ##ii = r'$\bullet\,$ '
 
 		t5 = MathTex(
-			isquare, #0
-			"A", #1
-			"D", #2
-			"=", #3
-			"A", #4
-			"E", #5
-			"=", #6
-			"A", #7
-			"F", #8
-			"=", #9
-			"A", #10
-			"G" + linebreak, #11
-			isquare, #12
-			"B", #13
-			"D", #14
-			"K", #15
-			"F", #16
-			r"\text{ es c\'iclico}" + linebreak, #17
-			isquare, #18
-			"C", #19
-			"G", #20
-			"L", #21
-			"E", #22
-			r"\text{ es c\'iclico}" + linebreak, #23
-			isquare + r"\text{Demostrar que }", #24
-			"A", #25
-			",", #26
-			"X", #27
-			",", #28
-			"O", #29
-			r"\text{ son colineales}", #30
-			tex_environment="align*",
+			#    0    1    2    3    4    5    6    7    8    9   10   11
+			isquare, 'A', 'D', '=', 'A', 'E', '=', 'A', 'F', '=', 'A', 'G' + linebreak,
+			#   12   13   14   15   16   17
+			isquare, 'B', 'D', 'K', 'F', r"\text{ es c\'iclico}" + linebreak,
+			#   18   19   20   21   22   23
+			isquare, 'C', 'G', 'L', 'E', r"\text{ es c\'iclico}" + linebreak,
+			#                              24   25   26   27   28   29   30
+			isquare + r'\text{Demostrar que }', 'A', ',', 'X', ',', 'O', r'\text{ son colineales}',
+			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
 		iff = r"\iff &"
 
 		t6 = MathTex(
-			"&A", #0
-			",", #1
-			"X", #2
-			",", #3
-			"O", #4
-			r"\text{ son colineales}" + linebreak, #5
-			iff, #6
-			"X", #7
-			r"\text{ pertenece a la mediatriz de }", #8
-			"F", #9
-			"G" + linebreak, #10
-			iff, #11
-			r"\angle ", #12
-			"K", #13
-			"F", #14
-			"G", #15
-			"=", #16
-			r"\angle ", #17
-			"L", #18
-			"G", #19
-			"F", #20
-			tex_environment="align*",
+			# 0    1    2    3    4    5
+			'&A', ',', 'X', ',', 'O', r'\text{ son colineales}' + linebreak,
+			#6    7                                        8    9   10
+			iff, 'X', r'\text{ pertenece a la mediatriz de }', 'F', 'G' + linebreak,
+			#11         12   13   14   15   16          17   18   19   20
+			iff, r'\angle ', 'K', 'F', 'G', '=', r'\angle ', 'L', 'G', 'F',
+			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
 		t7 = MathTex(
-			isquare + "AD=AE=AF=AG" + linebreak + isquare + r"BDKF\text{ es c\'iclico}" + linebreak + isquare + r"CGLE\text{ es c\'iclico}" + linebreak + isquare + r"\text{Demostrar que }", #0
-			r"\angle ", #1
-			"K", #2
-			"F", #3
-			"G", #4
-			"=", #5
-			r"\angle ", #6
-			"L", #7
-			"G", #8
-			"F", #9
-			tex_environment="align*",
+			isquare + 'AD=AE=AF=AG' + linebreak + \
+			isquare + r"BDKF\text{ es c\'iclico}" + linebreak + \
+			isquare + r"CGLE\text{ es c\'iclico}" + linebreak + \
+			#0                                          1    2    3    4    5           6    7    8    9
+			isquare + r'\text{Demostrar que }', r'\angle ', 'K', 'F', 'G', '=', r'\angle ', 'L', 'G', 'F',
+			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
 		t8 = MathTex(
-			isquare + "AD=AE=AF=AG" + linebreak + isquare + r"BDKF\text{ es c\'iclico}" + linebreak + isquare + r"CGLE\text{ es c\'iclico}" + linebreak + isquare + r"\text{Demostrar que }", #0
-			"x", #1
-			"=", #2
-			"y", #3
+			isquare + 'AD=AE=AF=AG' + linebreak + \
+			isquare + r"BDKF\text{ es c\'iclico}" + linebreak + \
+			isquare + r"CGLE\text{ es c\'iclico}" + linebreak + \
+			#0                                   1    2    3
+			isquare + r'\text{Demostrar que }', 'x', '=', 'y',
 			tex_environment="align*",
 			tex_template=TexTemplateLibrary.simple
 		)
@@ -121,16 +77,10 @@ class Video(Scene):
 			item.set_color(WHITE).scale(0.6)
 
 		t9 = MathTex(
-			"C", #0
-			"-", #1
-			"x", #2
-			"&=", #3
-			"C", #4
-			"-", #5
-			r"y \\ ", #6
-			"x", #7
-			"&=", #8
-			"y", #9
+			#0    1    2     3    4    5    6
+			'C', '-', 'x', '&=', 'C', '-', r'y \\ ',
+			#7     8    9
+			'x', '&=', 'y',
 			tex_environment="align*",
 			tex_template=TexTemplateLibrary.simple
 		)
@@ -140,8 +90,6 @@ class Video(Scene):
 
 		t9.move_to(t5)
 
-		## DEFINING COMPLEX NUMBERS (LIKE ASYMPTOTE IN LATEX)
-		## A, B, C, D, E, F, G, K, L, X
 		k = 3.3
 		A, B, C = k*dir(110), k*dir(200), k*dir(340)
 
@@ -160,8 +108,6 @@ class Video(Scene):
 
 		X = extension(F, K, G, L)
 
-		## DEFINING DOTS, CIRCLES, LINES
-		## Dots
 		dot_O = DOT(origin)
 		dot_A = DOT(A)
 		dot_B = DOT(B)
@@ -174,13 +120,11 @@ class Video(Scene):
 		dot_L = DOT(L)
 		dot_X = DOT(X)
 
-		## Circles
 		circle_omega = CR(k, c=BLUE)
 		circle_BDF = CP(B, O1, GREEN)
 		circle_CGE = CP(C, O2, GREEN)
 		circle_gamma = CP(D, A, GREEN)
 
-		## Lines
 		line_FX = LINE(F, X, GREEN)
 		line_GX = LINE(G, X, GREEN)
 		line_AF = LINE(A, F, PURPLE)
@@ -192,39 +136,23 @@ class Video(Scene):
 		dashed_FX = DashedVMobject(line_FX).set_color(GREEN)
 		dashed_GX = DashedVMobject(line_GX).set_color(GREEN)
 
-		## SHIFTING POINTS
 		r, l = 3.5, 3
 		to_shift_right = [
 			circle_omega,
-			dot_O,
-			dot_A,
-			dot_B,
-			dot_C,
-			line_AB,
-			line_BC,
-			line_CA
+			dot_O, dot_A, dot_B, dot_C,
+			line_AB, line_BC, line_CA
 		]
 		to_shift_left = [
-			dot_K,
-			dot_L,
-			circle_BDF,
-			circle_CGE,
+			dot_K, dot_L,
+			circle_BDF, circle_CGE,
 			dot_X,
-			line_FX,
-			line_GX,
-			dashed_FX,
-			dashed_GX,
-			line_AF,
-			line_AG
+			line_FX, line_GX, dashed_FX, dashed_GX, line_AF, line_AG
 		]
 		for item in to_shift_right:
 			item.shift(r*RIGHT)
-
 		for item in to_shift_left:
 			item.shift(l*LEFT)
 
-		## LABELS, VGROUPS AND LISTS
-		## Labels
 		f = .5
 		label_omega = MP(r'$\Omega$', circle_omega, UP, f)
 		label_gamma = MP(r'$\Gamma$', circle_gamma, RIGHT, f)
@@ -240,7 +168,6 @@ class Video(Scene):
 		label_L = MP('$L$', dot_L, L, f)
 		label_X = MP('$X$', dot_X, DOWN, f)
 
-		## VGroups and Lists
 		dots_ABC = VGroup(dot_A, dot_B, dot_C)
 		dots_FDEG = VGroup(dot_F, dot_D, dot_E, dot_G)
 		dots_KBDF = VGroup(dot_K, dot_B, dot_D, dot_F)
@@ -256,160 +183,116 @@ class Video(Scene):
 		labels_ABC = [label_A, label_B, label_C]
 		labels_FDEG = [label_F, label_D, label_E, label_G]
 		
-		## RENDERING VIDEO
-		self.add_sound("imo_2015_p4/audio.mp3")
+		#self.add_sound('assets/2015_4.mp3")
 
-		self.play(*WR(t1), run_time=4)
+		self.play(Write(t1), run_time=4)
 		self.wait()
 		self.play(
-			*FO(t1),
-			*RT(t1[1].copy(), t2[0])
+			FadeOut(t1),
+			TransformFromCopy(t1[1], t2[0])
 		)
-		self.play(*MAKE(t3), run_time=4)
+		self.play(Create(t3), run_time=4)
 		self.wait(4)
-		self.play(ANIM(t4).scale(0.5).shift(UP + 3.5*LEFT))
-		self.play(*GC(dot_O))
-		self.play(*GC(label_O))
+		self.play(t4.animate.scale(0.5).shift(UP + 3.5*LEFT))
+		for i in [dot_O, label_O]:
+			self.play(GrowFromCenter(i))
 
 		FORW(self, dot_O, label_O)
 
-		self.play(*GC(circle_omega))
-		self.play(*GC(label_omega))
+		for i in [circle_omega, label_omega]:
+			self.play(GrowFromCenter(i))
 
 		FORW(self, label_omega)
 
-		self.play(*GC(dots_ABC))
-		self.play(*GC(labels_ABC))
+		self.play(GrowFromCenter(dots_ABC))
+		self.play(*[GrowFromCenter(i) for i in labels_ABC])
 
 		FORW(self, *dots_ABC, *labels_ABC)
 
-		self.play(*MAKE(lines_ABC))
+		self.play(Create(lines_ABC))
 
 		change_1 = VGroup(
 			circle_omega,
 			*lines_ABC,
-			dot_O,
-			*dots_ABC,
-			label_O,
-			label_omega,
-			*labels_ABC
+			dot_O, *dots_ABC,
+			label_O, label_omega, *labels_ABC
 		)
-		self.play(*FO(t4))
-		self.play(ANIM(change_1).shift(r*LEFT), run_time=2)
-		self.play(*GC(circle_gamma))
-		self.play(*GC(label_gamma))
-		self.play(*GC(dots_FDEG))
-		self.play(*GC(labels_FDEG))
+		self.play(FadeOut(t4))
+		self.play(change_1.animate.shift(r*LEFT), run_time=2)
+		for i in [circle_gamma, label_gamma, dots_FDEG]:
+			self.play(GrowFromCenter(i))
+		self.play(*[GrowFromCenter(i) for i in labels_FDEG])
 
 		FORW(self, *dots_FDEG, *labels_FDEG)
 
 		self.play(
-			ANIM(
-				VGroup(
-					change_1,
-					circle_gamma,
-					*dots_FDEG,
-					label_gamma,
-					*labels_FDEG
-				)
-			).shift(l*LEFT)
+			VGroup(
+				change_1,
+				circle_gamma,
+				*dots_FDEG,
+				label_gamma, *labels_FDEG
+			).animate.shift(l*LEFT)
 		)
 		self.play(*COL(dots_FDEG, c=ORANGE))
-		self.play(
-			*WR(t5[0]),
-			*RT(label_A.copy(), t5[1]),
-			*RT(label_D.copy(), t5[2]),
-			run_time=2
-		)
-		self.play(
-			*WR(t5[3]),
-			*RT(label_A.copy(), t5[4]),
-			*RT(label_E.copy(), t5[5]),
-			run_time=2
-		)
-		self.play(
-			*WR(t5[6]),
-			*RT(label_A.copy(), t5[7]),
-			*RT(label_F.copy(), t5[8]),
-			run_time=2
-		)
-		self.play(
-			*WR(t5[9]),
-			*RT(label_A.copy(), t5[10]),
-			*RT(label_G.copy(), t5[11]),
-			run_time=2
-		)
-		self.play(*FO(circle_gamma, label_gamma), *COL(t5[:12], dots_FDEG))
-		self.play(*GC(circle_BDF))
-		self.play(*GC(dot_K))
-		self.play(*GC(label_K))
+		for idx, obj in enumerate([label_D, label_E, label_F, label_G]):
+			j = 3*idx
+			self.play(
+				Write(t5[j]),
+				*[TransformFromCopy(i, t5[j+index+1]) for index, i in enumerate([label_A, obj])],
+				run_time=2
+			)
+		self.play(FadeOut(circle_gamma, label_gamma), *COL(t5[:12], dots_FDEG))
+		for i in [circle_BDF, dot_K, label_K]:
+			self.play(GrowFromCenter(i))
 
 		FORW(self, dot_K, label_K)
 
 		self.play(*COL(dots_KBDF, c=ORANGE))
 		self.play(
-			*WR(t5[12]),
-			*RT(label_B.copy(), t5[13]),
-			*RT(label_D.copy(), t5[14]),
-			*RT(label_K.copy(), t5[15]),
-			*RT(label_F.copy(), t5[16]),
+			Write(t5[12]),
+			*[TransformFromCopy(i, t5[idx+13]) for idx, i in enumerate([label_B, label_D, label_K, label_F])],
 			run_time=2
 		)
-		self.play(*WR(t5[17]))
-		self.play(*FO(circle_BDF))
+		self.play(Write(t5[17]))
+		self.play(FadeOut(circle_BDF))
 		self.play(*COL(t5[12:18], dots_KBDF))
-		self.play(*GC(circle_CGE))
-		self.play(*GC(dot_L))
-		self.play(*GC(label_L))
+		for i in [circle_CGE, dot_L, label_L]:
+			self.play(GrowFromCenter(i))
 
 		FORW(self, dot_L, label_L)
 
 		self.play(*COL(dots_LCGE, c=ORANGE))
 		self.play(
-			*WR(t5[18]),
-			*RT(label_C.copy(), t5[19]),
-			*RT(label_G.copy(), t5[20]),
-			*RT(label_L.copy(), t5[21]),
-			*RT(label_E.copy(), t5[22]),
+			Write(t5[18]),
+			*[TransformFromCopy(i, t5[idx+19]) for idx, i in enumerate([label_C, label_G, label_L, label_E])],
 			run_time=2
 		)
-		self.play(*WR(t5[23]))
-		self.play(*FO(circle_CGE))
+		self.play(Write(t5[23]))
+		self.play(FadeOut(circle_CGE))
 		self.play(*COL(t5[18:24], dots_LCGE))
-		self.play(*MAKE(lines_FX_GX), run_time=2)
-		self.play(*GC(dot_X))
-		self.play(*GC(label_X))
+		self.play(Create(lines_FX_GX), run_time=2)
+		for i in [dot_X, label_X]:
+			self.play(GrowFromCenter(i))
 
 		FORW(self, dot_X, label_X)
 
-		self.play(*RT(lines_FX_GX, dashed_FX_GX))
+		self.play(ReplacementTransform(lines_FX_GX, dashed_FX_GX))
 		self.play(*COL(dots_AXO, c=ORANGE))
 		self.play(
-			*WR(t5[24]),
-			*RT(label_A.copy(), t5[25]),
-			*WR(t5[26]),
-			*RT(label_X.copy(), t5[27]),
-			*WR(t5[28]),
-			*RT(label_O.copy(), t5[29]),
-			*WR(t5[30]),
+			Write(t5[24]),
+			*[anim for idx, i in enumerate([label_A, label_X, label_O]) for anim in [TransformFromCopy(i, t5[2*idx+25]), Write(t5[2*idx+26])]],
 			run_time=2
 		)
 		self.play(*COL(t5[24:], dots_AXO))
 		self.wait()
-		self.play(*MAKE(lines_AF_AG))
+		self.play(Create(lines_AF_AG))
 
 		change_2 = [
-			*lines_ABC,
-			dot_B,
-			dot_C,
-			dot_D,
-			dot_E,
-			label_B,
-			label_C,
-			label_D,
-			label_E
+			lines_ABC,
+			dot_B, dot_C, dot_D, dot_E,
+			label_B, label_C, label_D, label_E
 		]
-		self.play(*FO(change_2, label_omega))
+		self.play(*[FadeOut(i) for i in [*change_2, label_omega]])
 
 		t = arg(G-F)
 		buff = .25
@@ -417,33 +300,24 @@ class Video(Scene):
 		self.play(
 			Rotate(
 				VGroup(
-					*dashed_FX_GX,
-					*lines_AF_AG,
-					dot_A,
-					dot_F,
-					dot_G,
-					dot_X,
-					dot_K,
-					dot_L
-				),
-				t,
-				IN,
-				nparray(dot_O)
+					*dashed_FX_GX, *lines_AF_AG,
+					dot_A, dot_F, dot_G, dot_X, dot_K, dot_L
+				), t, IN, nparray(dot_O)
 			),
-			UFF(label_A, lambda m: m.next_to(dot_A, UP, buff*f)),
-			UFF(label_F, lambda m: m.next_to(dot_F, LEFT, buff*f)),
-			UFF(label_G, lambda m: m.next_to(dot_G, RIGHT, buff*f)),
-			UFF(label_K, lambda m: m.next_to(dot_K, dir(comp(dot_K) - comp(dot_O)), buff*f)),
-			UFF(label_L, lambda m: m.next_to(dot_L, dir(comp(dot_L) - comp(dot_O)), buff*f)),
-			UFF(label_X, lambda m: m.next_to(dot_X, DOWN, buff*f)),
+			UpdateFromFunc(label_A, lambda m: m.next_to(dot_A, UP, buff*f)),
+			UpdateFromFunc(label_F, lambda m: m.next_to(dot_F, LEFT, buff*f)),
+			UpdateFromFunc(label_G, lambda m: m.next_to(dot_G, RIGHT, buff*f)),
+			UpdateFromFunc(label_K, lambda m: m.next_to(dot_K, dir(comp(dot_K) - comp(dot_O)), buff*f)),
+			UpdateFromFunc(label_L, lambda m: m.next_to(dot_L, dir(comp(dot_L) - comp(dot_O)), buff*f)),
+			UpdateFromFunc(label_X, lambda m: m.next_to(dot_X, DOWN, buff*f)),
 			run_time=2
 		)
 		line_OF = LINE(dot_O, dot_F, RED)
 		line_OG = LINE(dot_O, dot_G, RED)
 		lines_OF_OG = VGroup(line_OF, line_OG)
 
-		self.play(*MAKE(lines_OF_OG))
-		self.play(*FO(circle_omega))
+		self.play(Create(lines_OF_OG))
+		self.play(FadeOut(circle_omega))
 
 		arrow_OA = DA(dot_O, dot_A, .26, BLUE, stroke_width=4, tip_length=.2)
 		new_label_A = MP('$A$', dot_A, dir(135), f)
@@ -456,146 +330,120 @@ class Video(Scene):
 			*CT(label_O, new_label_O, float=repl_rad),
 			*CT(label_X, new_label_X, float=repl_rad)
 		)
-		self.play(*MAKE(arrow_OA), run_time=2)
+		self.play(Create(arrow_OA), run_time=2)
 
 		text_FG = Tex('Mediatriz de $FG$').scale(.5).next_to(nparray(dot_O) + .1*RIGHT + .3*DOWN)
 
-		self.play(*WR(text_FG))
+		self.play(Write(text_FG))
 		self.wait()
 		self.play(
-			*FO(t5),
-			*[ReplacementTransform(t5[i+25].copy(), t6[i]) for i in range(0, 6)]
+			FadeOut(t5),
+			*[TransformFromCopy(t5[i+25], t6[i]) for i in range(6)]
 		)
-		self.play(*WR(t6[6]))
+		self.play(Write(t6[6]))
 		self.play(
-			*RT(label_X.copy(), t6[7]),
-			*WR(t6[8]),
-			*RT(label_F.copy(), t6[9]),
-			*RT(label_G.copy(), t6[10]),
+			*[TransformFromCopy(i, t6[j]) for i, j in [
+				(label_X, 7),
+				(label_F, 9),
+				(label_G, 10)
+			]],
+			Write(t6[8]),
 			run_time=2
 		)
 		new_label_A = MP('$A$', dot_A, UP, f)
 		new_label_O = MP('$O$', dot_O, DOWN, f)
 		new_label_X = MP('$X$', dot_X, DOWN, f)
 
-		self.play(*FO(arrow_OA, text_FG))
+		self.play(FadeOut(arrow_OA, text_FG))
 		self.play(
 			*CT(label_A, new_label_A, float=repl_rad),
 			*CCT(label_O, new_label_O, float=repl_rad),
 			*CCT(label_X, new_label_X, float=repl_rad)
 		)
-		self.play(
-			*FO(
-				label_A,
-				label_O,
-				dot_A,
-				dot_O,
-				*lines_AF_AG,
-				*lines_OF_OG
-			)
-		)
+		self.play(*[FadeOut(i) for i in [
+			label_A, label_O,
+			dot_A, dot_O,
+			lines_AF_AG, lines_OF_OG
+		]])
 		line_FG = LINE(dot_F, dot_G, GREEN)
 		arc_GFK = MA(dot_G, dot_F, dot_K, .5, 2, color=PURPLE)
 		arc_LGF = MA(dot_L, dot_G, dot_F, .5, 2, color=PURPLE)
 		
-		self.play(*MAKE(line_FG))
+		self.play(Create(line_FG))
 
 		BACK(self, arc_GFK, arc_LGF)
 		line_FK = LINE(dot_F, dot_K, GREEN)
 		line_GL = LINE(dot_G, dot_L, GREEN)
 		lines_FK_GL = VGroup(line_FK, line_GL)
 
-		self.play(*MAKE(arc_GFK, arc_LGF))
-		self.play(*WR(t6[11]))
+		self.play(Create(arc_GFK), Create(arc_LGF))
+		self.play(Write(t6[11]))
 		self.play(
-			*WR(t6[12]),
-			*RT(label_K.copy(), t6[13]),
-			*RT(label_F.copy(), t6[14]),
-			*RT(label_G.copy(), t6[15]),
+			Write(t6[12]),
+			*[TransformFromCopy(i, t6[idx+13]) for idx, i in enumerate([label_K, label_F, label_G])],
 			run_time=2
 		)
 		self.play(
-			*WR(t6[16:18]),
-			*RT(label_L.copy(), t6[18]),
-			*RT(label_G.copy(), t6[19]),
-			*RT(label_F.copy(), t6[20]),
+			Write(t6[16:18]),
+			*[TransformFromCopy(i, t6[idx+18]) for idx, i in enumerate([label_L, label_G, label_F])],
 			run_time=2
 		)
 		self.play(
-			*RT(dashed_FX, line_FK),
-			*RT(dashed_GX, line_GL),
-			*FO(dot_X, label_X),
+			*[ReplacementTransform(*args) for args in [
+				(dashed_FX, line_FK),
+				(dashed_GX, line_GL)
+			]],
+			FadeOut(dot_X),
+			FadeOut(label_X),
 			run_time=2
 		)
-		self.play(*FO(t6[:12]))
+		self.play(FadeOut(t6[:12]))
 		self.play(
-			*WR(t7[0]),
+			Write(t7[0]),
 			*[ReplacementTransform(t6[i+11], t7[i]) for i in range(1, 10)],
 			run_time=2
 		)
 		self.play(
 			Rotate(
 				VGroup(
-					arc_GFK,
-					arc_LGF,
-					line_FG,
-					*lines_FK_GL,
-					dot_K,
-					dot_L,
-					dot_F,
-					dot_G
-				),
-				t,
-				OUT,
-				nparray(dot_O)
+					arc_GFK, arc_LGF,
+					line_FG, lines_FK_GL,
+					dot_K, dot_L, dot_F, dot_G
+				), t, OUT, nparray(dot_O)
 			),
-			UFF(label_F, lambda m: m.next_to(dot_F, LEFT, buff*f)),
-			UFF(label_G, lambda m: m.next_to(dot_G, RIGHT, buff*f)),
-			UFF(label_K, lambda m: m.next_to(dot_K, dir(comp(dot_K)-comp(dot_O)), buff*f)),
-			UFF(label_L, lambda m: m.next_to(dot_L, dir(comp(dot_L)-comp(dot_O)), buff*f))
+			UpdateFromFunc(label_F, lambda m: m.next_to(dot_F, LEFT, buff*f)),
+			UpdateFromFunc(label_G, lambda m: m.next_to(dot_G, RIGHT, buff*f)),
+			UpdateFromFunc(label_K, lambda m: m.next_to(dot_K, dir(comp(dot_K)-comp(dot_O)), buff*f)),
+			UpdateFromFunc(label_L, lambda m: m.next_to(dot_L, dir(comp(dot_L)-comp(dot_O)), buff*f))
 		)
 		VGroup(dot_A, arrow_OA).rotate(t, about_point=nparray(dot_O))
 		label_A.next_to(dot_A, UP, buff*f)
 		FORW(
 			self,
-			arc_GFK,
-			arc_LGF,
-			line_FG,
-			*lines_FK_GL,
-			dot_K,
-			dot_L,
-			dot_F,
-			dot_G,
-			dot_A,
-			dot_O,
+			arc_GFK, arc_LGF,
+			line_FG, lines_FK_GL,
+			dot_K, dot_L, dot_F, dot_G, dot_A, dot_O,
 			*change_2[3:]
 		)
 		self.play(
-			*FI(
-				dot_O,
-				label_O,
-				dot_A,
-				label_A,
-				circle_omega,
-				label_omega,
+			FadeIn(
+				dot_O, label_O,
+				dot_A, label_A,
+				circle_omega, label_omega,
 				*change_2
-			)
-		)
+		))
 		self.wait()
-		self.play(
-			*RT(t7[1:5], t8[1]),
-			*RT(t7[5], t8[2]),
-			*RT(t7[6:], t8[3])
-		)
+		self.play(*[ReplacementTransform(i, t8[idx+1]) for idx, i in enumerate([t7[1:5], t7[5], t7[6:]])])
 		line_GF = LINE(dot_G, dot_F)
 		text_x = Tex('$x$').scale(f).move_to(Angle(line_FG, line_FK, .7))
 		text_y = Tex('$y$').scale(f).move_to(Angle(line_GL, line_GF, .7))
 
 		self.play(
-			*TR(arc_GFK, MA(dot_G, dot_F, dot_K, .5)),
-			*TR(arc_LGF, MA(dot_L, dot_G, dot_F, .5)),
-			*RT(t8[1].copy(), text_x),
-			*RT(t8[3].copy(), text_y),
+			*[Transform(i, MA(*args, .5)) for i, args in [
+				(arc_GFK, [dot_G, dot_F, dot_K]),
+				(arc_LGF, [dot_L, dot_G, dot_F])
+			]],
+			*[TransformFromCopy(t8[2*idx+1], i) for idx, i in enumerate([text_x, text_y])],
 			run_time=2
 		)
 		text_FG.shift(.42*DOWN + .05*RIGHT)
@@ -606,8 +454,8 @@ class Video(Scene):
 			*CCT(label_A, new_label_A, float=repl_rad),
 			*CT(label_O, new_label_O, float=repl_rad)
 		)
-		self.play(*MAKE(arrow_OA), run_time=2)
-		self.play(*WR(text_FG))
+		self.play(Create(arrow_OA), run_time=2)
+		self.play(Write(text_FG))
 
 		new_label_A = MP('$A$', dot_A, UP, f)
 		new_label_O = MP('$O$', dot_O, DOWN, f)
@@ -615,11 +463,11 @@ class Video(Scene):
 		arc_OA_GF = RightAngle(line_OA, line_GF, .2)
 		BACK(self, arc_OA_GF)
 
-		self.play(*MAKE(arc_OA_GF))
+		self.play(Create(arc_OA_GF))
 		self.wait()
 		self.play(
-			*FO(text_FG),
-			*RT(arrow_OA, line_OA)
+			FadeOut(text_FG),
+			ReplacementTransform(arrow_OA, line_OA)
 		)
 		self.play(
 			*CT(label_A, new_label_A, float=repl_rad),
@@ -630,44 +478,30 @@ class Video(Scene):
 		BACK(self, arc_ACB)
 
 		self.play(
-			*MAKE(arc_ACB),
-			*RT(label_C.copy(), text_C),
+			Create(arc_ACB),
+			TransformFromCopy(label_C, text_C),
 			run_time=2
 		)
 		change_3 = [
-			arc_GFK,
-			arc_LGF,
-			arc_OA_GF,
-			*lines_FK_GL,
-			line_FG,
-			text_x,
-			text_y,
-			dot_D,
-			dot_E,
-			dot_F,
-			dot_K,
-			dot_G,
-			dot_L,
-			label_D,
-			label_E,
-			label_F,
-			label_K,
-			label_G,
-			label_L
+			arc_GFK, arc_LGF, arc_OA_GF,
+			lines_FK_GL, line_FG,
+			text_x, text_y,
+			dot_D, dot_E, dot_F, dot_K, dot_G, dot_L,
+			label_D, label_E, label_F, label_K, label_G, label_L
 		]
 		line_OB = LINE(dot_O, dot_B, PURPLE)
 
 		self.play(
-			*FO(change_3),
-			*MAKE(line_OB)
+			*[FadeOut(i) for i in change_3],
+			Create(line_OB)
 		)
 		arc_AOB = Angle(line_OA, line_OB, .35)
 		BACK(self, arc_AOB)
 		text_2C = Tex('$2C$').scale(f).move_to(Angle(line_OA, line_OB, .9))
 
 		self.play(
-			*MAKE(arc_AOB),
-			*RT(text_C.copy(), text_2C),
+			Create(arc_AOB),
+			TransformFromCopy(text_C, text_2C),
 			run_time=2
 		)
 		arc_BAO = MA(dot_B, dot_A, dot_O, .5)
@@ -677,27 +511,26 @@ class Video(Scene):
 		text_C_2 = Tex('$90-C$').scale(f).move_to(Angle(line_OB, line_AB, 1.4, (-1, -1)))
 
 		self.play(
-			*MAKE(arc_BAO, arc_OBA),
-			*RT(text_2C.copy(), text_C_1),
-			*RT(text_2C.copy(), text_C_2),
+			Create(arc_BAO), Create(arc_OBA),
+			*[TransformFromCopy(text_2C, i) for i in [text_C_1, text_C_2]],
 			run_time=2
 		)
 		self.play(
-			*FO(arc_AOB, arc_OBA, line_OB, text_2C, text_C_2)
+			FadeOut(arc_AOB, arc_OBA, line_OB, text_2C, text_C_2)
 		)
 		self.wait()
 
 		BACK(self, arc_OA_GF)
 
-		self.play(*FI(change_3))
+		self.play(FadeIn(*change_3))
 
 		arc_FG_AB = Angle(line_FG, line_AB, .85, (1, -1))
 		text_C_3 = Tex('$C$').scale(f).move_to(Angle(line_FG, line_AB, 1.2, (1, -1)))
 		BACK(self, arc_FG_AB)
 
 		self.play(
-			*RT(text_C_1.copy(), text_C_3),
-			*MAKE(arc_FG_AB),
+			TransformFromCopy(text_C_1, text_C_3),
+			Create(arc_FG_AB),
 			run_time=2
 		)
 		self.wait()
@@ -705,7 +538,7 @@ class Video(Scene):
 		circle_BDF.set_color(ORANGE)
 		BACK(self, circle_BDF)
 
-		self.play(*GC(circle_BDF))
+		self.play(GrowFromCenter(circle_BDF))
 
 		F1 = k*dir(degrees(arg(F-O1))) + comp((-l, 0))
 		K1 = k*dir(degrees(arg(K-O1))) + comp((-l, 0))
@@ -730,106 +563,49 @@ class Video(Scene):
 		arc_GFK1 = Angle(line_FG1, line_FK1, .5)
 		text_C1 = Tex('$C$').scale(f).move_to(Angle(line_FG1, line_KB1, .9, (1, -1)))
 		text_x1 = Tex('$x$').scale(f).move_to(Angle(line_FG1, line_FK1, .9))
-		FORW(self, ref_dot1)
+		FORW(self, dot_F1, dot_K1, dot_D1, dot_B1, ref_dot1)
 
 		self.play(
-			*FO(
-				arc_LGF,
-				arc_ACB,
-				arc_BAO,
-				arc_OA_GF,
-				arc_FG_AB,
-				arc_GFK,
+			*[FadeOut(i) for i in [
+				arc_LGF, arc_ACB, arc_BAO, arc_OA_GF, arc_FG_AB, arc_GFK,
 				circle_omega,
-				line_AB,
-				line_BC,
-				line_CA,
-				line_OA,
-				line_FK,
-				line_GL,
-				line_FG,
-				dot_O,
-				dot_A,
-				dot_B,
-				dot_C,
-				dot_D,
-				dot_E,
-				dot_F,
-				dot_G,
-				dot_K,
-				dot_L,
-				label_O,
-				label_omega,
-				label_A,
-				label_B,
-				label_C,
-				label_D,
-				label_E,
-				label_F,
-				label_G,
-				label_K,
-				label_L,
-				text_y,
-				text_C,
-				text_C_1,
-				text_C_3,
-				text_x
-			),
-			*RT(
-				[
-					arc_FG_AB.copy(),
-					arc_GFK.copy(),
-					circle_BDF,
-					line_AB.copy(),
-					line_BC.copy(),
-					line_FK.copy(),
-					line_FG.copy(),
-					dot_F.copy(),
-					dot_K.copy(),
-					dot_D.copy(),
-					dot_B.copy(),
-					label_F.copy(),
-					label_K.copy(),
-					label_D.copy(),
-					label_B.copy(),
-					text_C_3.copy(),
-					text_x.copy()
-				],
-				[
-					arc_FG_AB1,
-					arc_GFK1,
-					circle_BDF1,
-					line_KB1,
-					line_BD1,
-					line_FK1,
-					line_FG1,
-					dot_F1,
-					dot_K1,
-					dot_D1,
-					dot_B1,
-					label_F1,
-					label_K1,
-					label_D1,
-					label_B1,
-					text_C1,
-					text_x1
-				],
-				True
-			),
-			*GC(ref_dot1)
+				line_AB, line_BC, line_CA, line_OA, line_FK, line_GL, line_FG,
+				dot_O, dot_A, dot_B, dot_C, dot_D, dot_E, dot_F, dot_G, dot_K, dot_L,
+				label_O, label_omega, label_A, label_B, label_C, label_D, label_E, label_F, label_G, label_K, label_L,
+				text_y, text_C, text_C_1, text_C_3, text_x
+			]],
+			ReplacementTransform(circle_BDF, circle_BDF1),
+			*[TransformFromCopy(*args) for args in [
+				(arc_FG_AB, arc_FG_AB1),
+				(arc_GFK, arc_GFK1),
+				(line_AB, line_KB1),
+				(line_BC, line_BD1),
+				(line_FK, line_FK1),
+				(line_FG, line_FG1),
+				(dot_F, dot_F1),
+				(dot_K, dot_K1),
+				(dot_D, dot_D1),
+				(dot_B, dot_B1),
+				(label_F, label_F1),
+				(label_K, label_K1),
+				(label_D, label_D1),
+				(label_B, label_B1),
+				(text_C_3, text_C1),
+				(text_x, text_x1)
+			]],
+			GrowFromCenter(ref_dot1)
 		)
 		arc_FKB1 = MA(dot_F1, dot_K1, dot_B1, .5)
 		text_Cx = MathTex('C', '-', 'x').scale(f).move_to(Angle(line_FK1, line_KB1, .9, (-1, 1)))
 		BACK(self, arc_FKB1)
 
 		self.play(
-			*RT(text_C1.copy(), text_Cx[0]),
-			*RT(text_x1.copy(), text_Cx[2]),
-			*WR(text_Cx[1]),
-			*MAKE(arc_FKB1),
+			*[TransformFromCopy(i, text_Cx[2*idx]) for idx, i in enumerate([text_C1, text_x1])],
+			Write(text_Cx[1]),
+			Create(arc_FKB1),
 			run_time=2
 		)
-		self.play(*FO(arc_FG_AB1, arc_GFK1, text_C1, text_x1, label_K1, line_FG1, ref_dot1))
+		self.play(FadeOut(arc_FG_AB1, arc_GFK1, text_C1, text_x1, label_K1, line_FG1), FadeOut(ref_dot1))
 
 		alpha = degrees(arg((K-O1)/(D-O1)))
 		new_text_Cx = text_Cx.copy().move_to(Angle(LINE(D1, F1), LINE(D1, B1), 1.2))
@@ -842,14 +618,12 @@ class Video(Scene):
 		line_KB1.add_updater(lambda m: m.become(LINE(dot_D1.copy().rotate(radians(alpha_tracker.get_value()), about_point=nparray(dot_O)), dot_B1, RED)))
 
 		self.play(
-			ANIM(alpha_tracker).set_value(0),
+			alpha_tracker.animate.set_value(0),
 			*CT(text_Cx, new_text_Cx, path_arc=-radians(alpha)),
 			run_time=2
 		)
-		dot_K1.clear_updaters()
-		arc_FKB1.clear_updaters()
-		line_FK1.clear_updaters()
-		line_KB1.clear_updaters()
+		for i in [dot_K1, arc_FKB1, line_FK1, line_KB1]:
+			i.clear_updaters()
 		self.remove(line_KB1, dot_K1)
 		FORW(self, dot_C, dot_E)
 		beta = 120
@@ -859,60 +633,34 @@ class Video(Scene):
 		text_Cx.add_updater(lambda m: m.move_to(MA(dot_F1, dot_D1, dot_B1, 1.2 - beta_tracker.get_value()*(.15)/beta)))
 
 		self.play(
-			*RT(
-				[
-					line_BD1,
-					dot_F1,
-					dot_D1,
-					dot_B1,
-					label_F1,
-					label_D1,
-					label_B1
-				],
-				[
-					line_BC,
-					dot_F,
-					dot_D,
-					dot_B,
-					label_F,
-					label_D,
-					label_B
-				],
-				True
-			),
-			*FO(circle_BDF1),
-			*FI(
-				arc_LGF,
-				arc_ACB,
+			*[ReplacementTransform(*args) for args in [
+				(line_BD1, line_BC),
+				(dot_F1, dot_F),
+				(dot_D1, dot_D),
+				(dot_B1, dot_B),
+				(label_F1, label_F),
+				(label_D1, label_D),
+				(label_B1, label_B)
+			]],
+			FadeOut(circle_BDF1),
+			FadeIn(
+				arc_LGF, arc_ACB,
 				circle_omega,
-				line_CA,
-				line_GL,
-				line_FG,
-				dot_A,
-				dot_C,
-				dot_E,
-				dot_G,
-				dot_L,
-				label_omega,
-				label_A,
-				label_C,
-				label_E,
-				label_G,
-				label_L,
-				text_y,
-				text_C
+				line_CA, line_GL, line_FG,
+				dot_A, dot_C, dot_E, dot_G, dot_L,
+				label_omega, label_A, label_C, label_E, label_G, label_L,
+				text_y, text_C
 			),
-			ANIM(beta_tracker).set_value(beta)
+			beta_tracker.animate.set_value(beta)
 		)
 		self.wait()
 
-		arc_FKB1.clear_updaters()
-		line_FK1.clear_updaters()
-		text_Cx.clear_updaters()
+		for i in [arc_FKB1, line_FK1, text_Cx]:
+			i.clear_updaters()
 		circle_CGE.set_color(ORANGE)
 		BACK(self, circle_CGE)
 
-		self.play(*GC(circle_CGE))
+		self.play(GrowFromCenter(circle_CGE))
 
 		E2 = k*dir(degrees(arg(E-O2))) + comp((-l, 0))
 		L2 = k*dir(degrees(arg(L-O2))) + comp((-l, 0))
@@ -940,79 +688,34 @@ class Video(Scene):
 		FORW(self, ref_dot2, dot_A, dot_B, dot_F, dot_D)
 
 		self.play(
-			*FO(
-				arc_FKB1,
-				arc_ACB,
-				arc_LGF,
+			*[FadeOut(i) for i in [
+				arc_FKB1, arc_ACB, arc_LGF,
 				circle_omega,
-				line_BC,
-				line_CA,
-				line_GL,
-				line_FG,
-				line_FK1,
-				dot_A,
-				dot_B,
-				dot_C,
-				dot_D,
-				dot_E,
-				dot_F,
-				dot_G,
-				dot_L,
-				label_omega,
-				label_A,
-				label_B,
-				label_C,
-				label_D,
-				label_E,
-				label_F,
-				label_G,
-				label_L,
-				text_y,
-				text_C,
-				text_Cx,
-			),
-			*RT(
-				[
-					arc_ACB.copy(),
-					arc_LGF.copy(),
-					circle_CGE,
-					line_CA.copy(),
-					line_BC.copy(),
-					line_GL.copy(),
-					line_FG.copy(),
-					dot_G.copy(),
-					dot_L.copy(),
-					dot_E.copy(),
-					dot_C.copy(),
-					label_G.copy(),
-					label_L.copy(),
-					label_E.copy(),
-					label_C.copy(),
-					text_C.copy(),
-					text_y.copy()
-				],
-				[
-					arc_ACB2,
-					arc_LGF2,
-					circle_CGE2,
-					line_CL2,
-					line_EC2,
-					line_GL2,
-					line_FG2,
-					dot_G2,
-					dot_L2,
-					dot_E2,
-					dot_C2,
-					label_G2,
-					label_L2,
-					label_E2,
-					label_C2,
-					text_C2,
-					text_y2
-				],
-				True
-			),
-			*GC(ref_dot2)
+				line_BC, line_CA, line_GL, line_FG, line_FK1,
+				dot_A, dot_B, dot_C, dot_D, dot_E, dot_F, dot_G, dot_L,
+				label_omega, label_A, label_B, label_C, label_D, label_E, label_F, label_G, label_L,
+				text_y, text_C, text_Cx
+			]],
+			ReplacementTransform(circle_CGE, circle_CGE2),
+			*[TransformFromCopy(*args) for args in [
+					(arc_ACB, arc_ACB2),
+					(arc_LGF, arc_LGF2),
+					(line_CA, line_CL2),
+					(line_BC, line_EC2),
+					(line_GL, line_GL2),
+					(line_FG, line_FG2),
+					(dot_G, dot_G2),
+					(dot_L, dot_L2),
+					(dot_E, dot_E2),
+					(dot_C, dot_C2),
+					(label_G, label_G2),
+					(label_L, label_L2),
+					(label_E, label_E2),
+					(label_C, label_C2),
+					(text_C, text_C2),
+					(text_y, text_y2)
+			]],
+			GrowFromCenter(ref_dot2)
 		)
 		theta = degrees(arg((G-O2)/(C-O2)))
 		new_text_C2 = text_C2.copy().move_to(Angle(line_GL2, line_FG2, 1.5, (1, -1)))
@@ -1024,73 +727,48 @@ class Video(Scene):
 		line_CL2.add_updater(lambda m: m.become(LINE(dot_G2.copy().rotate(radians(theta_tracker.get_value()), IN, about_point=nparray(dot_O)), L2, RED)))
 		line_EC2.add_updater(lambda m: m.become(LINE(dot_E2, dot_G2.copy().rotate(radians(theta_tracker.get_value()), IN, about_point=nparray(dot_O)), RED)))
 
-		self.play(*FO(label_C2))
+		self.play(FadeOut(label_C2))
 		self.play(
-			ANIM(theta_tracker).set_value(0),
+			theta_tracker.animate.set_value(0),
 			*CCT(text_C2, new_text_C2, path_arc=radians(theta)),
 			run_time=2
 		)
-		dot_C2.clear_updaters()
-		arc_ACB2.clear_updaters()
-		line_CL2.clear_updaters()
-		line_EC2.clear_updaters()
+		for i in [dot_C2, arc_ACB2, line_CL2, line_EC2]:
+			i.clear_updaters()
 		self.remove(line_CL2, dot_C2)
 		arc_FGE2 = MA(ref_dot2, dot_G2, dot_E2, 1.9)
 		text_Cy = MathTex('C', '-', 'y').scale(f).move_to(Angle(line_FG2, line_EC2, 2.4, (-1, -1)))
 		BACK(self, arc_FGE2)
 
 		self.play(
-			*RT(text_C2.copy(), text_Cy[0]),
-			*RT(text_y2.copy(), text_Cy[2]),
-			*WR(text_Cy[1]),
-			*MAKE(arc_FGE2),
+			*[TransformFromCopy(i, text_Cy[2*idx]) for idx, i in enumerate([text_C2, text_y2])],
+			Write(text_Cy[1]),
+			Create(arc_FGE2),
 			run_time=2
 		)
-		self.play(*FO(arc_ACB2, arc_LGF2, text_C2, text_y2, label_L2, line_GL2, dot_L2))
+		self.play(FadeOut(arc_ACB2, arc_LGF2, text_C2, text_y2, label_L2, line_GL2), FadeOut(dot_L2))
 
 		arc_FGE = MA(dot_F, dot_G, dot_E, .7)
 		line_EG = LINE(dot_E, dot_G, GREEN)
 		FORW(self, text_Cy, dot_F)
 
 		self.play(
-			*RT(
-				[
-					arc_FGE2,
-					line_FG2,
-					line_EC2,
-					dot_G2,
-					dot_E2,
-					label_G2,
-					label_E2,
-					
-				],
-				[
-					arc_FGE,
-					line_FG,
-					line_EG,
-					dot_G,
-					dot_E,
-					label_G,
-					label_E
-				],
-				True
-			),
-			ANIM(text_Cy).move_to(Angle(line_FG, line_EG, 1.8, (-1, -1))),
-			*FO(circle_CGE2, ref_dot2),
-			*FI(
+			*[ReplacementTransform(*args) for args in [
+				(arc_FGE2, arc_FGE),
+				(line_FG2, line_FG),
+				(line_EC2, line_EG),
+				(dot_G2, dot_G),
+				(dot_E2, dot_E),
+				(label_G2, label_G),
+				(label_E2, label_E)
+			]],
+			text_Cy.animate.move_to(Angle(line_FG, line_EG, 1.8, (-1, -1))),
+			FadeOut(circle_CGE2), FadeOut(ref_dot2),
+			FadeIn(
 				arc_FKB1,
-				line_BC,
-				line_FK1,
-				dot_A,
-				dot_B,
-				dot_C,
-				dot_D,
-				dot_F,
-				label_A,
-				label_B,
-				label_C,
-				label_D,
-				label_F,
+				line_BC, line_FK1,
+				dot_A, dot_B, dot_C, dot_D, dot_F,
+				label_A, label_B, label_C, label_D, label_F,
 				text_Cx
 			)
 		)
@@ -1099,33 +777,25 @@ class Video(Scene):
 		circle_gamma.set_color(BLUE)
 		FORW(self, dot_D, dot_E, dot_G, text_Cx)
 		
-		self.play(*GC(circle_gamma), run_time=2)
-		self.play(*GC(label_gamma))
-		self.play(*FO(t7, t8))
+		for i, j in [(circle_gamma, 2), (label_gamma, 1)]:
+			self.play(GrowFromCenter(i), run_time=j)
+		self.play(FadeOut(t7, t8))
 		self.play(
-			*[ReplacementTransform(text_Cx[i].copy(), t9[i]) for i in range(0, 3)],
-			*WR(t9[3]),
-			*[ReplacementTransform(text_Cy[i].copy(), t9[i+4]) for i in range(0, 3)],
+			*[TransformFromCopy(txt[i], t9[4*idx+i]) for idx, txt in enumerate([text_Cx, text_Cy]) for i in range(3)],
+			Write(t9[3]),
 			run_time=2
 		)
 		self.wait()
+		self.play(*[i.animate.set_color(DARK_GRAY) for i in [t9[:2], t9[4:6]]])
 		self.play(
-			ANIM(t9[:2]).set_color(DARK_GRAY),
-			ANIM(t9[4:6]).set_color(DARK_GRAY)
-		)
-		self.play(
-			*RT([t9[2].copy(), t9[6].copy()], [t9[7], t9[9]], True),
-			*WR(t9[8]),
+			*[TransformFromCopy(t9[i], t9[j]) for i, j in [(2, 7), (6, 9)]],
+			Write(t9[8]),
 			run_time=2
 		)
-		self.play(Circumscribe(t9[7:10]), ANIM(t9[7:10]).set_color(YELLOW))
-		self.play(Circumscribe(t9[7:10]), ANIM(t9[7:10]).set_color(WHITE))
+		for color in [YELLOW, WHITE]:
+			self.play(Circumscribe(t9[7:10]), t9[7:10].animate.set_color(color))
 		self.wait()
-		self.play(
-			AnimationGroup(
-				*[FadeOut(item, shift=DOWN) for item in self.mobjects]
-			)
-		)
+		self.play(*[FadeOut(i, shift=DOWN) for i in self.mobjects])
 		ending_credit = Tex(
 			"Video hecho con ",
 			r"\textsc{Manim}"
@@ -1133,8 +803,8 @@ class Video(Scene):
 		ending_credit.scale(1.5)
 		ending_credit[1].set_color_by_gradient(BLUE_B, BLUE_E)
 
-		self.play(Write(ending_credit[0]))
-		self.play(Write(ending_credit[1]))
+		for i in range(2):
+			self.play(Write(ending_credit[i]))
 		self.wait()
 		self.play(FadeOut(ending_credit, shift=DOWN))
 		self.wait()

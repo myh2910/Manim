@@ -2,12 +2,12 @@ from asymptote import *
 
 class Video(Scene):
 	def construct(self):
-		self.add_sound("assets/2020_1.mp3")
+		#self.add_sound('assets/2020_1.mp3')
 		logo = ImageMobject('assets/2020.png')
 
 		self.play(FadeIn(logo, shift=UP))
 
-		t1 = Tex(r"\textsf{Problema 1}").set_color_by_gradient("#3c94d4", BLUE_B)
+		t1 = Tex(r'\textsf{Problema 1}').set_color_by_gradient('#3c94d4', BLUE_B)
 		t1.scale(2.5).shift(.3*UP+3.6*RIGHT)
 
 		self.play(AnimationGroup(
@@ -18,7 +18,7 @@ class Video(Scene):
 		self.wait(.5)
 
 		t2 = Tex(
-			r"\textbf{Problema 1.} \ \ ",
+			r'\textbf{Problema 1.} \ \ ',
 			r"Considere el cuadril\'atero convexo $ABCD$. El punto $P$ est\'a en el interior de $ABCD$. Asuma las siguientes igualdades de razones: $$\angle PAD:\angle PBA:\angle DPA=1:2:3=\angle CBP:\angle BAP:\angle BPC.$$ Demuestre que las siguientes tres rectas concurren en un punto: la bisectriz interna del \'angulo $\angle ADP$, la bisectriz interna del \'angulo $\angle PCB$ y la mediatriz del segmento $AB$.",
 			tex_environment=None,
 			tex_template=TEX_TEMPLATE('512.34pt')
@@ -60,12 +60,12 @@ class Video(Scene):
 		dot_P, dot_A, dot_B, dot_C, dot_D, dot_O = DOT(P), DOT(A), DOT(B), DOT(C), DOT(D), DOT(O)
 		polygon_ABCD = POLY(A, B, C, D, color=BLUE)
 		label_scale_factor = .5
-		label_P = MP("$P$", dot_P, RIGHT, label_scale_factor)
-		label_A = MP("$A$", dot_A, A, label_scale_factor)
-		label_B = MP("$B$", dot_B, B, label_scale_factor)
-		label_C = MP("$C$", dot_C, C, label_scale_factor)
-		label_D = MP("$D$", dot_D, D, label_scale_factor)
-		label_O = MP("$O$", dot_O, LEFT, label_scale_factor)
+		label_P = MP('$P$', dot_P, RIGHT, label_scale_factor)
+		label_A = MP('$A$', dot_A, A, label_scale_factor)
+		label_B = MP('$B$', dot_B, B, label_scale_factor)
+		label_C = MP('$C$', dot_C, C, label_scale_factor)
+		label_D = MP('$D$', dot_D, D, label_scale_factor)
+		label_O = MP('$O$', dot_O, LEFT, label_scale_factor)
 		line_color = RED_A
 		line_PA = LINE(P, A, line_color)
 		line_PB = LINE(P, B, line_color)
@@ -78,48 +78,40 @@ class Video(Scene):
 		angle_PAD = MA(P, A, D, large_angle_length, color=color_alpha)
 		angle_PBA = MA(P, B, A, large_angle_length, color=color_alpha)
 		angle_DPA = MA(D, P, A, large_angle_length, color=color_alpha)
-		label_alpha = Tex(r"$\alpha$").set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, A, D, large_angle_length+small_angle_buff))
-		label_2alpha = Tex(r"$2\alpha$").set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, B, A, large_angle_length+small_angle_buff))
-		label_3alpha = Tex(r"$3\alpha$").set_color(color_alpha).scale(label_scale_factor).move_to(MA(D, P, A, large_angle_length+small_angle_buff))
+		label_alpha = Tex(r'$\alpha$').set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, A, D, large_angle_length+small_angle_buff))
+		label_2alpha = Tex(r'$2\alpha$').set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, B, A, large_angle_length+small_angle_buff))
+		label_3alpha = Tex(r'$3\alpha$').set_color(color_alpha).scale(label_scale_factor).move_to(MA(D, P, A, large_angle_length+small_angle_buff))
 		angle_CBP = MA(C, B, P, large_angle_length, color=color_beta)
 		angle_BAP = MA(B, A, P, large_angle_length, color=color_beta)
 		angle_BPC = MA(B, P, C, large_angle_length, color=color_beta)
-		label_beta = Tex(r"$\beta$").set_color(color_beta).scale(label_scale_factor).move_to(MA(C, B, P, large_angle_length+small_angle_buff))
-		label_2beta = Tex(r"$2\beta$").set_color(color_beta).scale(label_scale_factor).move_to(MA(B, A, P, large_angle_length+small_angle_buff))
-		label_3beta = Tex(r"$3\beta$").set_color(color_beta).scale(label_scale_factor).move_to(MA(B, P, C, large_angle_length+.5))
+		label_beta = Tex(r'$\beta$').set_color(color_beta).scale(label_scale_factor).move_to(MA(C, B, P, large_angle_length+small_angle_buff))
+		label_2beta = Tex(r'$2\beta$').set_color(color_beta).scale(label_scale_factor).move_to(MA(B, A, P, large_angle_length+small_angle_buff))
+		label_3beta = Tex(r'$3\beta$').set_color(color_beta).scale(label_scale_factor).move_to(MA(B, P, C, large_angle_length+.5))
 		line_color_2 = YELLOW_A
 		line_OA = LINE(O, A, line_color_2)
 		line_OB = LINE(O, B, line_color_2)
 		line_OP = LINE(O, P, line_color_2)
 		angle_POA = MA(P, O, A, large_angle_length, color=color_alpha)
-		label_4alpha = Tex(r"$4\alpha$").set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, O, A, large_angle_length+.5))
+		label_4alpha = Tex(r'$4\alpha$').set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, O, A, large_angle_length+.5))
 		angle_BOP = MA(B, O, P, small_angle_length, color=color_beta)
-		label_4beta = Tex(r"$4\beta$").set_color(color_beta).scale(label_scale_factor).move_to(MA(B, O, P, large_angle_length+.8))
+		label_4beta = Tex(r'$4\beta$').set_color(color_beta).scale(label_scale_factor).move_to(MA(B, O, P, large_angle_length+.8))
 		quadrilateral_ABCD = [
 			polygon_ABCD,
 			dot_A, dot_B, dot_C, dot_D,
 			label_A, label_B, label_C, label_D,
 		]
 		VGroup(
-			angle_PAD, angle_PBA, angle_DPA,
-			angle_CBP, angle_BAP, angle_BPC,
-			angle_POA, angle_BOP,
+			angle_PAD, angle_PBA, angle_DPA, angle_CBP, angle_BAP, angle_BPC, angle_POA, angle_BOP,
 			polygon_ABCD,
-			line_PA, line_PB, line_PC, line_PD,
-			line_OA, line_OB, line_OP,
+			line_PA, line_PB, line_PC, line_PD, line_OA, line_OB, line_OP,
 			circle_PAB,
-			dot_A, dot_B, dot_C, dot_D,
-			dot_P, dot_O,
-			label_A, label_B, label_C, label_D,
-			label_P, label_O,
-			label_alpha, label_2alpha, label_3alpha, label_4alpha,
-			label_beta, label_2beta, label_3beta, label_4beta
+			dot_A, dot_B, dot_C, dot_D, dot_P, dot_O,
+			label_A, label_B, label_C, label_D, label_P, label_O, label_alpha, label_2alpha, label_3alpha, label_4alpha, label_beta, label_2beta, label_3beta, label_4beta
 		).shift(1.2*DOWN)
 		
 		self.play(FadeIn(VGroup(*quadrilateral_ABCD), shift=UP))
 		self.play(AnimationGroup(
-			GrowFromCenter(dot_P),
-			GrowFromCenter(label_P),
+			*[GrowFromCenter(i) for i in [dot_P, label_P]],
 			lag_ratio=.8
 		))
 		self.add_foreground_mobjects(
@@ -162,13 +154,13 @@ class Video(Scene):
 
 		self.play(
 			Create(angle_BAP),
-			*TC(label_beta, label_2beta)
+			TransformFromCopy(label_beta, label_2beta)
 		)
 		self.add_foreground_mobject(label_2beta)
 
 		self.play(
 			Create(angle_BPC),
-			*TC(label_beta, label_3beta)
+			TransformFromCopy(label_beta, label_3beta)
 		)
 		self.add_foreground_mobject(label_3beta)
 		quadrilateral_ABCD.extend([
@@ -186,21 +178,11 @@ class Video(Scene):
 			dot_O, label_O,
 			label_4alpha, label_4beta
 		).shift(3.1*LEFT)
-		x_space = r"\qquad\qquad"
+		x_space = r'\qquad\qquad'
 		text_scale_factor = .5
 		t3 = MathTex(
-			r"\alpha", #0
-			"=", #1
-			r"\angle ", #2
-			"P", #3
-			"A", #4
-			"D" + x_space, #5
-			r"\beta", #6
-			"=", #7
-			r"\angle ", #8
-			"C", #9
-			"B", #10
-			"P" #11
+			#      0    1           2    3    4    5                   6    7           8    9   10   11
+			r'\alpha', '=', r'\angle ', 'P', 'A', 'D' + x_space, r'\beta', '=', r'\angle ', 'C', 'B', 'P'
 		)
 		for i in [0, *range(2, 6)]:
 			t3[i].set_color(color_alpha)

@@ -1,7 +1,6 @@
 from manim import *
 import cmath
 from pydub.audio_segment import AudioSegment
-from subprocess import run
 
 """https://docs.manim.community/en/stable/
 Current version: Manim Community v0.8.0
@@ -351,9 +350,3 @@ def TEX_TEMPLATE(paperwidth='500pt', linespread='1', fontsize='12pt'):
     documentclass = r"\documentclass[" + fontsize + r", preview]{standalone}"
     preamble = r"\usepackage{amsmath, amssymb}" + "\n" + r"\usepackage[margin=0pt, paperwidth=" + paperwidth + r"]{geometry}" + "\n" + r"\linespread{" + linespread + "}"
     return TexTemplate(documentclass=documentclass, preamble=preamble)
-
-def RUN(*args):
-    argument = 'manim'
-    for item in args:
-        argument += ' ' + item
-    run(argument)
