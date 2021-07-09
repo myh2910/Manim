@@ -1,5 +1,4 @@
 assets/*
 media/*
 python/__pycache__
-python/audio_format_converter.py
 python/example.py

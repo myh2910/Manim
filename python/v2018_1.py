@@ -2,7 +2,7 @@ from asymptote import *
 
 class Video(Scene):
 	def construct(self):
-		#self.add_sound('assets/2018_1.mp3')
+		self.add_sound('assets/2018_1.mp3')
 
 		logo = ImageMobject('assets/2018.png')
 		self.play(FadeIn(logo, shift=UP))
@@ -14,17 +14,8 @@ class Video(Scene):
 		t2.scale(2).shift(2.7*RIGHT + .9*DOWN)
 
 		short_lag_ratio, med_lag_ratio, long_lag_ratio = .5, .8, 1
-		self.play(AnimationGroup(
-			logo.animate.shift(3.7*LEFT),
-			Write(t1),
-			lag_ratio=med_lag_ratio
-		))
-		self.play(
-			t1.animate.shift(.6*UP),
-			FadeIn(t2, shift=UP),
-			lag_ratio=.1,
-			float=linear
-		)
+		self.play(AnimationGroup(logo.animate.shift(3.7*LEFT), Write(t1), lag_ratio=med_lag_ratio))
+		self.play(t1.animate.shift(.6*UP), FadeIn(t2, shift=UP), lag_ratio=.1, float=linear)
 		self.wait(1.5)
 
 		t3 = Tex(
@@ -128,10 +119,7 @@ class Video(Scene):
 			label_gamma, label_A, label_B, label_C, label_D, label_E, label_F, label_G, label_X, label_Y
 		]: item.shift(shifting_left_factor*LEFT + .9*DOWN)
 
-		self.add_foreground_mobjects(
-			dot_A, dot_B, dot_C,
-			label_A, label_B, label_C
-		)
+		self.add_foreground_mobjects(dot_A, dot_B, dot_C, label_A, label_B, label_C)
 		self.play(
 			t3.animate.scale(.88).to_corner(UP).shift(.2*UP),
 			*[FadeIn(item, shift=shifting_left_factor*LEFT) for item in [
@@ -153,12 +141,9 @@ class Video(Scene):
 
 		self.add_foreground_mobjects(dot_D, dot_E, label_D, label_E)
 		self.play(AnimationGroup(
-			AnimationGroup(Create(line_AD), Write(t4[0])),
-			GrowFromCenter(dot_D),
-			AnimationGroup(GrowFromCenter(label_D), Write(t4[1])),
-			Write(t4[2]),
-			AnimationGroup(Create(line_AE), Write(t4[3])),
-			GrowFromCenter(dot_E),
+			AnimationGroup(Create(line_AD), Write(t4[0])), GrowFromCenter(dot_D),
+			AnimationGroup(GrowFromCenter(label_D), Write(t4[1])), Write(t4[2]),
+			AnimationGroup(Create(line_AE), Write(t4[3])), GrowFromCenter(dot_E),
 			AnimationGroup(GrowFromCenter(label_E),  Write(t4[4])),
 			lag_ratio=.4
 		))
@@ -278,8 +263,7 @@ class Video(Scene):
 		)
 		self.play(AnimationGroup(
 			*[AnimationGroup(
-				Create(i),
-				*[GrowFromCenter(item) for item in args],
+				Create(i), *[GrowFromCenter(item) for item in args],
 				lag_ratio=short_lag_ratio
 			) for i, args in [(line_FX, [dot_X, label_X]), (line_GY, [dot_Y, label_Y])]],
 			lag_ratio=long_lag_ratio
@@ -345,19 +329,15 @@ class Video(Scene):
 			AnimationGroup(
 				Create(angle_AXD),
 				FadeOut(t13[4]),
-				Write(t14[0]),
-				*[ReplacementTransform(t13[i], t14[j]) for i, j in [(0, 1), (3, 2)]],
-				Write(t14[3:7]),
-				*[ReplacementTransform(t13[i], t14[j]) for i, j in [(2, 7), (1, 8)]]
+				Write(t14[0]), *[ReplacementTransform(t13[i], t14[j]) for i, j in [(0, 1), (3, 2)]],
+				Write(t14[3:7]), *[ReplacementTransform(t13[i], t14[j]) for i, j in [(2, 7), (1, 8)]]
 			),
 			Create(line_AY),
 			AnimationGroup(
 				Create(angle_EYA),
 				FadeOut(t13[9]),
-				Write(t14[9:11]),
-				*[ReplacementTransform(t13[i], t14[j]) for i, j in [(8, 11), (5, 12)]],
-				Write(t14[13:15]),
-				*[ReplacementTransform(t13[i], t14[j]) for i, j in [(6, 15), (7, 16)]],
+				Write(t14[9:11]), *[ReplacementTransform(t13[i], t14[j]) for i, j in [(8, 11), (5, 12)]],
+				Write(t14[13:15]), *[ReplacementTransform(t13[i], t14[j]) for i, j in [(6, 15), (7, 16)]],
 				Write(t14[17])
 			),
 			lag_ratio=long_lag_ratio
@@ -377,18 +357,14 @@ class Video(Scene):
 			*[Uncreate(item) for item in [angle_DBF, angle_FDB, line_FB]],
 			FadeOut(t11[:4], t11[5:9], t12[4:9], t14[4:9]),
 			*[ReplacementTransform(*args) for args in [
-				(t14[:4], t15[:4]),
-				(t11[4], t15[4]),
-				(t12[:4], t15[5:9])
+				(t14[:4], t15[:4]), (t11[4], t15[4]), (t12[:4], t15[5:9])
 			]]
 		)
 		self.play(
 			*[Uncreate(item) for item in [angle_GCE, angle_CEG, line_GC]],
 			FadeOut(t11[9:13], t11[14:], t12[13:], t14[13:]),
 			*[ReplacementTransform(*args) for args in [
-				(t14[9:13], t15[9:13]),
-				(t11[13], t15[13]),
-				(t12[9:13], t15[14:])
+				(t14[9:13], t15[9:13]), (t11[13], t15[13]), (t12[9:13], t15[14:])
 			]]
 		)
 		self.wait(2)
@@ -468,8 +444,7 @@ class Video(Scene):
 				dot_A, dot_D, dot_E, dot_F, dot_G, dot_X, dot_Y,
 				label_gamma, label_A, label_D, label_E, label_F, label_G, label_X, label_Y,
 				t17
-			]],
-			run_time=.7
+			]], run_time=.7
 		)
 		radius_float = .01
 		self.play(
@@ -479,12 +454,10 @@ class Video(Scene):
 			]],
 			*[FadeOut(item) for item in [dot_A, label_A]],
 			*[ClockwiseTransform(*args, float=radius_float) for args in [
-				(label_X, new_label_X),
-				(label_E, new_label_E)
+				(label_X, new_label_X), (label_E, new_label_E)
 			]],
 			*[CounterclockwiseTransform(*args, float=radius_float) for args in [
-				(label_Y, new_label_Y),
-				(label_D, new_label_D)
+				(label_Y, new_label_Y), (label_D, new_label_D)
 			]],
 			GrowFromCenter(circle_Ar),
 			FadeOut(*[t17[i] for i in [0, 2, 3, 5, 6, 8, 9]]),
@@ -502,8 +475,7 @@ class Video(Scene):
 			t19[i].set_color(c2)
 			t19[i+5].set_color(c6)
 		self.play(AnimationGroup(
-			ReplacementTransform(t18, t19[:5]),
-			Write(t19[5:]),
+			ReplacementTransform(t18, t19[:5]), Write(t19[5:]),
 			lag_ratio=long_lag_ratio
 		))
 		self.wait()
@@ -566,15 +538,9 @@ class Video(Scene):
 		t21.scale(label_scale_factor).move_to(ref_line)
 		for i in [*range(4), *range(5, 9), *range(10, 14), *range(15, 19)]:
 			t21[i].set_color(c5)
-		self.play(
-			*[ReplacementTransform(*args) for args in [
-				(t20[5:9], t21[:4]),
-				(t20[4], t21[4]),
-				(t20[:4], t21[5:9]),
-				(t20[9:], t21[10:])
-			]],
-			Write(t21[9])
-		)
+		self.play(*[ReplacementTransform(*args) for args in [
+			(t20[5:9], t21[:4]), (t20[4], t21[4]), (t20[:4], t21[5:9]), (t20[9:], t21[10:])
+		]], Write(t21[9]))
 		self.wait()
 
 		t22 = MathTex(
@@ -589,11 +555,8 @@ class Video(Scene):
 		new_label_Y = MP('$Y$', dot_Y, dir(Y), label_scale_factor)
 		new_label_D = MP('$D$', dot_D, dir(179), label_scale_factor)
 		new_label_E = MP('$E$', dot_E, dir(82), label_scale_factor)
-		for item in [
-			new_label_X, new_label_Y, new_label_D, new_label_E,
-			t22,
-			ref_line
-		]: item.shift(shifting_up_factor*DOWN)
+		for item in [new_label_X, new_label_Y, new_label_D, new_label_E, t22, ref_line]:
+			item.shift(shifting_up_factor*DOWN)
 
 		self.play(
 			FadeOut(circle_Ar),
@@ -605,24 +568,19 @@ class Video(Scene):
 				dot_D, dot_E, dot_F, dot_G, dot_X, dot_Y,
 				label_gamma, label_D, label_E, label_F, label_G, label_X, label_Y,
 				t21
-			]],
-			run_time=.7
+			]], run_time=.7
 		)
 		self.play(
 			*[Uncreate(item) for item in [line_XY, angle_EYX]],
 			*[CounterclockwiseTransform(*args, float=radius_float) for args in [
-				(label_X, new_label_X),
-				(label_E, new_label_E)
+				(label_X, new_label_X), (label_E, new_label_E)
 			]],
 			*[ClockwiseTransform(*args, float=radius_float) for args in [
-				(label_Y, new_label_Y),
-				(label_D, new_label_D)
+				(label_Y, new_label_Y), (label_D, new_label_D)
 			]],
 			*[FadeOut(t21[i+4]) for i in [*range(5), *range(6, 11)]],
 			*[ReplacementTransform(*args) for args in [
-				(t21[:4], t22[:4]),
-				(t21[9], t22[4]),
-				(t21[15:], t22[5:])
+				(t21[:4], t22[:4]), (t21[9], t22[4]), (t21[15:], t22[5:])
 			]]
 		)
 		self.wait(2)

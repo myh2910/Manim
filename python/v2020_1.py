@@ -2,17 +2,13 @@ from asymptote import *
 
 class Video(Scene):
 	def construct(self):
-		#self.add_sound('assets/2020_1.mp3')
+		self.add_sound('assets/2020_1.mp3')
 		logo = ImageMobject('assets/2020.png')
 		self.play(FadeIn(logo, shift=UP))
 
 		t1 = Tex(r'\textsf{Problema 1}').set_color_by_gradient('#3c94d4', BLUE_B)
 		t1.scale(2.5).shift(.3*UP+3.6*RIGHT)
-		self.play(AnimationGroup(
-			logo.animate.shift(3.1*LEFT),
-			Write(t1),
-			lag_ratio=.8
-		))
+		self.play(AnimationGroup(logo.animate.shift(3.1*LEFT), Write(t1), lag_ratio=.8))
 		self.wait(.5)
 
 		t2 = Tex(
@@ -24,10 +20,8 @@ class Video(Scene):
 		t2[0].set_color_by_gradient(GOLD, GOLD_A)
 		t2.scale(.5).to_corner(UP)
 		self.play(AnimationGroup(
-			FadeOut(logo),
-			ReplacementTransform(t1, t2[0]),
-			run_time=2,
-			lag_ratio=.5
+			FadeOut(logo), ReplacementTransform(t1, t2[0]),
+			run_time=2, lag_ratio=.5
 		))
 		self.play(Create(t2[1]), run_time=4)
 		self.wait()
@@ -122,10 +116,7 @@ class Video(Scene):
 		).shift(1.2*DOWN)
 		
 		self.play(FadeIn(VGroup(*quadrilateral_ABCD), shift=UP))
-		self.play(AnimationGroup(
-			*[GrowFromCenter(i) for i in [dot_P, label_P]],
-			lag_ratio=.8
-		))
+		self.play(AnimationGroup(*[GrowFromCenter(i) for i in [dot_P, label_P]], lag_ratio=.8))
 		self.add_foreground_mobjects(
 			polygon_ABCD,
 			dot_P, dot_A, dot_B, dot_C, dot_D,
@@ -141,29 +132,17 @@ class Video(Scene):
 		)
 		self.play(Create(angle_PAD), Write(label_alpha))
 		self.add_foreground_mobject(label_alpha)
-		self.play(
-			Create(angle_PBA),
-			TransformFromCopy(label_alpha, label_2alpha)
-		)
+		self.play(Create(angle_PBA), TransformFromCopy(label_alpha, label_2alpha))
 		self.add_foreground_mobject(label_2alpha)
-		self.play(
-			Create(angle_DPA),
-			TransformFromCopy(label_alpha, label_3alpha)
-		)
+		self.play(Create(angle_DPA), TransformFromCopy(label_alpha, label_3alpha))
 		self.add_foreground_mobject(label_3alpha)
 		self.wait(.5)
 
 		self.play(Create(angle_CBP), Write(label_beta))
 		self.add_foreground_mobject(label_beta)
-		self.play(
-			Create(angle_BAP),
-			TransformFromCopy(label_beta, label_2beta)
-		)
+		self.play(Create(angle_BAP), TransformFromCopy(label_beta, label_2beta))
 		self.add_foreground_mobject(label_2beta)
-		self.play(
-			Create(angle_BPC),
-			TransformFromCopy(label_beta, label_3beta)
-		)
+		self.play(Create(angle_BPC), TransformFromCopy(label_beta, label_3beta))
 		self.add_foreground_mobject(label_3beta)
 
 		quadrilateral_ABCD.extend([
@@ -183,7 +162,6 @@ class Video(Scene):
 		).shift(3.1*LEFT)
 
 		x_space = r'\qquad\qquad'
-		text_scale_factor = .5
 		t3 = MathTex(
 			#      0    1           2    3    4    5                   6    7           8    9   10   11
 			r'\alpha', '=', r'\angle ', 'P', 'A', 'D' + x_space, r'\beta', '=', r'\angle ', 'C', 'B', 'P'
@@ -191,6 +169,8 @@ class Video(Scene):
 		for i in [0, *range(2, 6)]:
 			t3[i].set_color(color_alpha)
 			t3[i+6].set_color(color_beta)
+
+		text_scale_factor = .5
 		t3.scale(text_scale_factor).shift(.3*UP+3.5*RIGHT)
 
 		self.play(VGroup(*quadrilateral_ABCD).animate.shift(3.1*LEFT))
@@ -205,8 +185,7 @@ class Video(Scene):
 				TransformFromCopy(i, t3[j]),
 				Write(t3[j+1:j+3]),
 				TransformFromCopy(VGroup(*args), t3[j+3:j+6]),
-				lag_ratio=short_lag_ratio,
-				run_time=short_run_time
+				lag_ratio=short_lag_ratio, run_time=short_run_time
 			))
 			self.wait()
 
@@ -226,12 +205,9 @@ class Video(Scene):
 		]):
 			j = 6*idx
 			self.play(AnimationGroup(
-				Write(t4[j]),
-				TransformFromCopy(VGroup(*args), t4[j+1:j+4]),
-				Write(t4[j+4]),
-				TransformFromCopy(i, t4[j+5]),
-				lag_ratio=short_lag_ratio,
-				run_time=short_run_time
+				Write(t4[j]), TransformFromCopy(VGroup(*args), t4[j+1:j+4]),
+				Write(t4[j+4]), TransformFromCopy(i, t4[j+5]),
+				lag_ratio=short_lag_ratio, run_time=short_run_time
 			))
 			self.wait()
 
@@ -280,62 +256,36 @@ class Video(Scene):
 
 		long_run_time = 7
 		self.play(AnimationGroup(
-			Write(t5[0]),
-			TransformFromCopy(VGroup(label_A, label_D, label_P), t5[1:4]),
-			Write(t5[4:7]),
-			TransformFromCopy(VGroup(label_D, label_P, label_A), t5[7:10]),
-			Write(t5[10:12]),
-			TransformFromCopy(VGroup(label_P, label_A, label_D), t5[12:]),
-			lag_ratio=short_lag_ratio,
-			run_time=long_run_time
+			Write(t5[0]), TransformFromCopy(VGroup(label_A, label_D, label_P), t5[1:4]),
+			Write(t5[4:7]), TransformFromCopy(VGroup(label_D, label_P, label_A), t5[7:10]),
+			Write(t5[10:12]), TransformFromCopy(VGroup(label_P, label_A, label_D), t5[12:]),
+			lag_ratio=short_lag_ratio, run_time=long_run_time
 		))
 		self.wait()
 
 		self.play(*[ReplacementTransform(*args) for args in [
-			(t5[:6], t6[:6]),
-			(t5[6:10], t6[6]),
-			(t5[10], t6[7]),
-			(t5[11:], t6[8])
+			(t5[:6], t6[:6]), (t5[6:10], t6[6]), (t5[10], t6[7]), (t5[11:], t6[8])
 		]])
-		self.play(*[ReplacementTransform(*args) for args in [
-			(t6[:6], t7[:6]),
-			(t6[6:], t7[6:])
-		]])
-		self.play(*[ReplacementTransform(*args) for args in [
-			(t7[:6], t11[:6]),
-			(t7[6], t11[6])
-		]])
+		self.play(*[ReplacementTransform(*args) for args in [(t6[:6], t7[:6]), (t6[6:], t7[6:])]])
+		self.play(*[ReplacementTransform(*args) for args in [(t7[:6], t11[:6]), (t7[6], t11[6])]])
 		self.wait()
 
 		self.play(AnimationGroup(
-			Write(t8[0]),
-			TransformFromCopy(VGroup(label_P, label_C, label_B), t8[1:4]),
-			Write(t8[4:7]),
-			TransformFromCopy(VGroup(label_B, label_P, label_C), t8[7:10]),
-			Write(t8[10:12]),
-			TransformFromCopy(VGroup(label_C, label_B, label_P), t8[12:]),
-			lag_ratio=short_lag_ratio,
-			run_time=long_run_time
+			Write(t8[0]), TransformFromCopy(VGroup(label_P, label_C, label_B), t8[1:4]),
+			Write(t8[4:7]), TransformFromCopy(VGroup(label_B, label_P, label_C), t8[7:10]),
+			Write(t8[10:12]), TransformFromCopy(VGroup(label_C, label_B, label_P), t8[12:]),
+			lag_ratio=short_lag_ratio, run_time=long_run_time
 		))
 		self.wait()
 
 		self.play(*[ReplacementTransform(*args) for args in [
-			(t8[:6], t9[:6]),
-			(t8[6:10], t9[6]),
-			(t8[10], t9[7]),
-			(t8[11:], t9[8])
+			(t8[:6], t9[:6]), (t8[6:10], t9[6]), (t8[10], t9[7]), (t8[11:], t9[8])
 		]])
-		self.play(*[ReplacementTransform(*args) for args in [
-			(t9[:6], t10[:6]),
-			(t9[6:], t10[6:])
-		]])
+		self.play(*[ReplacementTransform(*args) for args in [(t9[:6], t10[:6]), (t9[6:], t10[6:])]])
 		self.play(ReplacementTransform(t10, t11[7:]))
 		self.wait()
 
-		self.play(AnimationGroup(
-			*[GrowFromCenter(i) for i in [dot_O, label_O]],
-			lag_ratio=.8
-		))
+		self.play(AnimationGroup(*[GrowFromCenter(i) for i in [dot_O, label_O]], lag_ratio=.8))
 		self.play(*[Uncreate(item) for item in [
 			angle_PAD, angle_DPA, angle_CBP, angle_BPC,
 			label_alpha, label_3alpha, label_beta, label_3beta
@@ -369,10 +319,7 @@ class Video(Scene):
 			dot_P, dot_A, dot_B, dot_C, dot_D, dot_O,
 			label_P, label_A, label_B, label_C, label_D, label_O, label_2alpha, label_2beta
 		)
-		self.play(
-			Create(angle_POA),
-			TransformFromCopy(label_2alpha, label_4alpha)
-		)
+		self.play(Create(angle_POA), TransformFromCopy(label_2alpha, label_4alpha))
 		self.add_foreground_mobject(label_4alpha)
 		self.wait()
 
@@ -385,16 +332,11 @@ class Video(Scene):
 			t12[i+6].set_color(color_beta)
 		t12.scale(text_scale_factor).next_to(t11, DOWN, y_space)
 		self.play(AnimationGroup(
-			Write(t12[0]),
-			TransformFromCopy(VGroup(label_P, label_O, label_A), t12[1:4]),
-			Write(t12[4]),
-			TransformFromCopy(label_4alpha, t12[5]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			Write(t12[0]), TransformFromCopy(VGroup(label_P, label_O, label_A), t12[1:4]),
+			Write(t12[4]), TransformFromCopy(label_4alpha, t12[5]),
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
-		self.play(*[Uncreate(i) for i in [
-			angle_PBA, label_2alpha, angle_POA, label_4alpha
-		]])
+		self.play(*[Uncreate(i) for i in [angle_PBA, label_2alpha, angle_POA, label_4alpha]])
 		self.wait()
 
 		self.add_foreground_mobjects(
@@ -406,25 +348,17 @@ class Video(Scene):
 			label_P, label_A, label_B, label_C, label_D, label_O, label_2beta
 		)
 		self.play(Create(line_OB))
-		self.play(
-			Create(angle_BOP),
-			TransformFromCopy(label_2beta, label_4beta)
-		)
+		self.play(Create(angle_BOP), TransformFromCopy(label_2beta, label_4beta))
 		self.add_foreground_mobject(label_4alpha)
 		self.wait()
 
 		self.play(AnimationGroup(
-			Write(t12[6]),
-			TransformFromCopy(VGroup(label_B, label_O, label_P), t12[7:10]),
-			Write(t12[10]),
-			TransformFromCopy(label_4beta, t12[11]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			Write(t12[6]), TransformFromCopy(VGroup(label_B, label_O, label_P), t12[7:10]),
+			Write(t12[10]), TransformFromCopy(label_4beta, t12[11]),
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		self.play(
-			*[Uncreate(i) for i in [
-				angle_BAP, label_2beta, angle_BOP, label_4beta
-			]],
+			*[Uncreate(i) for i in [angle_BAP, label_2beta, angle_BOP, label_4beta]],
 			FadeOut(t3, t4),
 			*[i.animate.move_to(j) for i, j in [(t11, t3), (t12, t4)]]
 		)
@@ -439,13 +373,10 @@ class Video(Scene):
 			t13[i].set_color(color_alpha)
 		t13.scale(.7).next_to(t12, DOWN, large_y_space)
 		self.play(AnimationGroup(
-			TransformFromCopy(t11[:4], t13[:4]),
-			Write(t13[4]),
-			TransformFromCopy(t12[:4], t13[5:9]),
-			Write(t13[9]),
+			TransformFromCopy(t11[:4], t13[:4]), Write(t13[4]),
+			TransformFromCopy(t12[:4], t13[5:9]), Write(t13[9]),
 			AnimationGroup(*[ReplacementTransform(i.copy(), t13[10]) for i in [t11[5:7], t12[5]]]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		self.wait()
 
@@ -461,8 +392,7 @@ class Video(Scene):
 			Write(t14[0]),
 			TransformFromCopy(VGroup(label_A, label_D, label_P, label_O), t14[1:5]),
 			Write(t14[5]),
-			lag_ratio=short_lag_ratio,
-			run_time=3
+			lag_ratio=short_lag_ratio, run_time=3
 		))
 		self.wait()
 		self.play(FadeOut(t13, t14[0]))
@@ -479,8 +409,7 @@ class Video(Scene):
 			TransformFromCopy(VGroup(label_O, label_A), t15[:2]),
 			Write(t15[2]),
 			TransformFromCopy(VGroup(label_O, label_P), t15[3:]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		self.wait()
 
@@ -493,18 +422,12 @@ class Video(Scene):
 			t16[i+1].set_color(color_alpha)
 		t16.scale(.5).next_to(t15, DOWN, large_y_space)
 		self.play(AnimationGroup(
-			Write(t16[0]),
-			TransformFromCopy(label_O, t16[1]),
-			Write(t16[2:4]),
-			TransformFromCopy(VGroup(label_A, label_D, label_P), t16[4:]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			Write(t16[0]), TransformFromCopy(label_O, t16[1]),
+			Write(t16[2:4]), TransformFromCopy(VGroup(label_A, label_D, label_P), t16[4:]),
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		self.wait()
-		self.play(
-			FadeOut(t14[1:], t15, t16[0]),
-			t16[1:].animate.next_to(t12, DOWN, y_space)
-		)
+		self.play(FadeOut(t14[1:], t15, t16[0]), t16[1:].animate.next_to(t12, DOWN, y_space))
 		t17 = MathTex(
 			#       0    1    2    3    4           5    6    7    8    9   10
 			r'\angle ', 'P', 'C', 'B', '+', r'\angle ', 'B', 'O', 'P', '=', r'180^\circ'
@@ -513,13 +436,10 @@ class Video(Scene):
 			t17[i].set_color(color_beta)
 		t17.scale(.7).next_to(t16[1:], DOWN, large_y_space)
 		self.play(AnimationGroup(
-			TransformFromCopy(t11[7:11], t17[:4]),
-			Write(t17[4]),
-			TransformFromCopy(t12[6:10], t17[5:9]),
-			Write(t17[9]),
+			TransformFromCopy(t11[7:11], t17[:4]), Write(t17[4]),
+			TransformFromCopy(t12[6:10], t17[5:9]), Write(t17[9]),
 			AnimationGroup(*[ReplacementTransform(i.copy(), t17[10]) for i in [t11[12:], t12[11]]]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		self.wait()
 
@@ -535,8 +455,7 @@ class Video(Scene):
 			Write(t18[0]),
 			TransformFromCopy(VGroup(label_P, label_C, label_B, label_O), t18[1:5]),
 			Write(t18[5]),
-			lag_ratio=short_lag_ratio,
-			run_time=3
+			lag_ratio=short_lag_ratio, run_time=3
 		))
 		self.wait()
 		self.play(FadeOut(t17, t18[0]))
@@ -553,8 +472,7 @@ class Video(Scene):
 			TransformFromCopy(VGroup(label_O, label_B), t19[:2]),
 			Write(t19[2]),
 			TransformFromCopy(VGroup(label_O, label_P), t19[3:]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		self.wait()
 
@@ -567,12 +485,9 @@ class Video(Scene):
 			t20[i+1].set_color(color_beta)
 		t20.scale(.5).next_to(t19, DOWN, large_y_space)
 		self.play(AnimationGroup(
-			Write(t20[0]),
-			TransformFromCopy(label_O, t20[1]),
-			Write(t20[2:4]),
-			TransformFromCopy(VGroup(label_P, label_C, label_B), t20[4:]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			Write(t20[0]), TransformFromCopy(label_O, t20[1]),
+			Write(t20[2:4]), TransformFromCopy(VGroup(label_P, label_C, label_B), t20[4:]),
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		self.wait()
 		self.play(
@@ -593,8 +508,7 @@ class Video(Scene):
 			TransformFromCopy(VGroup(label_O, label_A), t21[:2]),
 			Write(t21[2]),
 			TransformFromCopy(VGroup(label_O, label_B), t21[3:]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		t22 = MathTex(
 			#         0    1    2                                                  3    4
@@ -605,12 +519,9 @@ class Video(Scene):
 			t22[i].set_color(YELLOW_A)
 		t22.scale(.5).next_to(t21, DOWN, large_y_space)
 		self.play(AnimationGroup(
-			Write(t22[0]),
-			TransformFromCopy(label_O, t22[1]),
-			Write(t22[2]),
-			TransformFromCopy(VGroup(label_A, label_B), t22[3:]),
-			lag_ratio=short_lag_ratio,
-			run_time=short_run_time
+			Write(t22[0]), TransformFromCopy(label_O, t22[1]),
+			Write(t22[2]), TransformFromCopy(VGroup(label_A, label_B), t22[3:]),
+			lag_ratio=short_lag_ratio, run_time=short_run_time
 		))
 		self.wait()
 		self.play(
@@ -636,8 +547,7 @@ class Video(Scene):
 		self.play(AnimationGroup(
 			VGroup(t16[1:], t20[1:], t22[1:]).animate.shift(.5*UP),
 			*[Write(t23[i]) for i in range(9)],
-			lag_ratio=1,
-			run_time=8
+			lag_ratio=1, run_time=8
 		))
 		self.wait()
 
