@@ -1,5 +1,5 @@
 import os
-import time
+from datetime import datetime
 from pydub import AudioSegment
 
 def thumbnail(year, number, quality='k', Scene='Thumbnail'):
@@ -12,7 +12,7 @@ def video(year, number, quality='k', Scene='Video'):
 
 def flac_to_mp3(from_dir, to_dir=None, frame_rate=44100, channels=2, bitrate='320k'):
 	if to_dir == None:
-		to_dir = time.strftime('assets/%Y%m%d_%H%M%S_%2N.mp3', time.localtime())
+		to_dir = 'assets/{}.mp3'.format(datetime.now().strftime('%Y%m%d_%H%M%S_%f')[:-4])
 	audio = AudioSegment.from_file(from_dir, format='flac', frame_rate=frame_rate, channels=channels)
 	audio.export(to_dir, format='mp3', bitrate=bitrate)
 
