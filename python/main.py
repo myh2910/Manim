@@ -16,3 +16,4 @@ if __name__ == '__main__':
 	#thumbnail(2020, 1)
 	#video(2020, 1)
 	#os.system('python -m manim python/example.py CreateScene')
+	pass

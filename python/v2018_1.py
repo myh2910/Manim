@@ -3,16 +3,17 @@ from asymptote import *
 class Video(Scene):
 	def construct(self):
 		#self.add_sound('assets/2018_1.mp3')
-		logo = ImageMobject('assets/2018.png')
 
+		logo = ImageMobject('assets/2018.png')
 		self.play(FadeIn(logo, shift=UP))
 
 		t1 = Tex(r'\textsf{Problema 1}').set_color_by_gradient(TEAL_E, TEAL_A)
-		t1.scale(2.6).shift(2.7*RIGHT+.2*DOWN)
-		t2 = Tex(r"\emph{Soluci\'on}").set_color(YELLOW_B)
-		t2.scale(2).shift(2.7*RIGHT+.9*DOWN)
-		short_lag_ratio, med_lag_ratio, long_lag_ratio = .5, .8, 1
+		t1.scale(2.6).shift(2.7*RIGHT + .2*DOWN)
 
+		t2 = Tex(r"\emph{Soluci\'on}").set_color(YELLOW_B)
+		t2.scale(2).shift(2.7*RIGHT + .9*DOWN)
+
+		short_lag_ratio, med_lag_ratio, long_lag_ratio = .5, .8, 1
 		self.play(AnimationGroup(
 			logo.animate.shift(3.7*LEFT),
 			Write(t1),
@@ -27,15 +28,15 @@ class Video(Scene):
 		self.wait(1.5)
 
 		t3 = Tex(
-			r'\textbf{Problema 1.}\ \ ', #0
-			r"Sea $\Gamma$ la circunferencia circunscrita al tri\'angulo acut\'angulo $ABC$. Los puntos $D$ y $E$ est\'an en los segmentos $AB$ y $AC$, respectivamente, y son tales que $AD=AE$. Las mediatrices de $BD$ y $CE$ cortan a los arcos menores $AB$ y $AC$ de $\Gamma$ en los puntos $F$ y $G$, respectivamente. Demostrar que las rectas $DE$ y $FG$ son paralelas (o son la misma recta).", #1
+			r'\textbf{Problema 1.}\ \ ',
+			r"Sea $\Gamma$ la circunferencia circunscrita al tri\'angulo acut\'angulo $ABC$. Los puntos $D$ y $E$ est\'an en los segmentos $AB$ y $AC$, respectivamente, y son tales que $AD=AE$. Las mediatrices de $BD$ y $CE$ cortan a los arcos menores $AB$ y $AC$ de $\Gamma$ en los puntos $F$ y $G$, respectivamente. Demostrar que las rectas $DE$ y $FG$ son paralelas (o son la misma recta).",
 			tex_environment=None,
 			tex_template=TEX_TEMPLATE('512.34pt')
 		)
 		t3[0].set_color_by_gradient(TEAL_E, TEAL_A)
 		t3.scale(.5).to_corner(UP)
+
 		shifting_factor = 12
-		
 		self.play(
 			*[FadeOut(item, shift=shifting_factor*LEFT) for item in [logo, t2]],
 			ReplacementTransform(t1[0], t3[0]),
@@ -49,6 +50,7 @@ class Video(Scene):
 		l = dir(2*degrees(np.arcsin(r/2)))
 		X, Y = A/l, A*l
 		F, G = 2*foot(origin, D, X) - X, 2*foot(origin, E, Y) - Y
+
 		scale_factor = 2.7
 		A *= scale_factor
 		B *= scale_factor
@@ -59,6 +61,7 @@ class Video(Scene):
 		Y *= scale_factor
 		F *= scale_factor
 		G *= scale_factor
+
 		dot_A = DOT(A)
 		dot_B = DOT(B)
 		dot_C = DOT(C)
@@ -68,6 +71,7 @@ class Video(Scene):
 		dot_G = DOT(G)
 		dot_X = DOT(X)
 		dot_Y = DOT(Y)
+
 		label_scale_factor = .5
 		label_A = MP('$A$', dot_A, A, label_scale_factor)
 		label_B = MP('$B$', dot_B, B, label_scale_factor)
@@ -78,6 +82,7 @@ class Video(Scene):
 		label_G = MP('$G$', dot_G, G, label_scale_factor)
 		label_X = MP('$X$', dot_X, UP, label_scale_factor)
 		label_Y = MP('$Y$', dot_Y, Y, label_scale_factor)
+
 		c1, c2, c3, c4, c5, c6 = GREEN_A, YELLOW_A, TEAL_A, PURPLE_A, RED_A, BLUE_A
 		line_FX = LINE(F, X, c1)
 		line_GY = LINE(G, Y, c1)
@@ -92,6 +97,7 @@ class Video(Scene):
 		line_XY = LINE(X, Y, c5)
 		line_DE = LINE(D, E, c5)
 		line_FG = LINE(F, G, c5)
+
 		angle_radius, stroke_width, dot_radius = .29, 8, 0.03
 		angle_DBF = MA(D, B, F, angle_radius, color=c3, stroke_width=stroke_width)
 		angle_FDB = MA(F, D, B, angle_radius, color=c3, stroke_width=stroke_width)
@@ -104,11 +110,13 @@ class Video(Scene):
 		angle_EYX = MA(E, Y, X, angle_radius, color=c5)
 		angle_EDX = MA(E, D, X, angle_radius, color=c5)
 		angle_GFX = MA(G, F, X, angle_radius, color=c5)
+
 		triangle_ABC = POLY(A, B, C, color=RED_A).set_fill(color=RED_A, opacity=.1)
 		circle_ABC = CR(scale_factor, c=c6).set_fill(color=c6, opacity=.07)
 		label_gamma = MP(r'$\Gamma$', DOT(scale_factor*dir(60)), dir(60), label_scale_factor)
 		circle_Ar = CR(r*scale_factor, A, c2).set_fill(color=c2, opacity=.07)
-		shifting_left_factor, shifting_down_factor =  2.8, .9
+
+		shifting_left_factor = 2.8
 		for item in [
 			circle_ABC,
 			angle_DBF, angle_FDB, angle_XDA, angle_AXD, angle_GCE, angle_CEG, angle_AEY, angle_EYA, angle_EYX, angle_EDX, angle_GFX,
@@ -118,7 +126,8 @@ class Video(Scene):
 			line_AD, line_AE, line_AX, line_AY, line_FB, line_FD, line_GC, line_GE, line_XY, line_DE, line_FG,
 			dot_A, dot_B, dot_C, dot_D, dot_E, dot_F, dot_G, dot_X, dot_Y,
 			label_gamma, label_A, label_B, label_C, label_D, label_E, label_F, label_G, label_X, label_Y
-		]: item.shift(shifting_left_factor*LEFT+shifting_down_factor*DOWN)
+		]: item.shift(shifting_left_factor*LEFT + .9*DOWN)
+
 		self.add_foreground_mobjects(
 			dot_A, dot_B, dot_C,
 			label_A, label_B, label_C
@@ -141,6 +150,7 @@ class Video(Scene):
 		for i in [0, 1, 3, 4]:
 			t4[i].set_color(c2)
 		ref_line = t4.copy()
+
 		self.add_foreground_mobjects(dot_D, dot_E, label_D, label_E)
 		self.play(AnimationGroup(
 			AnimationGroup(Create(line_AD), Write(t4[0])),
@@ -152,47 +162,50 @@ class Video(Scene):
 			AnimationGroup(GrowFromCenter(label_E),  Write(t4[4])),
 			lag_ratio=.4
 		))
-		y_buff = .3
+		angle = r'\angle '
+		x_space = r'\qquad'
+		is_cyclic = r"\text{ es c\'iclico}"
+
 		t5 = MathTex(
 			#0    1                                        2    3
 			'F', r'\text{ pertenece a la mediatriz de }', 'B', 'D'
 		)
-		t5.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
 		t6 = MathTex(
 			#0    1                                        2    3
 			'G', r'\text{ pertenece a la mediatriz de }', 'C', 'E'
 		)
-		t6.scale(label_scale_factor).next_to(t5, DOWN, y_buff)
-		for i in [0, 2, 3]:
-			t5[i].set_color(c3)
-			t6[i].set_color(c4)
 		t7 =  MathTex(
 			#0    1    2    3    4
 			'F', 'B', '=', 'F', 'D'
 		)
-		t7.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
 		t8 = MathTex(
 			#0    1    2    3    4
 			'G', 'C', '=', 'G', 'E'
 		)
-		t8.scale(label_scale_factor).next_to(t5, DOWN, y_buff)
-		for i in [0, 1, 3, 4]:
-			t7[i].set_color(c3)
-			t8[i].set_color(c4)
-		angle = r'\angle '
 		t9 = MathTex(
 			#  0    1    2    3    4      5    6    7    8
 			angle, 'D', 'B', 'F', '=', angle, 'F', 'D', 'B'
 		)
-		t9.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
 		t10 = MathTex(
 			#  0    1    2    3    4      5    6    7    8
 			angle, 'G', 'C', 'E', '=', angle, 'C', 'E', 'G'
 		)
-		t10.scale(label_scale_factor).next_to(t5, DOWN, y_buff)
+		for i in [0, 2, 3]:
+			t5[i].set_color(c3)
+			t6[i].set_color(c4)
+		for i in [0, 1, 3, 4]:
+			t7[i].set_color(c3)
+			t8[i].set_color(c4)
 		for i in [*range(4), *range(5, 9)]:
 			t9[i].set_color(c3)
 			t10[i].set_color(c4)
+
+		y_buff = .3
+		for i in [t5, t7, t9]:
+			i.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
+		for i in [t6, t8, t10]:
+			i.scale(label_scale_factor).next_to(t5, DOWN, y_buff)
+
 		for args, txt in [([dot_F, label_F], t5), ([dot_G, label_G], t6)]:
 			self.add_foreground_mobjects(*args)
 			self.play(AnimationGroup(
@@ -202,6 +215,7 @@ class Video(Scene):
 				lag_ratio=short_lag_ratio
 			))
 		self.wait(2)
+
 		for args, txt1, txt2 in [([line_FB, line_FD], t5, t7), ([line_GC, line_GE], t6, t8)]:
 			self.play(
 				*[Create(i) for i in args],
@@ -244,18 +258,16 @@ class Video(Scene):
 		)
 		self.wait(2)
 
-		x_space = r'\qquad'
 		t11 = MathTex(
 			#  0    1    2    3    4      5    6    7    8                9   10   11   12   13     14   15   16   17
 			angle, 'D', 'B', 'F', '=', angle, 'F', 'D', 'B' + x_space, angle, 'G', 'C', 'E', '=', angle, 'C', 'E', 'G'
 		)
 		t11.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
-		for i in [*range(0, 4), *range(5, 9)]:
+		for i in [*range(4), *range(5, 9)]:
 			t11[i].set_color(c3)
-		for i in [*range(9, 13), *range(14, 18)]:
-			t11[i].set_color(c4)
-
+			t11[i+9].set_color(c4)
 		self.play(*[ReplacementTransform(*args) for args in [(t9, t11[:9]), (t10, t11[9:])]])
+
 		self.add_foreground_mobjects(
 			circle_ABC,
 			angle_DBF, angle_FDB, angle_GCE, angle_CEG,
@@ -279,15 +291,16 @@ class Video(Scene):
 			angle, 'X', 'D', 'A', '=', angle, 'F', 'D', 'B' + x_space, angle, 'A', 'E', 'Y', '=', angle, 'C', 'E', 'G'
 		)
 		t12.scale(label_scale_factor).next_to(t11, DOWN, y_buff)
-		for i in [*range(0, 4), *range(5, 9)]:
+		for i in [*range(4), *range(5, 9)]:
 			t12[i].set_color(c3)
-		for i in [*range(9, 13), *range(14, 18)]:
-			t12[i].set_color(c4)
+			t12[i+9].set_color(c4)
+
 		self.add_foreground_mobjects(
 			circle_ABC,
 			angle_DBF, angle_FDB, angle_GCE, angle_CEG,
 			triangle_ABC,
-			line_GY, angle_XDA, line_FX, line_AD, line_AE, line_FB, line_FD, line_GC, line_GE,
+			line_GY, angle_XDA, line_FX,
+			line_AD, line_AE, line_FB, line_FD, line_GC, line_GE,
 			dot_A, dot_B, dot_C, dot_D, dot_E, dot_F, dot_G, dot_X, dot_Y,
 			label_gamma, label_A, label_B, label_C, label_D, label_E, label_F, label_G, label_X, label_Y
 		)
@@ -296,17 +309,14 @@ class Video(Scene):
 		self.play(Write(t12[9:]), Create(angle_AEY))
 		self.wait(2)
 
-		is_cyclic = r"\text{ es c\'iclico}"
 		t13 = MathTex(
 			#0    1    2    3    4                    5    6    7    8    9
 			'A', 'F', 'B', 'X', is_cyclic + x_space, 'A', 'G', 'C', 'Y', is_cyclic
 		)
 		t13.scale(label_scale_factor).next_to(t12, DOWN, y_buff)
-		for i in range(0, 4):
+		for i in range(4):
 			t13[i].set_color(c3)
-		for i in range(5, 9):
-			t13[i].set_color(c4)
-
+			t13[i+5].set_color(c4)
 		self.play(Write(t13[:5]))
 		self.wait()
 		self.play(Write(t13[5:]))
@@ -317,10 +327,9 @@ class Video(Scene):
 			angle, 'A', 'X', 'D', '=', angle, 'D', 'B', 'F' + x_space, angle, 'E', 'Y', 'A', '=', angle, 'G', 'C', 'E'
 		)
 		t14.scale(label_scale_factor).next_to(t12, DOWN, y_buff)
-		for i in [*range(0, 4), *range(5, 9)]:
+		for i in [*range(4), *range(5, 9)]:
 			t14[i].set_color(c3)
-		for i in [*range(9, 13), *range(14, 18)]:
-			t14[i].set_color(c4)
+			t14[i+9].set_color(c4)
 		
 		self.add_foreground_mobjects(
 			circle_ABC,
@@ -345,8 +354,10 @@ class Video(Scene):
 			AnimationGroup(
 				Create(angle_EYA),
 				FadeOut(t13[9]),
-				*[txt for idx, lst in enumerate([[(8, 11), (5, 12)], [(6, 15), (7, 16)]]) for i, j in lst \
-					for txt in [Write(t14[4*idx+9:4*idx+11]), ReplacementTransform(t13[i], t14[j])]],
+				Write(t14[9:11]),
+				*[ReplacementTransform(t13[i], t14[j]) for i, j in [(8, 11), (5, 12)]],
+				Write(t14[13:15]),
+				*[ReplacementTransform(t13[i], t14[j]) for i, j in [(6, 15), (7, 16)]],
 				Write(t14[17])
 			),
 			lag_ratio=long_lag_ratio
@@ -360,12 +371,11 @@ class Video(Scene):
 		t15.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
 		for i in [*range(4), *range(5, 9)]:
 			t15[i].set_color(c3)
-		for i in [*range(9, 13), *range(14, 18)]:
-			t15[i].set_color(c4)
+			t15[i+9].set_color(c4)
 
 		self.play(
 			*[Uncreate(item) for item in [angle_DBF, angle_FDB, line_FB]],
-			*[FadeOut(item) for item in [t11[:4], t11[5:9], t12[4:9], t14[4:9]]],
+			FadeOut(t11[:4], t11[5:9], t12[4:9], t14[4:9]),
 			*[ReplacementTransform(*args) for args in [
 				(t14[:4], t15[:4]),
 				(t11[4], t15[4]),
@@ -374,7 +384,7 @@ class Video(Scene):
 		)
 		self.play(
 			*[Uncreate(item) for item in [angle_GCE, angle_CEG, line_GC]],
-			*[FadeOut(item) for item in [t11[9:13], t11[14:], t12[13:], t14[13:]]],
+			FadeOut(t11[9:13], t11[14:], t12[13:], t14[13:]),
 			*[ReplacementTransform(*args) for args in [
 				(t14[9:13], t15[9:13]),
 				(t11[13], t15[13]),
@@ -390,15 +400,13 @@ class Video(Scene):
 		t16.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
 		for i in [0, 1, 3, 4]:
 			t16[i].set_color(c3)
-		for i in [5, 6, 8, 9]:
-			t16[i].set_color(c4)
-
+			t16[i+5].set_color(c4)
 		self.play(
-			*[FadeOut(t15[i]) for i in [0, 3, 5, 6]],
+			FadeOut(*[t15[i] for i in [0, 3, 5, 6]]),
 			*[ReplacementTransform(t15[i], t16[idx]) for idx, i in enumerate([1, 2, 4, 8, 7])]
 		)
 		self.play(
-			*[FadeOut(t15[i]) for i in [9, 10, 14, 17]],
+			FadeOut(*[t15[i] for i in [9, 10, 14, 17]]),
 			*[ReplacementTransform(t15[i], t16[idx+5]) for idx, i in enumerate([12, 11, 13, 15, 16])]
 		)
 		self.wait(2)
@@ -435,11 +443,12 @@ class Video(Scene):
 		t18.scale(label_scale_factor).move_to(ref_line)
 		for i in range(4):
 			t18[i].set_color(c2)
+
 		new_label_X = MP('$X$', dot_X, dir(88), label_scale_factor)
 		new_label_Y = MP('$Y$', dot_Y, LEFT, label_scale_factor)
 		new_label_D = MP('$D$', dot_D, DOWN, label_scale_factor)
 		new_label_E = MP('$E$', dot_E, DOWN, label_scale_factor)
-		radius_float = .01
+
 		shifting_up_factor = .4
 		for item in [
 			circle_Ar,
@@ -462,6 +471,7 @@ class Video(Scene):
 			]],
 			run_time=.7
 		)
+		radius_float = .01
 		self.play(
 			*[Uncreate(item) for item in [
 				line_AD, line_AE, line_AX, line_AY,
@@ -477,7 +487,7 @@ class Video(Scene):
 				(label_D, new_label_D)
 			]],
 			GrowFromCenter(circle_Ar),
-			*[FadeOut(t17[i]) for i in [0, 2, 3, 5, 6, 8, 9]],
+			FadeOut(*[t17[i] for i in [0, 2, 3, 5, 6, 8, 9]]),
 			*[ReplacementTransform(t17[i], t18[idx]) for idx, i in enumerate([1, 10, 4, 7])],
 			Write(t18[4])
 		)
@@ -490,9 +500,7 @@ class Video(Scene):
 		t19.scale(label_scale_factor).move_to(ref_line)
 		for i in range(4):
 			t19[i].set_color(c2)
-		for i in range(5, 9):
-			t19[i].set_color(c6)
-
+			t19[i+5].set_color(c6)
 		self.play(AnimationGroup(
 			ReplacementTransform(t18, t19[:5]),
 			Write(t19[5:]),
@@ -507,8 +515,8 @@ class Video(Scene):
 		t20.scale(label_scale_factor).move_to(ref_line)
 		for i in [*range(4), *range(5, 9)]:
 			t20[i].set_color(c2)
-		for i in [*range(9, 13), *range(14, 18)]:
-			t20[i].set_color(c6)
+			t20[i+9].set_color(c6)
+
 		self.add_foreground_mobjects(
 			circle_ABC, circle_Ar,
 			angle_EYX, angle_EDX,
@@ -520,7 +528,7 @@ class Video(Scene):
 			Create(line_XY),
 			AnimationGroup(
 				Create(angle_EYX),
-				*[FadeOut(t19[i]) for i in [2, 4]],
+				FadeOut(*[t19[i] for i in [2, 4]]),
 				Write(t20[0]),
 				*[ReplacementTransform(t19[i], t20[idx+1]) for idx, i in enumerate([3, 1, 0])]
 			),
@@ -540,7 +548,7 @@ class Video(Scene):
 		)
 		self.play(AnimationGroup(
 			AnimationGroup(
-				*[FadeOut(t19[i]) for i in [7, 9]],
+				FadeOut(*[t19[i] for i in [7, 9]]),
 				Write(t20[9]),
 				*[ReplacementTransform(t19[i], t20[idx+10]) for idx, i in enumerate([8, 6, 5])]
 			),
@@ -558,7 +566,6 @@ class Video(Scene):
 		t21.scale(label_scale_factor).move_to(ref_line)
 		for i in [*range(4), *range(5, 9), *range(10, 14), *range(15, 19)]:
 			t21[i].set_color(c5)
-
 		self.play(
 			*[ReplacementTransform(*args) for args in [
 				(t20[5:9], t21[:4]),
@@ -577,6 +584,7 @@ class Video(Scene):
 		t22.scale(label_scale_factor).move_to(ref_line)
 		for i in [*range(4), *range(5, 9)]:
 			t22[i].set_color(c5)
+
 		new_label_X = MP('$X$', dot_X, UP, label_scale_factor)
 		new_label_Y = MP('$Y$', dot_Y, dir(Y), label_scale_factor)
 		new_label_D = MP('$D$', dot_D, dir(179), label_scale_factor)
@@ -610,7 +618,7 @@ class Video(Scene):
 				(label_Y, new_label_Y),
 				(label_D, new_label_D)
 			]],
-			*[FadeOut(t21[i]) for i in [*range(4, 9), *range(10, 15)]],
+			*[FadeOut(t21[i+4]) for i in [*range(5), *range(6, 11)]],
 			*[ReplacementTransform(*args) for args in [
 				(t21[:4], t22[:4]),
 				(t21[9], t22[4]),
@@ -626,22 +634,22 @@ class Video(Scene):
 		t23.scale(.7).next_to(ref_line, DOWN, 1.5)
 		for i in [0, 1, 3, 4]:
 			t23[i].set_color(c5)
-
 		self.play(
-			*[FadeOut(t22[i]) for i in [0, 3, 4, 5, 8]],
+			FadeOut(*[t22[i] for i in [0, 3, 4, 5, 8]]),
 			*[Write(t23[i]) for i in [2, 5]],
 			*[ReplacementTransform(t22[i], t23[j]) for i, j in [(2, 0), (1, 1), (7, 3), (6, 4)]]
 		)
 		self.wait(2)
+
 		for i in range(2):
 			self.play(Circumscribe(t23))
 		self.wait()
+
 		self.play(*[FadeOut(item, shift=DOWN) for item in self.mobjects])
 
 		ending_credit = Tex('Video hecho con ', r'\textsc{Manim}')
 		ending_credit.scale(1.5)
 		ending_credit[1].set_color_by_gradient(TEAL_E, TEAL_A)
-
 		for i in range(2):
 			self.play(Write(ending_credit[i]))
 		self.wait()

@@ -2,10 +2,10 @@ from manim import *
 
 class Thumbnail(Scene):
     def construct(self):
-        logo = ImageMobject("assets/2018.png")
-        t1 = Tex(r"$\mathbb{IMO}$ 2018")
-        t2 = Tex(r"\textsf{Problema 1}")
-        t3 = Tex(r"\emph{Solución}", " con ", r"$\mathbb{M}$\textsc{anim}")
+        logo = ImageMobject('assets/2018.png')
+        t1 = Tex(r'$\mathbb{IMO}$ 2018')
+        t2 = Tex(r'\textsf{Problema 1}')
+        t3 = Tex(r"\emph{Soluci\'on}", ' con ', r'$\mathbb{M}$\textsc{anim}')
 
         t1.set_color(YELLOW_A)
         t2.set_color(BLUE_B)

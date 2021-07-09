@@ -3,11 +3,11 @@ config.background_color = WHITE
 
 class Thumbnail(Scene):
 	def construct(self):
-		logo = ImageMobject("assets/2020.png")
-		t1 = Tex(r"\textsf{Problema 1}")
-		t2 = Tex(r"\emph{Solución}", " con ", r"\textsc{Manim}")
+		logo = ImageMobject('assets/2020.png')
+		t1 = Tex(r'\textsf{Problema 1}')
+		t2 = Tex(r"\emph{Soluci\'on}", ' con ', r'\textsc{Manim}')
 		
-		t1.set_color("#3c94d4")
+		t1.set_color('#3c94d4')
 		t2[0].set_color_by_gradient(RED_D, RED)
 		t2[1].set_color_by_gradient(GREY)
 		t2[2].set_color_by_gradient(GOLD_D, GOLD)
