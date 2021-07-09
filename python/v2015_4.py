@@ -224,10 +224,7 @@ class Video(Scene):
 				*[TransformFromCopy(obj, t5[j+i]) for i, obj in [(1, label_A), (2, mobj)]],
 				run_time=2
 			)
-		self.play(
-			FadeOut(circle_gamma, label_gamma),
-			*COL(t5[:12], dots_FDEG)
-		)
+		self.play(FadeOut(circle_gamma, label_gamma), *COL(t5[:12], dots_FDEG))
 		for i in [circle_BDF, dot_K, label_K]:
 			self.play(GrowFromCenter(i))
 		self.add_foreground_mobjects(dot_K, label_K)
@@ -547,9 +544,11 @@ class Video(Scene):
 		arc_FKB1 = MA(dot_F1, dot_K1, dot_B1, .5)
 		text_Cx = MathTex('C', '-', 'x').scale(f).move_to(Angle(line_FK1, line_KB1, .9, (-1, 1)))
 		self.bring_to_back(arc_FKB1)
-		self.play(*[TransformFromCopy(i, text_Cx[2*idx]) for idx, i in enumerate(
-			[text_C1, text_x1]
-		)], Write(text_Cx[1]), Create(arc_FKB1), run_time=2)
+		self.play(
+			*[TransformFromCopy(i, text_Cx[2*idx]) for idx, i in enumerate(
+				[text_C1, text_x1]
+			)], Write(text_Cx[1]), Create(arc_FKB1), run_time=2
+		)
 		self.play(FadeOut(arc_FG_AB1, arc_GFK1, text_C1, text_x1, label_K1, line_FG1), FadeOut(ref_dot1))
 
 		alpha = degrees(arg((K-O1)/(D-O1)))
