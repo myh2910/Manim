@@ -10,11 +10,11 @@ def video(year, number, quality='k', Scene='Video'):
 	year, number = str(year), str(number)
 	os.system(f'python -m manim -q{quality} -o IMO_{year}_problema_{number}_yohan_min python/v{year}_{number}.py {Scene}')
 
-def flac_to_mp3(from_dir, to_dir=None, frame_rate=44100, channels=2, bitrate='320k'):
+def format_convert(from_dir, to_dir=None, from_format='flac', to_format='mp3'):
 	if to_dir == None:
 		to_dir = 'assets/{}.mp3'.format(datetime.now().strftime('%Y%m%d_%H%M%S_%f')[:-4])
-	audio = AudioSegment.from_file(from_dir, format='flac', frame_rate=frame_rate, channels=channels)
-	audio.export(to_dir, format='mp3', bitrate=bitrate)
+	audio = AudioSegment.from_file(from_dir, format=from_format)
+	audio.export(to_dir, format=to_format)
 
 if __name__ == '__main__':
 	for args in [(2015, 4), (2018, 1), (2020, 1)]:
