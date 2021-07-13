@@ -1,4 +1,5 @@
-from asymptote import *
+from render.macros.extras import *
+from render.macros.asymptote import *
 
 class Video(Scene):
 	def construct(self):
@@ -13,8 +14,7 @@ class Video(Scene):
 		t2 = Tex(r"\emph{Soluci\'on}").set_color(YELLOW_B)
 		t2.scale(2).shift(2.7*RIGHT + .9*DOWN)
 
-		short_lag_ratio, med_lag_ratio, long_lag_ratio = .5, .8, 1
-		self.play(AnimationGroup(logo.animate.shift(3.7*LEFT), Write(t1), lag_ratio=med_lag_ratio))
+		self.play(AnimationGroup(logo.animate.shift(3.7*LEFT), Write(t1), lag_ratio=MED_LAG_RATIO))
 		self.play(t1.animate.shift(.6*UP), FadeIn(t2, shift=UP), lag_ratio=.1, float=linear)
 		self.wait(1.5)
 
@@ -22,7 +22,7 @@ class Video(Scene):
 			r'\textbf{Problema 1.}\ \ ',
 			r"Sea $\Gamma$ la circunferencia circunscrita al tri\'angulo acut\'angulo $ABC$. Los puntos $D$ y $E$ est\'an en los segmentos $AB$ y $AC$, respectivamente, y son tales que $AD=AE$. Las mediatrices de $BD$ y $CE$ cortan a los arcos menores $AB$ y $AC$ de $\Gamma$ en los puntos $F$ y $G$, respectivamente. Demostrar que las rectas $DE$ y $FG$ son paralelas (o son la misma recta).",
 			tex_environment=None,
-			tex_template=TEX_TEMPLATE('512.34pt')
+			tex_template=tex_template('512.34pt')
 		)
 		t3[0].set_color_by_gradient(TEAL_E, TEAL_A)
 		t3.scale(.5).to_corner(UP)
@@ -38,7 +38,7 @@ class Video(Scene):
 		A, B, C = dir(120), dir(210), dir(330)
 		r = .5
 		D, E = A + r*(B-A)/distance(A, B), A + r*(C-A)/distance(C, A)
-		l = dir(2*degrees(np.arcsin(r/2)))
+		l = dir(2*np.arcsin(r/2)/DEGREES)
 		X, Y = A/l, A*l
 		F, G = 2*foot(origin, D, X) - X, 2*foot(origin, E, Y) - Y
 
@@ -147,10 +147,6 @@ class Video(Scene):
 			AnimationGroup(GrowFromCenter(label_E),  Write(t4[4])),
 			lag_ratio=.4
 		))
-		angle = r'\angle '
-		x_space = r'\qquad'
-		is_cyclic = r"\text{ es c\'iclico}"
-
 		t5 = MathTex(
 			#0    1                                        2    3
 			'F', r'\text{ pertenece a la mediatriz de }', 'B', 'D'
@@ -169,11 +165,11 @@ class Video(Scene):
 		)
 		t9 = MathTex(
 			#  0    1    2    3    4      5    6    7    8
-			angle, 'D', 'B', 'F', '=', angle, 'F', 'D', 'B'
+			ANGLE, 'D', 'B', 'F', '=', ANGLE, 'F', 'D', 'B'
 		)
 		t10 = MathTex(
 			#  0    1    2    3    4      5    6    7    8
-			angle, 'G', 'C', 'E', '=', angle, 'C', 'E', 'G'
+			ANGLE, 'G', 'C', 'E', '=', ANGLE, 'C', 'E', 'G'
 		)
 		for i in [0, 2, 3]:
 			t5[i].set_color(c3)
@@ -197,7 +193,7 @@ class Video(Scene):
 				GrowFromCenter(args[0]),
 				AnimationGroup(GrowFromCenter(args[1]), Write(txt[0])),
 				Write(txt[1:]),
-				lag_ratio=short_lag_ratio
+				lag_ratio=SMALL_LAG_RATIO
 			))
 		self.wait(2)
 
@@ -244,8 +240,8 @@ class Video(Scene):
 		self.wait(2)
 
 		t11 = MathTex(
-			#  0    1    2    3    4      5    6    7    8                9   10   11   12   13     14   15   16   17
-			angle, 'D', 'B', 'F', '=', angle, 'F', 'D', 'B' + x_space, angle, 'G', 'C', 'E', '=', angle, 'C', 'E', 'G'
+			#  0    1    2    3    4      5    6    7    8              9   10   11   12   13     14   15   16   17
+			ANGLE, 'D', 'B', 'F', '=', ANGLE, 'F', 'D', 'B' + QQUAD, ANGLE, 'G', 'C', 'E', '=', ANGLE, 'C', 'E', 'G'
 		)
 		t11.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
 		for i in [*range(4), *range(5, 9)]:
@@ -264,15 +260,15 @@ class Video(Scene):
 		self.play(AnimationGroup(
 			*[AnimationGroup(
 				Create(i), *[GrowFromCenter(item) for item in args],
-				lag_ratio=short_lag_ratio
+				lag_ratio=SMALL_LAG_RATIO
 			) for i, args in [(line_FX, [dot_X, label_X]), (line_GY, [dot_Y, label_Y])]],
-			lag_ratio=long_lag_ratio
+			lag_ratio=LARGE_LAG_RATIO
 		))
 		self.wait(2)
 
 		t12 = MathTex(
-			#  0    1    2    3    4      5    6    7    8                9   10   11   12   13     14   15   16   17
-			angle, 'X', 'D', 'A', '=', angle, 'F', 'D', 'B' + x_space, angle, 'A', 'E', 'Y', '=', angle, 'C', 'E', 'G'
+			#  0    1    2    3    4      5    6    7    8              9   10   11   12   13     14   15   16   17
+			ANGLE, 'X', 'D', 'A', '=', ANGLE, 'F', 'D', 'B' + QQUAD, ANGLE, 'A', 'E', 'Y', '=', ANGLE, 'C', 'E', 'G'
 		)
 		t12.scale(label_scale_factor).next_to(t11, DOWN, y_buff)
 		for i in [*range(4), *range(5, 9)]:
@@ -295,7 +291,7 @@ class Video(Scene):
 
 		t13 = MathTex(
 			#0    1    2    3    4                    5    6    7    8    9
-			'A', 'F', 'B', 'X', is_cyclic + x_space, 'A', 'G', 'C', 'Y', is_cyclic
+			'A', 'F', 'B', 'X', CYCLIC + QQUAD, 'A', 'G', 'C', 'Y', CYCLIC
 		)
 		t13.scale(label_scale_factor).next_to(t12, DOWN, y_buff)
 		for i in range(4):
@@ -307,8 +303,8 @@ class Video(Scene):
 		self.wait(2)
 
 		t14 = MathTex(
-			#  0    1    2    3    4      5    6    7    8                9   10   11   12   13     14   15   16   17
-			angle, 'A', 'X', 'D', '=', angle, 'D', 'B', 'F' + x_space, angle, 'E', 'Y', 'A', '=', angle, 'G', 'C', 'E'
+			#  0    1    2    3    4      5    6    7    8              9   10   11   12   13     14   15   16   17
+			ANGLE, 'A', 'X', 'D', '=', ANGLE, 'D', 'B', 'F' + QQUAD, ANGLE, 'E', 'Y', 'A', '=', ANGLE, 'G', 'C', 'E'
 		)
 		t14.scale(label_scale_factor).next_to(t12, DOWN, y_buff)
 		for i in [*range(4), *range(5, 9)]:
@@ -340,13 +336,13 @@ class Video(Scene):
 				Write(t14[13:15]), *[ReplacementTransform(t13[i], t14[j]) for i, j in [(6, 15), (7, 16)]],
 				Write(t14[17])
 			),
-			lag_ratio=long_lag_ratio
+			lag_ratio=LARGE_LAG_RATIO
 		))
 		self.wait(2)
 
 		t15 = MathTex(
-			#  0    1    2    3    4      5    6    7    8                9   10   11   12   13     14   15   16   17
-			angle, 'A', 'X', 'D', '=', angle, 'X', 'D', 'A' + x_space, angle, 'E', 'Y', 'A', '=', angle, 'A', 'E', 'Y'
+			#  0    1    2    3    4      5    6    7    8              9   10   11   12   13     14   15   16   17
+			ANGLE, 'A', 'X', 'D', '=', ANGLE, 'X', 'D', 'A' + QQUAD, ANGLE, 'E', 'Y', 'A', '=', ANGLE, 'A', 'E', 'Y'
 		)
 		t15.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
 		for i in [*range(4), *range(5, 9)]:
@@ -370,8 +366,8 @@ class Video(Scene):
 		self.wait(2)
 
 		t16 = MathTex(
-			#0    1    2    3    4              5    6    7    8    9
-			'A', 'X', '=', 'A', 'D' + x_space, 'A', 'Y', '=', 'A', 'E'
+			#0    1    2    3    4            5    6    7    8    9
+			'A', 'X', '=', 'A', 'D' + QQUAD, 'A', 'Y', '=', 'A', 'E'
 		)
 		t16.scale(label_scale_factor).next_to(ref_line, DOWN, y_buff)
 		for i in [0, 1, 3, 4]:
@@ -414,7 +410,7 @@ class Video(Scene):
 
 		t18 = MathTex(
 			#0    1    2    3    4
-			'X', 'Y', 'D', 'E', is_cyclic
+			'X', 'Y', 'D', 'E', CYCLIC
 		)
 		t18.scale(label_scale_factor).move_to(ref_line)
 		for i in range(4):
@@ -446,17 +442,16 @@ class Video(Scene):
 				t17
 			]], run_time=.7
 		)
-		radius_float = .01
 		self.play(
 			*[Uncreate(item) for item in [
 				line_AD, line_AE, line_AX, line_AY,
 				angle_AXD, angle_XDA, angle_AEY, angle_EYA
 			]],
 			*[FadeOut(item) for item in [dot_A, label_A]],
-			*[ClockwiseTransform(*args, float=radius_float) for args in [
+			*[ClockwiseTransform(*args, float=SMALL_RADIUS) for args in [
 				(label_X, new_label_X), (label_E, new_label_E)
 			]],
-			*[CounterclockwiseTransform(*args, float=radius_float) for args in [
+			*[CounterclockwiseTransform(*args, float=SMALL_RADIUS) for args in [
 				(label_Y, new_label_Y), (label_D, new_label_D)
 			]],
 			GrowFromCenter(circle_Ar),
@@ -468,7 +463,7 @@ class Video(Scene):
 
 		t19 = MathTex(
 			#0    1    2    3    4                    5    6    7    8    9
-			'X', 'Y', 'D', 'E', is_cyclic + x_space, 'X', 'Y', 'F', 'G', is_cyclic
+			'X', 'Y', 'D', 'E', CYCLIC + QQUAD, 'X', 'Y', 'F', 'G', CYCLIC
 		)
 		t19.scale(label_scale_factor).move_to(ref_line)
 		for i in range(4):
@@ -476,13 +471,13 @@ class Video(Scene):
 			t19[i+5].set_color(c6)
 		self.play(AnimationGroup(
 			ReplacementTransform(t18, t19[:5]), Write(t19[5:]),
-			lag_ratio=long_lag_ratio
+			lag_ratio=LARGE_LAG_RATIO
 		))
 		self.wait()
 
 		t20 = MathTex(
-			#  0    1    2    3    4      5    6    7    8                9   10   11   12   13     14   15   16   17
-			angle, 'E', 'Y', 'X', '=', angle, 'E', 'D', 'X' + x_space, angle, 'G', 'Y', 'X', '=', angle, 'G', 'F', 'X'
+			#  0    1    2    3    4      5    6    7    8              9   10   11   12   13     14   15   16   17
+			ANGLE, 'E', 'Y', 'X', '=', ANGLE, 'E', 'D', 'X' + QQUAD, ANGLE, 'G', 'Y', 'X', '=', ANGLE, 'G', 'F', 'X'
 		)
 		t20.scale(label_scale_factor).move_to(ref_line)
 		for i in [*range(4), *range(5, 9)]:
@@ -507,7 +502,7 @@ class Video(Scene):
 			Write(t20[4]),
 			Create(line_DE),
 			AnimationGroup(Create(angle_EDX), Write(t20[5:9])),
-			lag_ratio=med_lag_ratio
+			lag_ratio=MED_LAG_RATIO
 		))
 		self.wait()
 
@@ -527,13 +522,13 @@ class Video(Scene):
 			Write(t20[13]),
 			Create(line_FG),
 			AnimationGroup(Create(angle_GFX), Write(t20[14:])),
-			lag_ratio=med_lag_ratio
+			lag_ratio=MED_LAG_RATIO
 		))
 		self.wait(2)
 
 		t21 = MathTex(
 			#  0    1    2    3    4      5    6    7    8    9     10   11   12   13   14     15   16   17   18
-			angle, 'E', 'D', 'X', '=', angle, 'E', 'Y', 'X', '=', angle, 'G', 'Y', 'X', '=', angle, 'G', 'F', 'X'
+			ANGLE, 'E', 'D', 'X', '=', ANGLE, 'E', 'Y', 'X', '=', ANGLE, 'G', 'Y', 'X', '=', ANGLE, 'G', 'F', 'X'
 		)
 		t21.scale(label_scale_factor).move_to(ref_line)
 		for i in [*range(4), *range(5, 9), *range(10, 14), *range(15, 19)]:
@@ -545,7 +540,7 @@ class Video(Scene):
 
 		t22 = MathTex(
 			#  0    1    2    3    4      5    6    7    8
-			angle, 'E', 'D', 'X', '=', angle, 'G', 'F', 'X'
+			ANGLE, 'E', 'D', 'X', '=', ANGLE, 'G', 'F', 'X'
 		)
 		t22.scale(label_scale_factor).move_to(ref_line)
 		for i in [*range(4), *range(5, 9)]:
@@ -572,10 +567,10 @@ class Video(Scene):
 		)
 		self.play(
 			*[Uncreate(item) for item in [line_XY, angle_EYX]],
-			*[CounterclockwiseTransform(*args, float=radius_float) for args in [
+			*[CounterclockwiseTransform(*args, float=SMALL_RADIUS) for args in [
 				(label_X, new_label_X), (label_E, new_label_E)
 			]],
-			*[ClockwiseTransform(*args, float=radius_float) for args in [
+			*[ClockwiseTransform(*args, float=SMALL_RADIUS) for args in [
 				(label_Y, new_label_Y), (label_D, new_label_D)
 			]],
 			*[FadeOut(t21[i+4]) for i in [*range(5), *range(6, 11)]],

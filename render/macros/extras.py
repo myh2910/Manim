@@ -1,21 +1,5 @@
 from manim import *
-
-linebreak = r' \\ \hphantom{} \\ '
-qquad = r'\qquad'
-qqquad = r'\qquad\qquad'
-iff = r'\iff &'
-angle = r'\angle '
-
-is_cyclic = r"\text{ es c\'iclico}"
-are_collinear = r'\text{ son colineales}'
-prove_that = r'\text{Demostrar que }'
-
-def item(style='square'):
-	if style == 'square':
-		bullet = r'\text{\tiny $\blacksquare\,$ }&'
-	else:
-		bullet = r'$\bullet\,$ '
-	return bullet
+from .constants import *
 
 def belongs_to(sth=None, of=None):
 	text = r'\text{ pertenece a '

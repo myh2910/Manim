@@ -15,14 +15,7 @@ Some command line flags:
  -f : opens the file browser at the location of the animation
  -i : .gif format'''
 
-def degrees(t):
-    """Converts t in radians into degrees."""
-    return t/DEGREES
-
-def radians(t):
-    """Converts t in degrees into radians."""
-    return t*DEGREES
-
+#deprecated
 def coord(P) -> tuple:
     """Returns the coordinates of the point P."""
     t = type(P)
@@ -33,16 +26,19 @@ def coord(P) -> tuple:
     else:
         return P[0], P[1]
 
+#deprecated
 def comp(P) -> complex:
     """Returns a complex number with the same coordinates as P."""
     x, y = coord(P)
     return complex(x, y)
 
+#deprecated
 def nparray(P) -> np.ndarray:
     """Returns an array with the same coordinates as P."""
     x, y = coord(P)
     return np.array((x, y, 0))
 
+#deprecated. Use np.linalg.norm instead.
 def distance(A, B) -> float:
     """Returns the length of the segment AB."""
     x1, y1 = coord(A)
@@ -50,10 +46,12 @@ def distance(A, B) -> float:
     x, y = x1-x2, y1-y2
     return (x**2+y**2)**(1/2)
 
+#deprecated. Use angle_of_vector instead.
 def arg(P) -> float:
     """Returns the angle between the vector P and the real axis in radians."""
     return cmath.phase(comp(P))
 
+#deprecated. Use normalize instead.
 def dir(P):
     """Returns a vector with modulus 1 with its direction equal to P."""
     t = type(P)
@@ -65,10 +63,12 @@ def dir(P):
             x, y = coord(P)
             return np.array((x/d, y/d, 0))
     else:
-        return complex(np.cos(radians(P)), np.sin(radians(P)))
+        return complex(np.cos(P*DEGREES), np.sin(P*DEGREES))
 
+#deprecated. Use ORIGIN instead.
 origin = complex(0, 0)
 
+#deprecated. Use line_intersection instead.
 def extension(A, B, C, D) -> complex:
     """Returns the intersection point between lines AB and CD."""
     try:
@@ -76,6 +76,7 @@ def extension(A, B, C, D) -> complex:
     except:
         return extension(comp(A), comp(B), comp(C), comp(D))
 
+#deprecated. Use get_projection instead.
 def foot(P, A, B) -> complex:
     """Returns the foot of the perpendicular from P to the line AB."""
     try:
@@ -90,6 +91,7 @@ def sim(B, C, A1, B1, C1) -> complex:
     except:
         return sim(comp(B), comp(C), comp(A1), comp(B1), comp(C1))
 
+#deprecated
 def circumcenter(A, B, C) -> complex:
     """Returns the circumcenter of triangle ABC."""
     try:
@@ -99,34 +101,42 @@ def circumcenter(A, B, C) -> complex:
     except:
         return circumcenter(comp(A), comp(B), comp(C))
 
+#deprecated
 def DOT(P, c=WHITE, s=ORIGIN, **kwargs) -> Dot:
     """Returns a Dot element shifted by s colored with c."""
     x, y = coord(P)
     return Dot(np.array((x, y, 0)), color=c, **kwargs).shift(s)
 
+#deprecated
 def POLY(*vertices, **kwargs):
     return Polygon(*[nparray(vertex) for vertex in vertices], **kwargs)
 
+#deprecated
 def CR(r=1, O=ORIGIN, c=WHITE, **kwargs) -> Circle:
     """Returns the circle centered at O with radius r."""
     return Circle(radius=r, color=c, **kwargs).move_to(nparray(O))
 
+#deprecated
 def CP(P, O=ORIGIN, c=WHITE, **kwargs) -> Circle:
     """Returns the circle centered at O with radius OP."""
     return CR(distance(O, P), nparray(O), c, **kwargs)
 
+#deprecated
 def MP(label, P, array=UP, s=1, **kwargs) -> Tex:
     """Returns the label of an object."""
     return Tex(label).scale(s).next_to(P, dir(nparray(array)), 0.25*s, **kwargs)
 
+#deprecated
 def MASS(*args):
     lst = make_lst(args)
     return center_of_mass([nparray(item) for item in lst])
 
+#deprecated
 def MID(A, B):
     """Returns the midpoint of the segment AB."""
     return MASS(A, B)
 
+#deprecated
 def LINE(A, B, c=WHITE, **kwargs) -> Line:
     """Returns the line AB."""
     return Line(nparray(A), nparray(B), **kwargs).set_color(c)
@@ -159,58 +169,6 @@ def make_lst(args):
         for elem in lst2:
             lst.append(elem)
     return lst
-
-def COL(*args, c=WHITE):
-    """Color items in args with color c."""
-    lst = make_lst(args)
-    return [item.animate.set_color(c) for item in lst]
-
-def REPEATED_LST(string: str) -> list[str]: 
-    lst = []
-    if len(string) == 0:
-        lst = ['']
-    elif string[0] != ' ':
-        for i, item in enumerate(string):
-            if item != ' ' and i < len(string)-1:
-                if string[i+1] != ' ':
-                    lst.append(item)
-                elif string[i+1] == ' ':
-                    j = i+1
-                    while True:
-                        if j == len(string):
-                            break
-                        elif string[j] != ' ':
-                            break
-                        else:
-                            j += 1
-                    lst.append(string[i:j])
-            elif item != ' ' and i == len(string)-1:
-                lst.append(item)
-    else:
-        j = 0
-        while True:
-            if j == len(string):
-                lst.append(' '*len(string))
-                break
-            elif string[j] != ' ':
-                for idx, item in enumerate(REPEATED_LST(string[j:])):
-                    if idx == 0:
-                        lst.append(' '*j + item)
-                    else:
-                        lst.append(item)
-                break
-            else:
-                j += 1
-    return lst
-    
-def REPEAT(to_repeat: str, string: str) -> list[str]:
-    final_lst = []
-    string = REPEATED_LST(string)
-    if len(string) == 0:
-        final_lst = ['']
-    for item in string:
-         final_lst.append('\\' + to_repeat + '{' + item + '}')
-    return final_lst
 
 def AUDIO(s, audios, intervals, times, gain=None, epsilon=.4):
     for idx, audio in enumerate(audios):

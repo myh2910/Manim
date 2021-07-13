@@ -1,5 +1,5 @@
 assets/
 media/
-python/__pycache__
-python/macros/__pycache__
-python/example.py
+render/__pycache__
+render/macros/__pycache__
+render/example.py

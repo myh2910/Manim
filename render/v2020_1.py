@@ -1,4 +1,5 @@
-from asymptote import *
+from render.macros.extras import *
+from render.macros.asymptote import *
 
 class Video(Scene):
 	def construct(self):
@@ -8,14 +9,14 @@ class Video(Scene):
 
 		t1 = Tex(r'\textsf{Problema 1}').set_color_by_gradient('#3c94d4', BLUE_B)
 		t1.scale(2.5).shift(.3*UP+3.6*RIGHT)
-		self.play(AnimationGroup(logo.animate.shift(3.1*LEFT), Write(t1), lag_ratio=.8))
+		self.play(AnimationGroup(logo.animate.shift(3.1*LEFT), Write(t1), lag_ratio=MED_LAG_RATIO))
 		self.wait(.5)
 
 		t2 = Tex(
 			r'\textbf{Problema 1.} \ \ ',
 			r"Considere el cuadril\'atero convexo $ABCD$. El punto $P$ est\'a en el interior de $ABCD$. Asuma las siguientes igualdades de razones: $$\angle PAD:\angle PBA:\angle DPA=1:2:3=\angle CBP:\angle BAP:\angle BPC.$$ Demuestre que las siguientes tres rectas concurren en un punto: la bisectriz interna del \'angulo $\angle ADP$, la bisectriz interna del \'angulo $\angle PCB$ y la mediatriz del segmento $AB$.",
 			tex_environment=None,
-			tex_template=TEX_TEMPLATE('512.34pt')
+			tex_template=tex_template('512.34pt')
 		)
 		t2[0].set_color_by_gradient(GOLD, GOLD_A)
 		t2.scale(.5).to_corner(UP)
@@ -54,13 +55,12 @@ class Video(Scene):
 		dot_P, dot_A, dot_B, dot_C, dot_D, dot_O = DOT(P), DOT(A), DOT(B), DOT(C), DOT(D), DOT(O)
 		polygon_ABCD = POLY(A, B, C, D, color=BLUE)
 
-		label_scale_factor = .5
-		label_P = MP('$P$', dot_P, RIGHT, label_scale_factor)
-		label_A = MP('$A$', dot_A, A, label_scale_factor)
-		label_B = MP('$B$', dot_B, B, label_scale_factor)
-		label_C = MP('$C$', dot_C, C, label_scale_factor)
-		label_D = MP('$D$', dot_D, D, label_scale_factor)
-		label_O = MP('$O$', dot_O, LEFT, label_scale_factor)
+		label_P = MP('$P$', dot_P, RIGHT, LABEL_SCALE)
+		label_A = MP('$A$', dot_A, A, LABEL_SCALE)
+		label_B = MP('$B$', dot_B, B, LABEL_SCALE)
+		label_C = MP('$C$', dot_C, C, LABEL_SCALE)
+		label_D = MP('$D$', dot_D, D, LABEL_SCALE)
+		label_O = MP('$O$', dot_O, LEFT, LABEL_SCALE)
 
 		line_color = RED_A
 		line_PA = LINE(P, A, line_color)
@@ -77,17 +77,17 @@ class Video(Scene):
 		angle_PBA = MA(P, B, A, large_angle_length, color=color_alpha)
 		angle_DPA = MA(D, P, A, large_angle_length, color=color_alpha)
 
-		label_alpha = Tex(r'$\alpha$').set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, A, D, large_angle_length+small_angle_buff))
-		label_2alpha = Tex(r'$2\alpha$').set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, B, A, large_angle_length+small_angle_buff))
-		label_3alpha = Tex(r'$3\alpha$').set_color(color_alpha).scale(label_scale_factor).move_to(MA(D, P, A, large_angle_length+small_angle_buff))
+		label_alpha = Tex(r'$\alpha$').set_color(color_alpha).scale(LABEL_SCALE).move_to(MA(P, A, D, large_angle_length+small_angle_buff))
+		label_2alpha = Tex(r'$2\alpha$').set_color(color_alpha).scale(LABEL_SCALE).move_to(MA(P, B, A, large_angle_length+small_angle_buff))
+		label_3alpha = Tex(r'$3\alpha$').set_color(color_alpha).scale(LABEL_SCALE).move_to(MA(D, P, A, large_angle_length+small_angle_buff))
 
 		angle_CBP = MA(C, B, P, large_angle_length, color=color_beta)
 		angle_BAP = MA(B, A, P, large_angle_length, color=color_beta)
 		angle_BPC = MA(B, P, C, large_angle_length, color=color_beta)
 
-		label_beta = Tex(r'$\beta$').set_color(color_beta).scale(label_scale_factor).move_to(MA(C, B, P, large_angle_length+small_angle_buff))
-		label_2beta = Tex(r'$2\beta$').set_color(color_beta).scale(label_scale_factor).move_to(MA(B, A, P, large_angle_length+small_angle_buff))
-		label_3beta = Tex(r'$3\beta$').set_color(color_beta).scale(label_scale_factor).move_to(MA(B, P, C, large_angle_length+.5))
+		label_beta = Tex(r'$\beta$').set_color(color_beta).scale(LABEL_SCALE).move_to(MA(C, B, P, large_angle_length+small_angle_buff))
+		label_2beta = Tex(r'$2\beta$').set_color(color_beta).scale(LABEL_SCALE).move_to(MA(B, A, P, large_angle_length+small_angle_buff))
+		label_3beta = Tex(r'$3\beta$').set_color(color_beta).scale(LABEL_SCALE).move_to(MA(B, P, C, large_angle_length+.5))
 
 		line_color_2 = YELLOW_A
 		line_OA = LINE(O, A, line_color_2)
@@ -95,10 +95,10 @@ class Video(Scene):
 		line_OP = LINE(O, P, line_color_2)
 
 		angle_POA = MA(P, O, A, large_angle_length, color=color_alpha)
-		label_4alpha = Tex(r'$4\alpha$').set_color(color_alpha).scale(label_scale_factor).move_to(MA(P, O, A, large_angle_length+.5))
+		label_4alpha = Tex(r'$4\alpha$').set_color(color_alpha).scale(LABEL_SCALE).move_to(MA(P, O, A, large_angle_length+.5))
 
 		angle_BOP = MA(B, O, P, small_angle_length, color=color_beta)
-		label_4beta = Tex(r'$4\beta$').set_color(color_beta).scale(label_scale_factor).move_to(MA(B, O, P, large_angle_length+.8))
+		label_4beta = Tex(r'$4\beta$').set_color(color_beta).scale(LABEL_SCALE).move_to(MA(B, O, P, large_angle_length+.8))
 
 		quadrilateral_ABCD = [
 			polygon_ABCD,
@@ -116,7 +116,7 @@ class Video(Scene):
 		).shift(1.2*DOWN)
 		
 		self.play(FadeIn(VGroup(*quadrilateral_ABCD), shift=UP))
-		self.play(AnimationGroup(*[GrowFromCenter(i) for i in [dot_P, label_P]], lag_ratio=.8))
+		self.play(AnimationGroup(*[GrowFromCenter(i) for i in [dot_P, label_P]], lag_ratio=MED_LAG_RATIO))
 		self.add_foreground_mobjects(
 			polygon_ABCD,
 			dot_P, dot_A, dot_B, dot_C, dot_D,
@@ -161,10 +161,9 @@ class Video(Scene):
 			label_4alpha, label_4beta
 		).shift(3.1*LEFT)
 
-		x_space = r'\qquad\qquad'
 		t3 = MathTex(
-			#      0    1           2    3    4    5                   6    7           8    9   10   11
-			r'\alpha', '=', r'\angle ', 'P', 'A', 'D' + x_space, r'\beta', '=', r'\angle ', 'C', 'B', 'P'
+			#      0    1      2    3    4    5                  6    7      8    9   10   11
+			r'\alpha', '=', ANGLE, 'P', 'A', 'D' + QQQUAD, r'\beta', '=', ANGLE, 'C', 'B', 'P'
 		)
 		for i in [0, *range(2, 6)]:
 			t3[i].set_color(color_alpha)
@@ -175,7 +174,7 @@ class Video(Scene):
 
 		self.play(VGroup(*quadrilateral_ABCD).animate.shift(3.1*LEFT))
 
-		short_lag_ratio, short_run_time = .5, 5
+		short_run_time = 5
 		for idx, (i, args) in enumerate([
 			(label_alpha, [label_P, label_A, label_D]),
 			(label_beta, [label_C, label_B, label_P])
@@ -185,14 +184,14 @@ class Video(Scene):
 				TransformFromCopy(i, t3[j]),
 				Write(t3[j+1:j+3]),
 				TransformFromCopy(VGroup(*args), t3[j+3:j+6]),
-				lag_ratio=short_lag_ratio, run_time=short_run_time
+				lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 			))
 			self.wait()
 
 		y_space = .3
 		t4 = MathTex(
-			#       0    1    2    3    4    5                            6    7    8    9   10   11
-			r'\angle ', 'D', 'P', 'A', '=', r'3\alpha' + x_space, r'\angle ', 'B', 'P', 'C', '=', r'3\beta'
+			#  0    1    2    3    4    5                      6    7    8    9   10   11
+			ANGLE, 'D', 'P', 'A', '=', r'3\alpha' + QQQUAD, ANGLE, 'B', 'P', 'C', '=', r'3\beta'
 		)
 		for i in [*range(4), 5]:
 			t4[i].set_color(color_alpha)
@@ -207,37 +206,37 @@ class Video(Scene):
 			self.play(AnimationGroup(
 				Write(t4[j]), TransformFromCopy(VGroup(*args), t4[j+1:j+4]),
 				Write(t4[j+4]), TransformFromCopy(i, t4[j+5]),
-				lag_ratio=short_lag_ratio, run_time=short_run_time
+				lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 			))
 			self.wait()
 
 		t5 = MathTex(
-			#       0    1    2    3    4    5                     6    7    8    9   10          11   12   13   14
-			r'\angle ', 'A', 'D', 'P', '=', r'180^\circ-', r'\angle ', 'D', 'P', 'A', '-', r'\angle ', 'P', 'A', 'D'
+			#  0    1    2    3    4    5                6    7    8    9   10     11   12   13   14
+			ANGLE, 'A', 'D', 'P', '=', r'180^\circ-', ANGLE, 'D', 'P', 'A', '-', ANGLE, 'P', 'A', 'D'
 		)
 		t6 = MathTex(
-			#       0    1    2    3    4    5                     6    7    8
-			r'\angle ', 'A', 'D', 'P', '=', r'180^\circ-', r'3\alpha', '-', r'\alpha'
+			#  0    1    2    3    4    5                     6    7    8
+			ANGLE, 'A', 'D', 'P', '=', r'180^\circ-', r'3\alpha', '-', r'\alpha'
 		)
 		t7 = MathTex(
-			#       0    1    2    3    4              5    6
-			r'\angle ', 'A', 'D', 'P', '=', r'180^\circ-', r'4\alpha'
+			#  0    1    2    3    4              5    6
+			ANGLE, 'A', 'D', 'P', '=', r'180^\circ-', r'4\alpha'
 		)
 		t8 = MathTex(
-			#       0    1    2    3    4    5                     6    7    8    9   10          11   12   13   14
-			r'\angle ', 'P', 'C', 'B', '=', r'180^\circ-', r'\angle ', 'B', 'P', 'C', '-', r'\angle ', 'C', 'B', 'P'
+			#  0    1    2    3    4    5                6    7    8    9   10     11   12   13   14
+			ANGLE, 'P', 'C', 'B', '=', r'180^\circ-', ANGLE, 'B', 'P', 'C', '-', ANGLE, 'C', 'B', 'P'
 		)
 		t9 = MathTex(
-			#       0    1    2    3    4    5                    6    7    8
-			r'\angle ', 'P', 'C', 'B', '=', r'180^\circ-', r'3\beta', '-', r'\beta'
+			#  0    1    2    3    4    5                    6    7    8
+			ANGLE, 'P', 'C', 'B', '=', r'180^\circ-', r'3\beta', '-', r'\beta'
 		)
 		t10 = MathTex(
-			#       0    1    2    3    4              5    6
-			r'\angle ', 'P', 'C', 'B', '=', r'180^\circ-', r'4\beta'
+			#  0    1    2    3    4              5    6
+			ANGLE, 'P', 'C', 'B', '=', r'180^\circ-', r'4\beta'
 		)
 		t11 = MathTex(
-			#       0    1    2    3    4              5    6                            7    8    9   10   11             12   13
-			r'\angle ', 'A', 'D', 'P', '=', r'180^\circ-', r'4\alpha' + x_space, r'\angle ', 'P', 'C', 'B', '=', r'180^\circ-', r'4\beta'
+			#  0    1    2    3    4             5    6                       7    8    9   10   11             12   13
+			ANGLE, 'A', 'D', 'P', '=', r'180^\circ-', r'4\alpha' + QQQUAD, ANGLE, 'P', 'C', 'B', '=', r'180^\circ-', r'4\beta'
 		)
 		for i in [*range(4), *range(6, 10), *range(11, 15)]:
 			t5[i].set_color(color_alpha)
@@ -259,7 +258,7 @@ class Video(Scene):
 			Write(t5[0]), TransformFromCopy(VGroup(label_A, label_D, label_P), t5[1:4]),
 			Write(t5[4:7]), TransformFromCopy(VGroup(label_D, label_P, label_A), t5[7:10]),
 			Write(t5[10:12]), TransformFromCopy(VGroup(label_P, label_A, label_D), t5[12:]),
-			lag_ratio=short_lag_ratio, run_time=long_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=long_run_time
 		))
 		self.wait()
 
@@ -274,7 +273,7 @@ class Video(Scene):
 			Write(t8[0]), TransformFromCopy(VGroup(label_P, label_C, label_B), t8[1:4]),
 			Write(t8[4:7]), TransformFromCopy(VGroup(label_B, label_P, label_C), t8[7:10]),
 			Write(t8[10:12]), TransformFromCopy(VGroup(label_C, label_B, label_P), t8[12:]),
-			lag_ratio=short_lag_ratio, run_time=long_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=long_run_time
 		))
 		self.wait()
 
@@ -285,7 +284,7 @@ class Video(Scene):
 		self.play(ReplacementTransform(t10, t11[7:]))
 		self.wait()
 
-		self.play(AnimationGroup(*[GrowFromCenter(i) for i in [dot_O, label_O]], lag_ratio=.8))
+		self.play(AnimationGroup(*[GrowFromCenter(i) for i in [dot_O, label_O]], lag_ratio=MED_LAG_RATIO))
 		self.play(*[Uncreate(item) for item in [
 			angle_PAD, angle_DPA, angle_CBP, angle_BPC,
 			label_alpha, label_3alpha, label_beta, label_3beta
@@ -324,8 +323,8 @@ class Video(Scene):
 		self.wait()
 
 		t12 = MathTex(
-			#       0    1    2    3    4    5                            6    7    8    9   10   11
-			r'\angle ', 'P', 'O', 'A', '=', r'4\alpha' + x_space, r'\angle ', 'B', 'O', 'P', '=', r'4\beta'
+			#  0    1    2    3    4    5                      6    7    8    9   10   11
+			ANGLE, 'P', 'O', 'A', '=', r'4\alpha' + QQQUAD, ANGLE, 'B', 'O', 'P', '=', r'4\beta'
 		)
 		for i in [*range(4), 5]:
 			t12[i].set_color(color_alpha)
@@ -334,7 +333,7 @@ class Video(Scene):
 		self.play(AnimationGroup(
 			Write(t12[0]), TransformFromCopy(VGroup(label_P, label_O, label_A), t12[1:4]),
 			Write(t12[4]), TransformFromCopy(label_4alpha, t12[5]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.play(*[Uncreate(i) for i in [angle_PBA, label_2alpha, angle_POA, label_4alpha]])
 		self.wait()
@@ -355,7 +354,7 @@ class Video(Scene):
 		self.play(AnimationGroup(
 			Write(t12[6]), TransformFromCopy(VGroup(label_B, label_O, label_P), t12[7:10]),
 			Write(t12[10]), TransformFromCopy(label_4beta, t12[11]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.play(
 			*[Uncreate(i) for i in [angle_BAP, label_2beta, angle_BOP, label_4beta]],
@@ -366,8 +365,8 @@ class Video(Scene):
 
 		large_y_space = .4
 		t13 = MathTex(
-			#       0    1    2    3    4           5    6    7    8    9   10
-			r'\angle ', 'A', 'D', 'P', '+', r'\angle ', 'P', 'O', 'A', '=', r'180^\circ'
+			#  0    1    2    3    4      5    6    7    8    9   10
+			ANGLE, 'A', 'D', 'P', '+', ANGLE, 'P', 'O', 'A', '=', r'180^\circ'
 		)
 		for i in [*range(4), *range(5, 9)]:
 			t13[i].set_color(color_alpha)
@@ -376,13 +375,13 @@ class Video(Scene):
 			TransformFromCopy(t11[:4], t13[:4]), Write(t13[4]),
 			TransformFromCopy(t12[:4], t13[5:9]), Write(t13[9]),
 			AnimationGroup(*[ReplacementTransform(i.copy(), t13[10]) for i in [t11[5:7], t12[5]]]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.wait()
 
 		t14 = MathTex(
-			#         0    1    2    3    4    5
-			r'\implies ', 'A', 'D', 'P', 'O', r"\text{ es c\'iclico}",
+			#    0    1    2    3    4    5
+			IMPLIES, 'A', 'D', 'P', 'O', CYCLIC,
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in range(4):
@@ -392,7 +391,7 @@ class Video(Scene):
 			Write(t14[0]),
 			TransformFromCopy(VGroup(label_A, label_D, label_P, label_O), t14[1:5]),
 			Write(t14[5]),
-			lag_ratio=short_lag_ratio, run_time=3
+			lag_ratio=SMALL_LAG_RATIO, run_time=3
 		))
 		self.wait()
 		self.play(FadeOut(t13, t14[0]))
@@ -409,13 +408,13 @@ class Video(Scene):
 			TransformFromCopy(VGroup(label_O, label_A), t15[:2]),
 			Write(t15[2]),
 			TransformFromCopy(VGroup(label_O, label_P), t15[3:]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.wait()
 
 		t16 = MathTex(
-			#         0    1    2                                                                 3    4    5    6
-			r'\implies ', 'O', r"\text{ pertenece a la bisectriz interna del \'angulo }", r'\angle ', 'A', 'D', 'P',
+			#    0    1    2                                                            3    4    5    6
+			IMPLIES, 'O', r"\text{ pertenece a la bisectriz interna del \'angulo }", ANGLE, 'A', 'D', 'P',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in [0, *range(2, 6)]:
@@ -424,13 +423,13 @@ class Video(Scene):
 		self.play(AnimationGroup(
 			Write(t16[0]), TransformFromCopy(label_O, t16[1]),
 			Write(t16[2:4]), TransformFromCopy(VGroup(label_A, label_D, label_P), t16[4:]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.wait()
 		self.play(FadeOut(t14[1:], t15, t16[0]), t16[1:].animate.next_to(t12, DOWN, y_space))
 		t17 = MathTex(
-			#       0    1    2    3    4           5    6    7    8    9   10
-			r'\angle ', 'P', 'C', 'B', '+', r'\angle ', 'B', 'O', 'P', '=', r'180^\circ'
+			#  0    1    2    3    4      5    6    7    8    9   10
+			ANGLE, 'P', 'C', 'B', '+', ANGLE, 'B', 'O', 'P', '=', r'180^\circ'
 		)
 		for i in [*range(4), *range(5, 9)]:
 			t17[i].set_color(color_beta)
@@ -439,13 +438,13 @@ class Video(Scene):
 			TransformFromCopy(t11[7:11], t17[:4]), Write(t17[4]),
 			TransformFromCopy(t12[6:10], t17[5:9]), Write(t17[9]),
 			AnimationGroup(*[ReplacementTransform(i.copy(), t17[10]) for i in [t11[12:], t12[11]]]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.wait()
 
 		t18 = MathTex(
-			#         0    1    2    3    4    5
-			r'\implies ', 'P', 'C', 'B', 'O', r"\text{ es c\'iclico}",
+			#    0    1    2    3    4    5
+			IMPLIES, 'P', 'C', 'B', 'O', CYCLIC,
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in range(4):
@@ -455,7 +454,7 @@ class Video(Scene):
 			Write(t18[0]),
 			TransformFromCopy(VGroup(label_P, label_C, label_B, label_O), t18[1:5]),
 			Write(t18[5]),
-			lag_ratio=short_lag_ratio, run_time=3
+			lag_ratio=SMALL_LAG_RATIO, run_time=3
 		))
 		self.wait()
 		self.play(FadeOut(t17, t18[0]))
@@ -472,13 +471,13 @@ class Video(Scene):
 			TransformFromCopy(VGroup(label_O, label_B), t19[:2]),
 			Write(t19[2]),
 			TransformFromCopy(VGroup(label_O, label_P), t19[3:]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.wait()
 
 		t20 = MathTex(
-			#         0    1    2                                                                 3    4    5    6
-			r'\implies ', 'O', r"\text{ pertenece a la bisectriz interna del \'angulo }", r'\angle ', 'P', 'C', 'B',
+			#    0    1    2                                                            3    4    5    6
+			IMPLIES, 'O', r"\text{ pertenece a la bisectriz interna del \'angulo }", ANGLE, 'P', 'C', 'B',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in [0, *range(2, 6)]:
@@ -487,7 +486,7 @@ class Video(Scene):
 		self.play(AnimationGroup(
 			Write(t20[0]), TransformFromCopy(label_O, t20[1]),
 			Write(t20[2:4]), TransformFromCopy(VGroup(label_P, label_C, label_B), t20[4:]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.wait()
 		self.play(
@@ -508,11 +507,11 @@ class Video(Scene):
 			TransformFromCopy(VGroup(label_O, label_A), t21[:2]),
 			Write(t21[2]),
 			TransformFromCopy(VGroup(label_O, label_B), t21[3:]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		t22 = MathTex(
-			#         0    1    2                                                  3    4
-			r'\implies ', 'O', r'\text{ pertenece a la mediatriz del segmento }', 'A', 'B',
+			#    0    1    2                                                  3    4
+			IMPLIES, 'O', r'\text{ pertenece a la mediatriz del segmento }', 'A', 'B',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in [1, 3, 4]:
@@ -521,7 +520,7 @@ class Video(Scene):
 		self.play(AnimationGroup(
 			Write(t22[0]), TransformFromCopy(label_O, t22[1]),
 			Write(t22[2]), TransformFromCopy(VGroup(label_A, label_B), t22[3:]),
-			lag_ratio=short_lag_ratio, run_time=short_run_time
+			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		self.wait()
 		self.play(
@@ -539,7 +538,7 @@ class Video(Scene):
 			r'\\ y la mediatriz del segmento ', '$AB$',
 			#                                                6      7      8
 			r"\\ concurren en el circuncentro del tri\'angulo ", '$PAB$', '.',
-			tex_template=TEX_TEMPLATE('250pt', '1.2')
+			tex_template=tex_template('250pt', '1.2')
 		)
 		for i, color in enumerate([color_alpha, color_beta, YELLOW_A, RED_A]):
 			t23[2*i+1].set_color(color)
