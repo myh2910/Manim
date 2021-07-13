@@ -235,7 +235,7 @@ class Video(Scene):
 			ANGLE, 'P', 'C', 'B', '=', r'180^\circ-', r'4\beta'
 		)
 		t11 = MathTex(
-			#  0    1    2    3    4             5    6                       7    8    9   10   11             12   13
+			#  0    1    2    3    4              5    6                      7    8    9   10   11             12   13
 			ANGLE, 'A', 'D', 'P', '=', r'180^\circ-', r'4\alpha' + QQQUAD, ANGLE, 'P', 'C', 'B', '=', r'180^\circ-', r'4\beta'
 		)
 		for i in [*range(4), *range(6, 10), *range(11, 15)]:

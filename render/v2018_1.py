@@ -290,7 +290,7 @@ class Video(Scene):
 		self.wait(2)
 
 		t13 = MathTex(
-			#0    1    2    3    4                    5    6    7    8    9
+			#0    1    2    3    4               5    6    7    8    9
 			'A', 'F', 'B', 'X', CYCLIC + QQUAD, 'A', 'G', 'C', 'Y', CYCLIC
 		)
 		t13.scale(label_scale_factor).next_to(t12, DOWN, y_buff)
@@ -462,7 +462,7 @@ class Video(Scene):
 		self.wait()
 
 		t19 = MathTex(
-			#0    1    2    3    4                    5    6    7    8    9
+			#0    1    2    3    4               5    6    7    8    9
 			'X', 'Y', 'D', 'E', CYCLIC + QQUAD, 'X', 'Y', 'F', 'G', CYCLIC
 		)
 		t19.scale(label_scale_factor).move_to(ref_line)
