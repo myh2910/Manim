@@ -1,5 +1,5 @@
 # Manim
-Python source codes for the videos made for [Raul Alcantara's project](https://education-initiative-test.herokuapp.com/).
+Python source codes written for [Raul Alcantara's videos](https://www.youtube.com/channel/UCqVBiz4qJFCwmYvAkMUn_0A). Visit his [website](https://education-initiative-test.herokuapp.com/) for more information.
 
 ## Installation
 - `sudo pacman -Syu`
