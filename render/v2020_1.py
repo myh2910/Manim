@@ -381,7 +381,7 @@ class Video(Scene):
 
 		t14 = MathTex(
 			#    0    1    2    3    4    5
-			IMPLIES, 'A', 'D', 'P', 'O', CYCLIC,
+			IMPLIES, 'A', 'D', 'P', 'O', IS_CYCLIC,
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in range(4):
@@ -413,8 +413,8 @@ class Video(Scene):
 		self.wait()
 
 		t16 = MathTex(
-			#    0    1    2                                                            3    4    5    6
-			IMPLIES, 'O', r"\text{ pertenece a la bisectriz interna del \'angulo }", ANGLE, 'A', 'D', 'P',
+			#    0    1    2                                                   3    4    5    6
+			IMPLIES, 'O', BELONGS_TO(r"la bisectriz interna del \'angulo"), ANGLE, 'A', 'D', 'P',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in [0, *range(2, 6)]:
@@ -444,7 +444,7 @@ class Video(Scene):
 
 		t18 = MathTex(
 			#    0    1    2    3    4    5
-			IMPLIES, 'P', 'C', 'B', 'O', CYCLIC,
+			IMPLIES, 'P', 'C', 'B', 'O', IS_CYCLIC,
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in range(4):
@@ -476,8 +476,8 @@ class Video(Scene):
 		self.wait()
 
 		t20 = MathTex(
-			#    0    1    2                                                            3    4    5    6
-			IMPLIES, 'O', r"\text{ pertenece a la bisectriz interna del \'angulo }", ANGLE, 'P', 'C', 'B',
+			#    0    1    2                                                   3    4    5    6
+			IMPLIES, 'O', BELONGS_TO(r"la bisectriz interna del \'angulo"), ANGLE, 'P', 'C', 'B',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in [0, *range(2, 6)]:
@@ -510,8 +510,8 @@ class Video(Scene):
 			lag_ratio=SMALL_LAG_RATIO, run_time=short_run_time
 		))
 		t22 = MathTex(
-			#    0    1    2                                                  3    4
-			IMPLIES, 'O', r'\text{ pertenece a la mediatriz del segmento }', 'A', 'B',
+			#    0    1    2                                        3    4
+			IMPLIES, 'O', BELONGS_TO('la mediatriz del segmento'), 'A', 'B',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in [1, 3, 4]:

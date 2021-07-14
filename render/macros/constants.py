@@ -19,11 +19,13 @@ IFF = r'\iff &'
 IMPLIES = r'\implies '
 
 # Spaces
-BREAK = r' \\ \hphantom{} \\ '
+LINEBREAK = r' \\ \hphantom{} \\ '
 QQUAD = r'\qquad'
 QQQUAD = r'\qquad\qquad'
 
 # Text
-CYCLIC = r"\text{ es c\'iclico}"
-COLLINEAR =  r'\text{ son colineales}'
-PROVE = r'\text{Demostrar que }'
+AND = r'\text{ y }'
+IS_CYCLIC = r"\text{ es c\'iclico}"
+ARE_COLLINEAR =  r'\text{ son colineales}'
+ARE_PARALLEL = r'\text{ son paralelas}'
+PROVE_THAT = r'\text{Demostrar que }'

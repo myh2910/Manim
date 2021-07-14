@@ -2,7 +2,7 @@ from manim import *
 import cmath
 from pydub.audio_segment import AudioSegment
 
-'''https://docs.manim.community/en/stable/
+'''https://docs.manim.community
 Current version: Manim Community v0.8.0
 
 Some command line flags:
@@ -140,11 +140,6 @@ def MID(A, B):
 def LINE(A, B, c=WHITE, **kwargs) -> Line:
     """Returns the line AB."""
     return Line(nparray(A), nparray(B), **kwargs).set_color(c)
-
-def DA(A, B, k=0, c=WHITE, **kwargs) -> DoubleArrow:
-    """Returns the DoubleArrow AB."""
-    A, B = nparray(A), nparray(B)
-    return DoubleArrow((k+1)*A-k*B, (k+1)*B-k*A, **kwargs).set_color(c)
 
 def MA(A, B, C, l=0.25, settings=None, **kwargs):
     """Returns the arc of the angle ABC. The number of arcs depends on settings."""

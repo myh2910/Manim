@@ -7,7 +7,7 @@ class Video(Scene):
 
 		t2 = Tex(
 			r'\textbf{Problema 4.} ',
-			r"El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + BREAK + \
+			r"El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + LINEBREAK + \
 			r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\'a en la recta $AO$.",
 			tex_environment=None,
 			tex_template=TexTemplateLibrary.simple
@@ -15,7 +15,7 @@ class Video(Scene):
 		t2.set_color_by_tex('Problema', RED)
 		
 		t3 = Tex(
-			r"\hphantom{\textbf{Problema 4.} }El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + BREAK + \
+			r"\hphantom{\textbf{Problema 4.} }El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + LINEBREAK + \
 			r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\'a en la recta $AO$.",
 			tex_environment=None,
 			tex_template=TexTemplateLibrary.simple
@@ -25,41 +25,41 @@ class Video(Scene):
 
 		t5 = MathTex(
 			# 0    1    2    3    4    5    6    7    8    9   10   11
-			ITEM, 'A', 'D', '=', 'A', 'E', '=', 'A', 'F', '=', 'A', 'G' + BREAK,
+			ITEM, 'A', 'D', '=', 'A', 'E', '=', 'A', 'F', '=', 'A', 'G' + LINEBREAK,
 			#12   13   14   15   16   17
-			ITEM, 'B', 'D', 'K', 'F', CYCLIC + BREAK,
+			ITEM, 'B', 'D', 'K', 'F', IS_CYCLIC + LINEBREAK,
 			#18   19   20   21   22   23
-			ITEM, 'C', 'G', 'L', 'E', CYCLIC + BREAK,
-			#        24   25   26   27   28   29   30
-			ITEM + PROVE, 'A', ',', 'X', ',', 'O', COLLINEAR,
+			ITEM, 'C', 'G', 'L', 'E', IS_CYCLIC + LINEBREAK,
+			#             24   25   26   27   28   29   30
+			ITEM + PROVE_THAT, 'A', ',', 'X', ',', 'O', ARE_COLLINEAR,
 			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
 		t6 = MathTex(
 			# 0    1    2    3    4    5
-			'&A', ',', 'X', ',', 'O', COLLINEAR + BREAK,
+			'&A', ',', 'X', ',', 'O', ARE_COLLINEAR + LINEBREAK,
 			#6    7                              8    9   10
-			IFF, 'X', belongs_to('la mediatriz de'), 'F', 'G' + BREAK,
+			IFF, 'X', BELONGS_TO('la mediatriz de'), 'F', 'G' + LINEBREAK,
 			#11   12    13   14   15   16     17   18   19   20
 			IFF, ANGLE, 'K', 'F', 'G', '=', ANGLE, 'L', 'G', 'F',
 			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
 		t7 = MathTex(
-			ITEM + 'AD=AE=AF=AG' + BREAK + \
-			ITEM + 'BDKF' + CYCLIC + BREAK + \
-			ITEM + 'CGLE' + CYCLIC + BREAK + \
-			#         0    1      2    3    4    5      6    7    8    9
-			ITEM + PROVE, ANGLE, 'K', 'F', 'G', '=', ANGLE, 'L', 'G', 'F',
+			ITEM + 'AD=AE=AF=AG' + LINEBREAK + \
+			ITEM + 'BDKF' + IS_CYCLIC + LINEBREAK + \
+			ITEM + 'CGLE' + IS_CYCLIC + LINEBREAK + \
+			#              0    1      2    3    4    5      6    7    8    9
+			ITEM + PROVE_THAT, ANGLE, 'K', 'F', 'G', '=', ANGLE, 'L', 'G', 'F',
 			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
 		t8 = MathTex(
-			ITEM + 'AD=AE=AF=AG' + BREAK + \
-			ITEM + 'BDKF' + CYCLIC + BREAK + \
-			ITEM + 'CGLE' + CYCLIC + BREAK + \
-			#         0    1    2    3
-			ITEM + PROVE, 'x', '=', 'y',
+			ITEM + 'AD=AE=AF=AG' + LINEBREAK + \
+			ITEM + 'BDKF' + IS_CYCLIC + LINEBREAK + \
+			ITEM + 'CGLE' + IS_CYCLIC + LINEBREAK + \
+			#              0    1    2    3
+			ITEM + PROVE_THAT, 'x', '=', 'y',
 			tex_environment='align*',
 			tex_template=TexTemplateLibrary.simple
 		)
@@ -234,7 +234,6 @@ class Video(Scene):
 		for label, angle in [('A', 135), ('O', 225), ('X', 267)]:
 			add_dot(f'{label}1', get_coord(label), plane.pr2pt(1, angle*DEGREES), f'${label}$')
 
-		#deprecated
 		self.play(
 			CounterclockwiseTransform(*get_label('A,A1'), float=SMALL_RADIUS),
 			*[ClockwiseTransform(*get_label(f'{i},{i}1'), float=SMALL_RADIUS) for i in 'OX']

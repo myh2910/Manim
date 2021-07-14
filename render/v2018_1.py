@@ -148,12 +148,12 @@ class Video(Scene):
 			lag_ratio=.4
 		))
 		t5 = MathTex(
-			#0    1                                        2    3
-			'F', r'\text{ pertenece a la mediatriz de }', 'B', 'D'
+			#0    1                              2    3
+			'F', BELONGS_TO('la mediatriz de'), 'B', 'D'
 		)
 		t6 = MathTex(
-			#0    1                                        2    3
-			'G', r'\text{ pertenece a la mediatriz de }', 'C', 'E'
+			#0    1                              2    3
+			'G', BELONGS_TO('la mediatriz de'), 'C', 'E'
 		)
 		t7 =  MathTex(
 			#0    1    2    3    4
@@ -290,8 +290,8 @@ class Video(Scene):
 		self.wait(2)
 
 		t13 = MathTex(
-			#0    1    2    3    4               5    6    7    8    9
-			'A', 'F', 'B', 'X', CYCLIC + QQUAD, 'A', 'G', 'C', 'Y', CYCLIC
+			#0    1    2    3    4                  5    6    7    8    9
+			'A', 'F', 'B', 'X', IS_CYCLIC + QQUAD, 'A', 'G', 'C', 'Y', IS_CYCLIC
 		)
 		t13.scale(label_scale_factor).next_to(t12, DOWN, y_buff)
 		for i in range(4):
@@ -410,7 +410,7 @@ class Video(Scene):
 
 		t18 = MathTex(
 			#0    1    2    3    4
-			'X', 'Y', 'D', 'E', CYCLIC
+			'X', 'Y', 'D', 'E', IS_CYCLIC
 		)
 		t18.scale(label_scale_factor).move_to(ref_line)
 		for i in range(4):
@@ -462,8 +462,8 @@ class Video(Scene):
 		self.wait()
 
 		t19 = MathTex(
-			#0    1    2    3    4               5    6    7    8    9
-			'X', 'Y', 'D', 'E', CYCLIC + QQUAD, 'X', 'Y', 'F', 'G', CYCLIC
+			#0    1    2    3    4                  5    6    7    8    9
+			'X', 'Y', 'D', 'E', IS_CYCLIC + QQUAD, 'X', 'Y', 'F', 'G', IS_CYCLIC
 		)
 		t19.scale(label_scale_factor).move_to(ref_line)
 		for i in range(4):
@@ -581,8 +581,8 @@ class Video(Scene):
 		self.wait(2)
 
 		t23 = MathTex(
-			#0    1    2              3    4    5
-			'D', 'E', r'\text{ y }', 'F', 'G', r'\text{ son paralelas}'
+			#0    1    2    3    4    5
+			'D', 'E', AND, 'F', 'G', ARE_PARALLEL
 		)
 		t23.scale(.7).next_to(ref_line, DOWN, 1.5)
 		for i in [0, 1, 3, 4]:
