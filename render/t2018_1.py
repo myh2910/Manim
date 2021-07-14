@@ -19,8 +19,10 @@ class Thumbnail(Scene):
         t3.scale(2.8).shift(1.7*DOWN)
         VGroup(t1, t2).shift(2.9*RIGHT+1.76*UP)
 
+		# Deprecated
         l1 = Line(LEFT, RIGHT, color=BLUE_B).set_width(t2.get_width()+.4)
         l1.next_to(t2, DOWN, buff=.2)
+		# Deprecated
         l2 = Line(LEFT, RIGHT, color=BLUE_A).set_width(t2.get_width()+.2)
         l2.next_to(t2, DOWN, buff=.34)
 

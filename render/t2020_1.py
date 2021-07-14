@@ -16,8 +16,10 @@ class Thumbnail(Scene):
 		t1.scale(3.4).shift(.7*DOWN)
 		t2.scale(3).shift(2.6*DOWN)
 		
+		# Deprecated
 		l1 = Line(LEFT, RIGHT, color=GOLD_D).set_width(t2[2].get_width())
 		l1.next_to(t2[2], DOWN, buff=0.2)
+		# Deprecated
 		l2 = Line(LEFT, RIGHT, color=GOLD).set_width(t2[2].get_width()-.6)
 		l2.next_to(t2[2], DOWN, buff=0.35)
 		
