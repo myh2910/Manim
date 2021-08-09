@@ -2,20 +2,20 @@ from manim import *
 import cmath
 from pydub.audio_segment import AudioSegment
 
-'''https://docs.manim.community
-Current version: Manim Community v0.8.0
+'''This is a deprecated package.
+Visit https://docs.manim.community for more information.
 
 Some command line flags:
- -a : renders multiple Scene classes
+ -a  : renders multiple Scene classes
  -ql : low quality
  -qm : medium quality
  -qh : high quality
  -qk : 4k quality
- -p : plays the animation once it is rendered
- -f : opens the file browser at the location of the animation
- -i : .gif format'''
+ -p  : plays the animation once it is rendered
+ -f  : opens the file browser at the location of the animation
+ -i  : .gif format'''
 
-# Deprecated
+# Use get_center instead.
 def coord(P) -> tuple:
     """Returns the coordinates of the point P."""
     t = type(P)
@@ -26,19 +26,17 @@ def coord(P) -> tuple:
     else:
         return P[0], P[1]
 
-# Deprecated
 def comp(P) -> complex:
     """Returns a complex number with the same coordinates as P."""
     x, y = coord(P)
     return complex(x, y)
 
-# Deprecated
 def nparray(P) -> np.ndarray:
     """Returns an array with the same coordinates as P."""
     x, y = coord(P)
     return np.array((x, y, 0))
 
-# Deprecated. Use np.linalg.norm instead.
+# Use np.linalg.norm instead.
 def distance(A, B) -> float:
     """Returns the length of the segment AB."""
     x1, y1 = coord(A)
@@ -46,12 +44,12 @@ def distance(A, B) -> float:
     x, y = x1-x2, y1-y2
     return (x**2+y**2)**(1/2)
 
-# Deprecated. Use angle_of_vector instead.
+# Use angle_of_vector instead.
 def arg(P) -> float:
     """Returns the angle between the vector P and the real axis in radians."""
     return cmath.phase(comp(P))
 
-# Deprecated. Use normalize instead.
+# Use normalize instead.
 def dir(P):
     """Returns a vector with modulus 1 with its direction equal to P."""
     t = type(P)
@@ -65,10 +63,10 @@ def dir(P):
     else:
         return complex(np.cos(P*DEGREES), np.sin(P*DEGREES))
 
-# Deprecated. Use ORIGIN instead.
+# Use ORIGIN instead.
 origin = complex(0, 0)
 
-# Deprecated. Use line_intersection instead.
+# Use line_intersection instead.
 def extension(A, B, C, D) -> complex:
     """Returns the intersection point between lines AB and CD."""
     try:
@@ -76,7 +74,7 @@ def extension(A, B, C, D) -> complex:
     except:
         return extension(comp(A), comp(B), comp(C), comp(D))
 
-# Deprecated. Use get_projection instead.
+# Use get_projection instead.
 def foot(P, A, B) -> complex:
     """Returns the foot of the perpendicular from P to the line AB."""
     try:
@@ -91,7 +89,6 @@ def sim(B, C, A1, B1, C1) -> complex:
     except:
         return sim(comp(B), comp(C), comp(A1), comp(B1), comp(C1))
 
-# Deprecated
 def circumcenter(A, B, C) -> complex:
     """Returns the circumcenter of triangle ABC."""
     try:
@@ -101,42 +98,34 @@ def circumcenter(A, B, C) -> complex:
     except:
         return circumcenter(comp(A), comp(B), comp(C))
 
-# Deprecated
 def DOT(P, c=WHITE, s=ORIGIN, **kwargs) -> Dot:
     """Returns a Dot element shifted by s colored with c."""
     x, y = coord(P)
     return Dot(np.array((x, y, 0)), color=c, **kwargs).shift(s)
 
-# Deprecated
 def POLY(*vertices, **kwargs):
     return Polygon(*[nparray(vertex) for vertex in vertices], **kwargs)
 
-# Deprecated
 def CR(r=1, O=ORIGIN, c=WHITE, **kwargs) -> Circle:
     """Returns the circle centered at O with radius r."""
     return Circle(radius=r, color=c, **kwargs).move_to(nparray(O))
 
-# Deprecated
 def CP(P, O=ORIGIN, c=WHITE, **kwargs) -> Circle:
     """Returns the circle centered at O with radius OP."""
     return CR(distance(O, P), nparray(O), c, **kwargs)
 
-# Deprecated
 def MP(label, P, array=UP, s=1, **kwargs) -> Tex:
     """Returns the label of an object."""
     return Tex(label).scale(s).next_to(P, dir(nparray(array)), 0.25*s, **kwargs)
 
-# Deprecated
 def MASS(*args):
     lst = make_lst(args)
     return center_of_mass([nparray(item) for item in lst])
 
-# Deprecated
 def MID(A, B):
     """Returns the midpoint of the segment AB."""
     return MASS(A, B)
 
-# Deprecated
 def LINE(A, B, c=WHITE, **kwargs) -> Line:
     """Returns the line AB."""
     return Line(nparray(A), nparray(B), **kwargs).set_color(c)
