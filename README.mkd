@@ -1,0 +1,15 @@
+# Manim
+
+Python source codes written for [Raul Alcantara's project](https://www.youtube.com/playlist?list=PLklb9oKw6FrI0CB9SksE7ku1eIoJLRh9T).
+
+# Installation
+
+Visit [Manim Community's website](https://docs.manim.community) for more info.
+
+## Arch Linux
+
+* `sudo pacman -S cairo pango ffmpeg texlive-most manim`
+
+# Running
+
+First, clone this repository and run `python render` at its respective directory.

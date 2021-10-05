@@ -20,3 +20,6 @@ def format_convert(from_dir, to_dir=None, from_format='flac', to_format='mp3'):
 		to_dir = 'assets/{}.mp3'.format(datetime.now().strftime('%Y%m%d_%H%M%S_%f')[:-4])
 	audio = AudioSegment.from_file(from_dir, format=from_format)
 	audio.export(to_dir, format=to_format)
+
+if __name__ == '__main__':
+	video(2019, 5, 'h')
