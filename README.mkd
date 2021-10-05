@@ -1,4 +1,4 @@
-## Manim
+# manim
 
 Python source codes written for [Raul Alcantara's project](https://www.youtube.com/playlist?list=PLklb9oKw6FrI0CB9SksE7ku1eIoJLRh9T).
 
