@@ -310,7 +310,7 @@ class Video(Scene):
 		for i in [*range(4), *range(5, 9)]:
 			t14[i].set_color(c3)
 			t14[i+9].set_color(c4)
-		
+
 		self.add_foreground_mobjects(
 			circle_ABC,
 			angle_DBF, angle_FDB, angle_GCE, angle_CEG,

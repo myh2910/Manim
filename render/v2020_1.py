@@ -114,7 +114,7 @@ class Video(Scene):
 			label_A, label_B, label_C, label_D, label_P, label_O,
 			label_alpha, label_2alpha, label_3alpha, label_4alpha, label_beta, label_2beta, label_3beta, label_4beta
 		).shift(1.2*DOWN)
-		
+
 		self.play(FadeIn(VGroup(*quadrilateral_ABCD), shift=UP))
 		self.play(AnimationGroup(*[GrowFromCenter(i) for i in [dot_P, label_P]], lag_ratio=MED_LAG_RATIO))
 		self.add_foreground_mobjects(
