@@ -7,7 +7,7 @@ class Video(Scene):
 		self.play(FadeIn(logo, shift=UP))
 
 		problem = Tex(r'\textsf{Problema 1}').set_color_by_gradient(TEAL_E, TEAL_A).scale(2.2)
-		solution = Tex(r"\emph{Soluci\'on}").set_color(YELLOW_B).scale(2.1).next_to(problem, DOWN, .1)
+		solution = Tex(r"\emph{Solución}").set_color(YELLOW_B).scale(2.1).next_to(problem, DOWN, .1)
 		VGroup(problem, solution).shift(3.6*RIGHT + .1*UP)
 
 		# Vamos a resolver
@@ -19,9 +19,9 @@ class Video(Scene):
 
 		problem_statement = Tex(
 			r'\textbf{Problema 1.} \ \,\! ',
-			r'''Sea $n\geqslant 100$ un entero. Iv\'an escribe cada uno de los n\'umeros $n,n+1,\dots,2n$ en un \linebreak
-naipe diferente. Despu\'es de barajar estos $n+1$ naipes, los divide en dos pilas distintas. Probar que \linebreak
-al menos una de esas pilas contiene dos naipes tales que la suma de sus n\'umeros es un cuadrado \linebreak
+			r'''Sea $n\geqslant 100$ un entero. Iván escribe cada uno de los números $n,n+1,\dots,2n$ en un \linebreak
+naipe diferente. Después de barajar estos $n+1$ naipes, los divide en dos pilas distintas. Probar que \linebreak
+al menos una de esas pilas contiene dos naipes tales que la suma de sus números es un cuadrado \linebreak
 perfecto.''',
 			tex_environment=None,
 			tex_template=tex_template('510pt')

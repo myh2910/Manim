@@ -6,7 +6,7 @@ class Video(Scene):
 
 		logo = ImageMobject('assets/2020.png').scale(1.5).shift(.8*UP)
 		problem = Tex(r'\textsf{Problema 3:}').set_color(GOLD_A).scale(2.2)
-		solution = Tex(r"\emph{Soluci\'on}").set_color(TEAL_A).scale(2.1)
+		solution = Tex(r"\emph{Solución}").set_color(TEAL_A).scale(2.1)
 		VGroup(problem, solution).arrange(RIGHT, .8).shift(1.8*DOWN)
 		problem.c1 = problem.copy().set_x(0)
 
@@ -34,7 +34,7 @@ class Video(Scene):
 			lag_ratio=.1, run_time=1
 		))
 		self.wait(1.5)
-		add_subtitle(r"de la IMO 2020, que dice as\'i:")
+		add_subtitle(r"de la IMO 2020, que dice así:")
 		self.wait(4)
 
 		# 2. Enunciado del problema
@@ -44,7 +44,7 @@ class Video(Scene):
 			r'''Hay $4n$ piedritas de pesos $1,2,3,\dots,4n$. Cada piedrita se colorea de uno de $n$ colores de manera que hay cuatro piedritas de cada color. Demuestre que podemos colocar las piedritas en dos montones de tal forma que las siguientes dos condiciones se satisfacen:
 		\begin{itemize}
 		\item Los pesos totales de ambos montones son iguales.
-		\item Cada mont\'on contiene dos piedritas de cada color.
+		\item Cada montón contiene dos piedritas de cada color.
 		\end{itemize}''',
 			tex_environment=None,
 			tex_template=tex_template('512.34pt', extra=r'''\usepackage{enumitem}
@@ -96,14 +96,14 @@ class Video(Scene):
 		self.wait(2)
 		add_subtitle('los pesos totales de ambos montones son iguales')
 		self.wait(2.5)
-		add_subtitle(r"y cada mont\'on contiene dos piedritas de cada color.")
+		add_subtitle(r"y cada montón contiene dos piedritas de cada color.")
 		self.wait(4)
 
 		# 3. Solución oficial (usando ciclos eulerianos)
 
 		add_subtitle("Vamos a presentar una de las soluciones oficiales,")
 		self.wait(2.5)
-		add_subtitle(r"(mi soluci\'on durante la prueba fue muy similar a la oficial)")
+		add_subtitle(r"(mi solución durante la prueba fue muy similar a la oficial)")
 		self.wait(1.5)
 		add_subtitle('en donde usaremos los ciclos eulerianos.')
 		self.wait(4)
@@ -169,9 +169,9 @@ class Video(Scene):
 		# 5. Multigrafo G
 
 		self.play(FadeOut(*pebbles, cdots, shift=.5*UP), set_S.animate.next_to(separator, DOWN, .5))
-		multigraph = Tex('$G=$ ', 'multigrafo', r' con $n$ v\'ertices').next_to(set_S, DOWN, .5)
+		multigraph = Tex('$G=$ ', 'multigrafo', r' con $n$ vértices').next_to(set_S, DOWN, .5)
 		brace = Brace(multigraph[1], buff=0)
-		definition = Tex(r'grafo que permite\\ aristas m\'ultiples').scale(.8).next_to(brace, DOWN, SMALL_BUFF)
+		definition = Tex(r'grafo que permite\\ aristas múltiples').scale(.8).next_to(brace, DOWN, SMALL_BUFF)
 		loop = VGroup(CubicBezier(ORIGIN, 1.5*UP, 1.5*RIGHT, ORIGIN), Dot(color=GREEN))
 		multiple_edges = VGroup(
 			CubicBezier(ORIGIN, [.2, .5, 0], [1.3, .7, 0], [1.5, .5, 0]),
@@ -182,15 +182,15 @@ class Video(Scene):
 		arrow = CurvedArrow(2*LEFT, RIGHT, radius=4, tip_length=.2).shift(1.1*RIGHT + 2*DOWN)
 		VGroup(loop, multiple_edges).move_to(3.8*RIGHT + 1.8*DOWN)
 
-		add_subtitle(r"Sea $G$ un multigrafo con $n$ v\'ertices")
+		add_subtitle(r"Sea $G$ un multigrafo con $n$ vértices")
 		self.play(AnimationGroup(*[Write(i) for i in multigraph], lag_ratio=MED_LAG_RATIO))
 		self.wait(.5)
-		add_subtitle(r"(es decir, un grafo que permite aristas m\'ultiples),")
+		add_subtitle(r"(es decir, un grafo que permite aristas múltiples),")
 		self.play(GrowFromCenter(brace), Write(definition))
 
 		self.play(VGroup(multigraph, brace, definition).animate.shift(1.8*LEFT))
 		self.play(Create(arrow), run_time=.7)
-		add_subtitle(r"de modo que cada v\'ertice corresponde a un color.")
+		add_subtitle(r"de modo que cada vértice corresponde a un color.")
 	
 		self.add_foreground_mobjects(loop[1])
 		self.play(GrowFromCenter(loop[1]), run_time=.7)
@@ -209,7 +209,7 @@ class Video(Scene):
 			*[FadeOut(dot, shift=.5*DOWN) for dot in [loop[1], *multiple_edges[2:]]]
 		)
 		self.wait()
-		add_subtitle(r"agregamos una arista entre los v\'ertices")
+		add_subtitle(r"agregamos una arista entre los vértices")
 		self.wait(2.5)
 		add_subtitle('que corresponden a los colores de esas piedritas.')
 		self.wait(4)
@@ -222,12 +222,12 @@ class Video(Scene):
 		brace = Brace(VGroup(rojas, azules), LEFT)
 		aristas = MathTex(r'4\text{ aristas}=').next_to(brace, LEFT).shift(.05*UP)
 		coloring = VGroup(rojas, azules, brace, aristas).next_to(multigraph, DOWN, .5).set_x(0)
-		add_subtitle(r"Note que cada v\'ertice tiene grado $4$.")
+		add_subtitle(r"Note que cada vértice tiene grado $4$.")
 		self.play(AnimationGroup(Write(aristas), GrowFromCenter(brace), Write(rojas), Write(azules), lag_ratio=MED_LAG_RATIO), run_time=2)
 		self.wait()
-		add_subtitle(r"Nos bastar\'ia pintar cada arista de $G$ de rojo o azul")
+		add_subtitle(r"Nos bastaría pintar cada arista de $G$ de rojo o azul")
 		self.wait(3)
-		add_subtitle(r"de modo que cada v\'ertice tenga")
+		add_subtitle(r"de modo que cada vértice tenga")
 		self.wait(2)
 		add_subtitle('grado $2$ de aristas rojas y $2$ de aristas azules.')
 		self.wait(4)
@@ -241,7 +241,7 @@ class Video(Scene):
 		self.wait(2)
 
 		eulerian_path_theorem = Tex(
-			r'\begin{theorem}[Ciclo Euleriano] Sea $G$ un grafo conexo con todos sus v\'ertices de grados pares. Entonces, existe un ciclo que pasa por cada arista de $G$ exactamente una vez.\end{theorem}',
+			r'\begin{theorem}[Ciclo Euleriano] Sea $G$ un grafo conexo con todos sus vértices de grados pares. Entonces, existe un ciclo que pasa por cada arista de $G$ exactamente una vez.\end{theorem}',
 			tex_environment=None,
 			tex_template=tex_template(
 				'512.34pt',
@@ -255,7 +255,7 @@ class Video(Scene):
 			)
 		).scale(.5).next_to(separator, DOWN, .5)
 
-		add_subtitle(r"Como cada v\'ertice tiene grado par,")
+		add_subtitle(r"Como cada vértice tiene grado par,")
 		self.play(FadeOut(coloring, component, shift=.5*UP), FadeIn(eulerian_path_theorem, shift=.5*UP))
 		self.wait()
 		add_subtitle("existe un ciclo euleriano $C$ en $G'$.")
@@ -283,14 +283,14 @@ class Video(Scene):
 		\declaretheorem[style=thmbox,name=Lema,numbered=no]{lemma}'''
 			)
 		).scale(.5).next_to(eulerian_path_theorem, DOWN, .3, aligned_edge=LEFT)
-		add_subtitle(r"Sabemos que el doble del n\'umero de aristas de $G'$")
+		add_subtitle(r"Sabemos que el doble del número de aristas de $G'$")
 		self.play(FadeOut(circuit_C, shift=.5*UP), FadeIn(handshaking_lemma, shift=.5*UP))
 		self.wait(2)
-		add_subtitle(r"es igual a la suma de los grados de los v\'ertices de $G'$,")
+		add_subtitle(r"es igual a la suma de los grados de los vértices de $G'$,")
 		self.wait(3.5)
-		add_subtitle(r"y cada v\'ertice de $G'$ tiene grado $4$,")
+		add_subtitle(r"y cada vértice de $G'$ tiene grado $4$,")
 		self.wait(3)
-		add_subtitle(r"entonces el n\'umero de aristas de $G'$ es par.")
+		add_subtitle(r"entonces el número de aristas de $G'$ es par.")
 		self.wait(4)
 
 		# 9. Fin
@@ -304,16 +304,16 @@ class Video(Scene):
 		add_subtitle('tenga diferentes colores.')
 		self.wait(4)
 
-		add_subtitle(r"Entonces en $G'$, cada v\'ertice tiene")
+		add_subtitle(r"Entonces en $G'$, cada vértice tiene")
 		self.wait(2)
 		add_subtitle(r"igual grado de aristas rojas y azules.")
 		self.wait(3)
 
-		add_subtitle(r"Por lo tanto, podemos lograr que cada v\'ertice de $G$")
+		add_subtitle(r"Por lo tanto, podemos lograr que cada vértice de $G$")
 		self.wait(3)
 		add_subtitle('tenga grado $2$ de aristas rojas y $2$ de aristas azules,')
 		self.wait(3.5)
-		add_subtitle(r"que es lo que quer\'iamos probar.")
+		add_subtitle(r"que es lo que queríamos probar.")
 		self.wait(4)
 
 		# 10. Ejemplo con n=5

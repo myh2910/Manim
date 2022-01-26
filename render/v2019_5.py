@@ -7,7 +7,7 @@ class Video(ThreeDScene):
 
 		logo = ImageMobject('assets/2019.png').scale(1).shift(2*LEFT)
 		problem = Tex(r'\textsf{Problema 5}').set_color(GOLD_B).scale(2.2)
-		solution = Tex(r"\emph{Soluci\'on}").set_color(TEAL_A).scale(2.1)
+		solution = Tex(r"\emph{Solución}").set_color(TEAL_A).scale(2.1)
 		VGroup(problem, solution).arrange(DOWN, .7)
 		Group(logo, VGroup(problem, solution)).arrange(RIGHT, .9)
 		problem.c1 = problem.copy().set_y(0)
@@ -28,10 +28,10 @@ class Video(ThreeDScene):
 
 		problem_statement = Tex(
 				r'\textbf{Problema 5.} ',
-			r'''El Banco de Bath emite monedas con una $H$ en una cara y una $T$ en la otra. Harry tiene $n$ monedas de este tipo alineadas de izquierda a derecha. \'El realiza repetidamente la siguiente operaci\'on: si hay exactamente $k>0$ monedas con la $H$ hacia arriba, Harry voltea la $k$-\'esima moneda contando desde la izquierda; en caso contrario, todas las monedas tienen la $T$ hacia arriba y \'el se detiene. Por ejemplo, si $n=3$ y la configuraci\'on inicial es $THT$, el proceso ser\'ia $THT\to HHT\to HTT\to TTT$, que se detiene despu\'es de tres operaciones.
+			r'''El Banco de Bath emite monedas con una $H$ en una cara y una $T$ en la otra. Harry tiene $n$ monedas de este tipo alineadas de izquierda a derecha. \'El realiza repetidamente la siguiente operación: si hay exactamente $k>0$ monedas con la $H$ hacia arriba, Harry voltea la $k$-ésima moneda contando desde la izquierda; en caso contrario, todas las monedas tienen la $T$ hacia arriba y él se detiene. Por ejemplo, si $n=3$ y la configuración inicial es $THT$, el proceso sería $THT\to HHT\to HTT\to TTT$, que se detiene después de tres operaciones.
 \begin{enumerate}[label=(\alph*)]
-	\item Demostrar que para cualquier configuraci\'on inicial que tenga Harry, el proceso se detiene despu\'es de un n\'umero finito de operaciones.
-	\item Para cada configuraci\'on inicial $C$, sea $L(C)$ el n\'umero de operaciones que se realizan hasta que Harry se detiene. Por ejemplo, $L(THT)=3$ y $L(TTT)=0$. Determinar el valor promedio de $L(C)$ sobre todas las $2^n$ posibles configuraciones iniciales de $C$.
+	\item Demostrar que para cualquier configuración inicial que tenga Harry, el proceso se detiene después de un número finito de operaciones.
+	\item Para cada configuración inicial $C$, sea $L(C)$ el número de operaciones que se realizan hasta que Harry se detiene. Por ejemplo, $L(THT)=3$ y $L(TTT)=0$. Determinar el valor promedio de $L(C)$ sobre todas las $2^n$ posibles configuraciones iniciales de $C$.
 \end{enumerate}''',
 			tex_environment=None,
 			tex_template=tex_template('510pt', extra=r'''\usepackage{enumitem}

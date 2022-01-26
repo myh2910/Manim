@@ -14,7 +14,7 @@ class Video(Scene):
 
 		t2 = Tex(
 			r'\textbf{Problema 1.} \ \ ',
-			r"Considere el cuadril\'atero convexo $ABCD$. El punto $P$ est\'a en el interior de $ABCD$. Asuma las siguientes igualdades de razones: $$\angle PAD:\angle PBA:\angle DPA=1:2:3=\angle CBP:\angle BAP:\angle BPC.$$ Demuestre que las siguientes tres rectas concurren en un punto: la bisectriz interna del \'angulo $\angle ADP$, la bisectriz interna del \'angulo $\angle PCB$ y la mediatriz del segmento $AB$.",
+			r"Considere el cuadrilátero convexo $ABCD$. El punto $P$ está en el interior de $ABCD$. Asuma las siguientes igualdades de razones: $$\angle PAD:\angle PBA:\angle DPA=1:2:3=\angle CBP:\angle BAP:\angle BPC.$$ Demuestre que las siguientes tres rectas concurren en un punto: la bisectriz interna del ángulo $\angle ADP$, la bisectriz interna del ángulo $\angle PCB$ y la mediatriz del segmento $AB$.",
 			tex_environment=None,
 			tex_template=tex_template('512.34pt')
 		)
@@ -414,7 +414,7 @@ class Video(Scene):
 
 		t16 = MathTex(
 			#    0    1    2                                                   3    4    5    6
-			IMPLIES, 'O', BELONGS_TO(r"la bisectriz interna del \'angulo"), ANGLE, 'A', 'D', 'P',
+			IMPLIES, 'O', BELONGS_TO(r"la bisectriz interna del ángulo"), ANGLE, 'A', 'D', 'P',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in [0, *range(2, 6)]:
@@ -477,7 +477,7 @@ class Video(Scene):
 
 		t20 = MathTex(
 			#    0    1    2                                                   3    4    5    6
-			IMPLIES, 'O', BELONGS_TO(r"la bisectriz interna del \'angulo"), ANGLE, 'P', 'C', 'B',
+			IMPLIES, 'O', BELONGS_TO(r"la bisectriz interna del ángulo"), ANGLE, 'P', 'C', 'B',
 			tex_template=TexTemplateLibrary.simple
 		)
 		for i in [0, *range(2, 6)]:
@@ -531,13 +531,13 @@ class Video(Scene):
 
 		t23 = Tex(
 			#                                  0    1
-			r"La bisectriz interna del \'angulo ", r'$\angle ADP$',
+			r"La bisectriz interna del ángulo ", r'$\angle ADP$',
 			#                                      2    3
-			r",\\ la bisectriz interna del \'angulo ", r'$\angle PCB$',
+			r",\\ la bisectriz interna del ángulo ", r'$\angle PCB$',
 			#                               4    5
 			r'\\ y la mediatriz del segmento ', '$AB$',
 			#                                                6      7      8
-			r"\\ concurren en el circuncentro del tri\'angulo ", '$PAB$', '.',
+			r"\\ concurren en el circuncentro del triángulo ", '$PAB$', '.',
 			tex_template=tex_template('250pt', '1.2')
 		)
 		for i, color in enumerate([color_alpha, color_beta, YELLOW_A, RED_A]):

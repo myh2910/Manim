@@ -7,16 +7,16 @@ class Video(Scene):
 
 		t2 = Tex(
 			r'\textbf{Problema 4.} ',
-			r"El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + LINEBREAK + \
-			r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\'a en la recta $AO$.",
+			r"El triángulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y están en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersección de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ están sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersección de la circunferencia circunscrita al triángulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersección de la circunferencia circunscrita al triángulo $CGE$ y el segmento $CA$." + LINEBREAK + \
+			r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ está en la recta $AO$.",
 			tex_environment=None,
 			tex_template=TexTemplateLibrary.simple
 		)
 		t2.set_color_by_tex('Problema', RED)
-		
+
 		t3 = Tex(
-			r"\hphantom{\textbf{Problema 4.} }El tri\'angulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y est\'an en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersecci\'on de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ est\'an sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersecci\'on de la circunferencia circunscrita al tri\'angulo $CGE$ y el segmento $CA$." + LINEBREAK + \
-			r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ est\'a en la recta $AO$.",
+			r"\hphantom{\textbf{Problema 4.} }El triángulo $ABC$ tiene circunferencia circunscrita $\Omega$ y circuncentro $O$. Una circunferencia $\Gamma$ de centro $A$ corta al segmento $BC$ en los puntos $D$ y $E$ tales que $B$, $D$, $E$ y $C$ son todos diferentes y están en la recta $BC$ en este orden. Sean $F$ y $G$ los puntos de intersección de $\Gamma$ y $\Omega$, tales que $A$, $F$, $B$, $C$ y $G$ están sobre $\Omega$ en este orden. Sea $K$ el segundo punto de intersección de la circunferencia circunscrita al triángulo $BDF$ y el segmento $AB$. Sea $L$ el segundo punto de intersección de la circunferencia circunscrita al triángulo $CGE$ y el segmento $CA$." + LINEBREAK + \
+			r"Supongamos que las rectas $FK$ y $GL$ son distintas y se cortan en el punto $X$. Demostrar que $X$ está en la recta $AO$.",
 			tex_environment=None,
 			tex_template=TexTemplateLibrary.simple
 		)
@@ -105,7 +105,7 @@ class Video(Scene):
 			ref_dot = get_coord(dot2)
 			add_circle(f'{dot2}{dot3}{dot4}', center, point=ref_dot, color=GREEN)
 			add_dot(dot5, 2*get_mobj(line_label).get_projection(center) - ref_dot, None)
-	
+
 		add_dot('X', line_intersection(*[get_coord('{},{}'.format(*i)) for i in ['FK', 'GL']]), DOWN)
 		for label in 'FG':
 			line_label = label + 'X'
@@ -198,7 +198,7 @@ class Video(Scene):
 			self.play(GrowFromCenter(i))
 		self.add_foreground_mobjects(*get_all('X'))
 		self.play(ReplacementTransform(get_vgroup('FX,GX'), get_vgroup('dashed_FX,dashed_GX')))
-	
+
 		self.play(get_vgroup('A,X,O').animate.set_color(ORANGE))
 		self.play(
 			Write(t5[24]),
@@ -229,7 +229,7 @@ class Video(Scene):
 		self.play(Create(get_vgroup('OF,OG')))
 
 		self.play(FadeOut(get_mobj('omega')))
-		
+
 		add_doublearrow('dOA', get_coord('O,A'), pos=.26, color=BLUE, stroke_width=4, tip_length=.2)
 		for label, angle in [('A', 135), ('O', 225), ('X', 267)]:
 			add_dot(f'{label}1', get_coord(label), plane.pr2pt(1, angle*DEGREES), f'${label}$')

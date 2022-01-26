@@ -11,7 +11,7 @@ class Video(Scene):
 		t1 = Tex(r'\textsf{Problema 1}').set_color_by_gradient(TEAL_E, TEAL_A)
 		t1.scale(2.6).shift(2.7*RIGHT + .2*DOWN)
 
-		t2 = Tex(r"\emph{Soluci\'on}").set_color(YELLOW_B)
+		t2 = Tex(r"\emph{Solución}").set_color(YELLOW_B)
 		t2.scale(2).shift(2.7*RIGHT + .9*DOWN)
 
 		self.play(AnimationGroup(logo.animate.shift(3.7*LEFT), Write(t1), lag_ratio=MED_LAG_RATIO))
@@ -20,7 +20,7 @@ class Video(Scene):
 
 		t3 = Tex(
 			r'\textbf{Problema 1.}\ \ ',
-			r"Sea $\Gamma$ la circunferencia circunscrita al tri\'angulo acut\'angulo $ABC$. Los puntos $D$ y $E$ est\'an en los segmentos $AB$ y $AC$, respectivamente, y son tales que $AD=AE$. Las mediatrices de $BD$ y $CE$ cortan a los arcos menores $AB$ y $AC$ de $\Gamma$ en los puntos $F$ y $G$, respectivamente. Demostrar que las rectas $DE$ y $FG$ son paralelas (o son la misma recta).",
+			r"Sea $\Gamma$ la circunferencia circunscrita al triángulo acutángulo $ABC$. Los puntos $D$ y $E$ están en los segmentos $AB$ y $AC$, respectivamente, y son tales que $AD=AE$. Las mediatrices de $BD$ y $CE$ cortan a los arcos menores $AB$ y $AC$ de $\Gamma$ en los puntos $F$ y $G$, respectivamente. Demostrar que las rectas $DE$ y $FG$ son paralelas (o son la misma recta).",
 			tex_environment=None,
 			tex_template=tex_template('512.34pt')
 		)
